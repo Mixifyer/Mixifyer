@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Spirit, Soda, Bitter, Cocktail} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -12,7 +12,47 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  console.log(`seeded ${users.length} users`)
+  const spirit = await Promise.all([
+    Spirit.create({
+      name: 'Mixifyer Vodka',
+      type: 'Vodka',
+      flavor: 'plain',
+      price: 2199,
+      volume: 16,
+      inStock: 100,
+      image: 'https://cdn.mos.cms.futurecdn.net/iHHBqNXQN5B66Qf2oKDKjh.jpg'
+    })
+  ])
+
+  const soda = await Promise.all([
+    Soda.create({
+      name: 'Mixifyer Soda',
+      type: 'sparkling',
+      flavor: 'lemon',
+      price: 199,
+      volume: 8,
+      inStock: 100
+    })
+  ])
+
+  const bitter = await Promise.all([
+    Bitter.create({
+      name: 'Mixifyer Bitter',
+      type: 'dark',
+      flavor: 'rhubarb',
+      price: 299,
+      volume: 4,
+      inStock: 50
+    })
+  ])
+
+  const cocktail = await Promise.all([
+    Cocktail.create({
+      name: 'Mixifyer Cocktail'
+    })
+  ])
+
+  // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
