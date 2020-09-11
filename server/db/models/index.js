@@ -10,21 +10,44 @@ const db = require('../db')
 User.hasMany(Order)
 Order.belongsTo(User)
 
-const CocktailOrder = db.define('CocktailOrder', {
+const SodaOrder = db.define('SodaOrder', {
   savedPrice: {
     type: Sequelize.INTEGER
   },
-  bookQuantity: {
+  sodaQuantity: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   }
 })
 
-Cocktail.hasMany(CocktailOrder)
-CocktailOrder.belongsTo(Cocktail)
+const SpiritOrder = db.define('SpiritOrder', {
+  savedPrice: {
+    type: Sequelize.INTEGER
+  },
+  sodaQuantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  }
+})
 
-Order.belongsToMany(Cocktail, {through: 'CocktailOrder'})
-Cocktail.belongsToMany(Order, {through: 'CocktailOrder'})
+const BitterOrder = db.define('BitterOrder', {
+  savedPrice: {
+    type: Sequelize.INTEGER
+  },
+  sodaQuantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  }
+})
+
+Order.belongsToMany(Soda, {through: 'SodaOrder'})
+Soda.belongsToMany(Order, {through: 'SodaOrder'})
+
+Order.belongsToMany(Spirit, {through: 'SpiritOrder'})
+Spirit.belongsToMany(Order, {through: 'SpiritOrder'})
+
+Order.belongsToMany(Bitter, {through: 'BitterOrder'})
+Bitter.belongsToMany(Order, {through: 'BitterOrder'})
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -45,5 +68,7 @@ module.exports = {
   Bitter,
   Cocktail,
   Order,
-  CocktailOrder
+  SodaOrder,
+  SpiritOrder,
+  BitterOrder
 }
