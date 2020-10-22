@@ -1,15 +1,19 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Bitter = db.define('bitter', {
+const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
-  type: {
+  category: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: true
   },
   flavor: {
     type: Sequelize.STRING,
@@ -42,4 +46,4 @@ const Bitter = db.define('bitter', {
   }
 })
 
-module.exports = Bitter
+module.exports = Product

@@ -9,7 +9,7 @@ const Soda = db.define('soda', {
   },
   type: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   flavor: {
     type: Sequelize.STRING,
