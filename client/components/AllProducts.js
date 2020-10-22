@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-// import {products} from '../store'
 import {thunkFetchAllProducts} from '../store/products'
 
 const AllProducts = ({products, getProducts}) => {
