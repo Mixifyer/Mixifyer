@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {thunkFetchAllProducts} from '../store/products'
+import {Link} from 'react-router-dom'
 
 const AllProducts = ({products, getProducts}) => {
   useEffect(() => {
@@ -13,18 +14,20 @@ const AllProducts = ({products, getProducts}) => {
         <div>Loading...</div>
       ) : (
         products.map(product => (
-          <div key={product.id}>
-            <div>
+          <div key={product.id} id="product">
+            <Link to={`/products/${product.id}`}>
               <img src={product.image} />
-            </div>
+            </Link>
             <div>
-              <h3>{product.name}</h3>
-              <h5>{product.category}</h5>
-              <h5>{product.type}</h5>
-              <h5>{product.price / 100} $</h5>
-              <h5>{product.flavor}</h5>
-              <h5>{product.volume} oz</h5>
-              <h5>{product.inStock}</h5>
+              <Link to={`/products/${product.id}`}>
+                <h3>{product.name}</h3>
+              </Link>
+              <h5>Category: {product.category}</h5>
+              <h5>Type: {product.type}</h5>
+              <h5>Price: {product.price / 100} $</h5>
+              <h5>Flavor: {product.flavor}</h5>
+              <h5>Volume: {product.volume} oz</h5>
+              <h5>Available: {product.inStock}</h5>
             </div>
           </div>
         ))
@@ -35,7 +38,7 @@ const AllProducts = ({products, getProducts}) => {
 
 const mapState = state => {
   return {
-    products: state.products.allProducts
+    products: state.products
   }
 }
 
