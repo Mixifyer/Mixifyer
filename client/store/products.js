@@ -21,16 +21,16 @@ export const thunkFetchAllProducts = () => async dispatch => {
     const {data} = await axios.get('/api/products')
     dispatch(getAllProducts(data))
   } catch (error) {
-    next(error)
+    console.log(error)
   }
 }
 
 export const thunkFetchSingleProduct = productId => async dispatch => {
   try {
     const {data} = await axios.get(`/api/products/${productId}`)
-    return dispatch(getSingleProduct(data))
+    dispatch(getSingleProduct(data))
   } catch (error) {
-    next(error)
+    console.log(error)
   }
 }
 
