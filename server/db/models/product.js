@@ -13,7 +13,7 @@ const Product = db.define('product', {
   },
   type: {
     type: Sequelize.STRING,
-    allowNull: true
+    allowNull: false
   },
   flavor: {
     type: Sequelize.STRING,
@@ -21,6 +21,7 @@ const Product = db.define('product', {
   },
   price: {
     type: Sequelize.INTEGER,
+    defaultValue: 0,
     allowNull: false,
     validate: {
       notEmpty: true,

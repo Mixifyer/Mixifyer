@@ -2,14 +2,16 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {thunkFetchAllProducts} from '../store/products'
 import {Link} from 'react-router-dom'
+import CreateProductForm from './CreateProductForm'
 
-const AllProducts = ({products, getProducts}) => {
+const AllProducts = ({products, getProducts, user}) => {
   useEffect(() => {
     getProducts()
   }, [])
 
   return (
     <div>
+      {user.isAdmin && <CreateProductForm />}
       {!products.length ? (
         <div>Loading...</div>
       ) : (
@@ -38,7 +40,8 @@ const AllProducts = ({products, getProducts}) => {
 
 const mapState = state => {
   return {
-    products: state.products
+    products: state.products,
+    user: state.user
   }
 }
 
