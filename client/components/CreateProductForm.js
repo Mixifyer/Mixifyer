@@ -9,10 +9,11 @@ const CreateProductForm = props => {
     image: '',
     category: '',
     type: '',
-    price: 0,
+    price: '',
     flavor: '',
-    volume: 0,
-    inStock: 0
+    volume: '',
+    inStock: '',
+    errorMessage: '*'
   }
   const [state, setstate] = useState(initialState)
 
@@ -24,6 +25,11 @@ const CreateProductForm = props => {
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
   }
+  let disable = !state.name || !state.price || !state.volume
+  let disableName = !state.name
+  let disablePrice = !state.price
+  let disableVolume = !state.volume
+  let disableCategory = !state.category
   return (
     <div>
       <div>
@@ -35,7 +41,9 @@ const CreateProductForm = props => {
             type="text"
             onChange={handleChange}
             value={state.name}
+            placeholder="required"
           />
+          {disableName && <div className="asterisk">{state.errorMessage}</div>}
           <label htmlFor="image">Image</label>
           <input
             name="image"
@@ -44,12 +52,21 @@ const CreateProductForm = props => {
             value={state.image}
           />
           <label htmlFor="category">Category</label>
-          <input
+          <select
             name="category"
-            type="text"
+            title="required"
             onChange={handleChange}
-            value={state.category}
-          />
+            required
+          >
+            <option value="" />
+            <option value="Spirit">Spirit</option>
+            <option value="Soda">Soda</option>
+            <option value="Bitter">Bitter</option>
+          </select>
+
+          {disableCategory && (
+            <div className="asterisk">{state.errorMessage}</div>
+          )}
           <label htmlFor="type">Type</label>
           <input
             name="type"
@@ -60,10 +77,12 @@ const CreateProductForm = props => {
           <label htmlFor="price">Price</label>
           <input
             name="price"
-            type="number"
+            type="text"
             onChange={handleChange}
             value={state.price}
+            placeholder="required"
           />
+          {disablePrice && <div className="asterisk">{state.errorMessage}</div>}
           <label htmlFor="flavor">Flavor</label>
           <input
             name="flavor"
@@ -74,18 +93,24 @@ const CreateProductForm = props => {
           <label htmlFor="volume">Volume</label>
           <input
             name="volume"
-            type="number"
+            type="text"
             onChange={handleChange}
             value={state.volume}
+            placeholder="required"
           />
+          {disableVolume && (
+            <div className="asterisk">{state.errorMessage}</div>
+          )}
           <label htmlFor="inStock">inStock</label>
           <input
             name="inStock"
-            type="number"
+            type="text"
             onChange={handleChange}
             value={state.inStock}
           />
-          <button type="submit">Submit</button>
+          <button disabled={disable} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>

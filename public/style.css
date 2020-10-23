@@ -35,3 +35,10 @@ a {
   text-decoration: underline;
   color: blue;
 }
+.asterisk {
+  /* padding: 0px; */
+  margin: 0px;
+  margin-left: 10px;
+  font-size: 17px;
+  color: rgb(241, 15, 15);
+}

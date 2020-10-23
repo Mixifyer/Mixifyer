@@ -12,12 +12,13 @@ const Product = db.define('product', {
     allowNull: false
   },
   type: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   flavor: {
     type: Sequelize.STRING,
-    allowNull: false
+    validate: {
+      notEmpty: false
+    }
   },
   price: {
     type: Sequelize.INTEGER,
@@ -26,7 +27,7 @@ const Product = db.define('product', {
     validate: {
       notEmpty: true,
       isNonNegative(value) {
-        if (value < 0) {
+        if (value < 1) {
           throw new Error('Price is invalid!')
         }
       }
@@ -38,7 +39,7 @@ const Product = db.define('product', {
   },
   inStock: {
     type: Sequelize.INTEGER,
-    defaultValue: 100
+    defaultValue: 0
   },
   image: {
     type: Sequelize.TEXT,
