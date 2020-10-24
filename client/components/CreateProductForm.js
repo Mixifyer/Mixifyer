@@ -15,21 +15,28 @@ const CreateProductForm = props => {
     inStock: '',
     errorMessage: '*'
   }
+
   const [state, setstate] = useState(initialState)
 
   function handleSubmit(event) {
     event.preventDefault()
     createNewProduct(state)
-    setstate(initialState)
+    setstate({...initialState, category: state.category})
   }
+
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
   }
+
   let disable = !state.name || !state.price || !state.volume
-  let disableName = !state.name
-  let disablePrice = !state.price
-  let disableVolume = !state.volume
-  let disableCategory = !state.category
+
+  const asterisk = <div className="asterisk">{state.errorMessage}</div>
+
+  const categoryOptions = ['', 'Spirit', 'Soda', 'Bitter'].map(category => (
+    <option key={category} value={category}>
+      {category}
+    </option>
+  ))
   return (
     <div>
       <div>
@@ -43,7 +50,7 @@ const CreateProductForm = props => {
             value={state.name}
             placeholder="required"
           />
-          {disableName && <div className="asterisk">{state.errorMessage}</div>}
+          {!state.name && asterisk}
           <label htmlFor="image">Image</label>
           <input
             name="image"
@@ -52,21 +59,11 @@ const CreateProductForm = props => {
             value={state.image}
           />
           <label htmlFor="category">Category</label>
-          <select
-            name="category"
-            title="required"
-            onChange={handleChange}
-            required
-          >
-            <option value="" />
-            <option value="Spirit">Spirit</option>
-            <option value="Soda">Soda</option>
-            <option value="Bitter">Bitter</option>
+          <select name="category" onInput={handleChange} required>
+            {categoryOptions}
           </select>
 
-          {disableCategory && (
-            <div className="asterisk">{state.errorMessage}</div>
-          )}
+          {!state.category && asterisk}
           <label htmlFor="type">Type</label>
           <input
             name="type"
@@ -82,7 +79,7 @@ const CreateProductForm = props => {
             value={state.price}
             placeholder="required"
           />
-          {disablePrice && <div className="asterisk">{state.errorMessage}</div>}
+          {!state.price && asterisk}
           <label htmlFor="flavor">Flavor</label>
           <input
             name="flavor"
@@ -98,9 +95,7 @@ const CreateProductForm = props => {
             value={state.volume}
             placeholder="required"
           />
-          {disableVolume && (
-            <div className="asterisk">{state.errorMessage}</div>
-          )}
+          {!state.volume && asterisk}
           <label htmlFor="inStock">inStock</label>
           <input
             name="inStock"
@@ -108,7 +103,7 @@ const CreateProductForm = props => {
             onChange={handleChange}
             value={state.inStock}
           />
-          <button disabled={disable} type="submit">
+          <button disabled={disable} type="submit" className="create-button">
             Submit
           </button>
         </form>
@@ -129,3 +124,50 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(CreateProductForm)
+
+// const inputNames = Object.keys(initialState).map((inputName) => {
+//   let nameOfInput =
+//     inputName === 'name' || inputName === 'price' || inputName === 'volume'
+//   nameOfInput ? (nameOfInput = 'required') : (nameOfInput = '')
+
+//   if (inputName === 'category') {
+//     return (
+//       <div key={inputName}>
+//         <label htmlFor="category">{inputName.toUpperCase()}</label>
+//         <select name="category" onInput={handleChange} required>
+//           {categoryOptions}
+//         </select>
+//         {!state[inputName] && asterisk}
+//       </div>
+//     )
+//   } else {
+//     return (
+//       <div key={inputName}>
+//         <label htmlFor="image">{inputName.toUpperCase()}</label>
+//         <input
+//           name={inputName}
+//           type="text"
+//           onChange={handleChange}
+//           value={state[inputName]}
+//           placeholder={nameOfInput}
+//         />
+//         {nameOfInput === 'required' && !state[inputName] && asterisk}
+//       </div>
+//     )
+//   }
+// })
+
+// return (
+//   <div>
+//     <div>
+//       <form onSubmit={handleSubmit} className="newProductForm">
+//         <h2>New Product Form</h2>
+//         {inputNames}
+//         <button disabled={disable} type="submit" className="create-button">
+//           Submit
+//         </button>
+//       </form>
+//     </div>
+//   </div>
+// )
+// }

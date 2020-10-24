@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {thunkFetchAllProducts} from '../store/products'
+import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
 
-const AllProducts = ({products, getProducts, user}) => {
+const AllProducts = ({products, getProducts, user, deleteProduct}) => {
   useEffect(() => {
     getProducts()
   }, [])
+  function removeProduct(id) {
+    deleteProduct(id)
+  }
 
   return (
     <div>
@@ -30,6 +33,13 @@ const AllProducts = ({products, getProducts, user}) => {
               <h5>Flavor: {product.flavor}</h5>
               <h5>Volume: {product.volume} oz</h5>
               <h5>Available: {product.inStock}</h5>
+              <button
+                type="button"
+                onClick={() => removeProduct(product.id)}
+                className="delete-button"
+              >
+                Remove the product
+              </button>
             </div>
           </div>
         ))
@@ -47,7 +57,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getProducts: () => dispatch(thunkFetchAllProducts())
+    getProducts: () => dispatch(thunkFetchAllProducts()),
+    deleteProduct: id => dispatch(thunkRemoveProduct(id))
   }
 }
 

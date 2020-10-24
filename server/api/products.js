@@ -58,9 +58,9 @@ router.put('/:id', isAdmin, async (req, res, next) => {
 
 router.delete('/:id', isAdmin, async (req, res, next) => {
   try {
-    const productToRemove = await productToEdit.findByPk(req.params.id)
+    const productToRemove = await Product.findByPk(req.params.id)
     await productToRemove.destroy()
-    // res.send(req.params.id)
+    res.send(req.params.id)
   } catch (error) {
     next(error)
   }
