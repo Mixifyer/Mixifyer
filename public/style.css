@@ -55,3 +55,9 @@ a {
   margin-left: 10px;
   border-radius: 4px;
 }
+.options {
+  color: rgb(187, 8, 38);
+}
+.disabledOption {
+  color: rgb(100, 99, 97);
+}

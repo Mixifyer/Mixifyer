@@ -17,11 +17,22 @@ const CreateProductForm = props => {
   }
 
   const [state, setstate] = useState(initialState)
+  const [disabled, setDisabled] = useState(true)
+
+  const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
+    <option key={category} value={category} className="option">
+      {!disabled ? category : 'required'}
+    </option>
+  ))
 
   function handleSubmit(event) {
     event.preventDefault()
     createNewProduct(state)
-    setstate({...initialState, category: state.category})
+    setstate(initialState)
+    setDisabled(true)
+  }
+  const onClickSelector = () => {
+    setDisabled(false)
   }
 
   function handleChange(event) {
@@ -32,11 +43,6 @@ const CreateProductForm = props => {
 
   const asterisk = <div className="asterisk">{state.errorMessage}</div>
 
-  const categoryOptions = ['', 'Spirit', 'Soda', 'Bitter'].map(category => (
-    <option key={category} value={category}>
-      {category}
-    </option>
-  ))
   return (
     <div>
       <div>
@@ -59,7 +65,13 @@ const CreateProductForm = props => {
             value={state.image}
           />
           <label htmlFor="category">Category</label>
-          <select name="category" onInput={handleChange} required>
+          <select
+            name="category"
+            onInput={handleChange}
+            onClick={() => onClickSelector()}
+            required
+            className={!disabled ? 'options' : 'disabledOption'}
+          >
             {categoryOptions}
           </select>
 
@@ -143,7 +155,7 @@ export default connect(mapState, mapDispatch)(CreateProductForm)
 //   } else {
 //     return (
 //       <div key={inputName}>
-//         <label htmlFor="image">{inputName.toUpperCase()}</label>
+//         <label htmlFor="{inputName}">{inputName.toUpperCase()}</label>
 //         <input
 //           name={inputName}
 //           type="text"
