@@ -12,18 +12,16 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
     deleteProduct(id)
   }
 
-  const [state, setstate] = useState({toggle: true})
+  const [state, setstate] = useState({singleId: ''})
 
   const toggleForm = id => {
-    if (!state.toggle) {
+    if (state.singleId !== id) {
       setstate({
-        toggle: true,
         singleId: id
       })
     } else {
       setstate({
-        toggle: false,
-        singleId: id
+        singleId: ''
       })
     }
   }
@@ -56,23 +54,20 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
               >
                 Remove the product
               </button>
-
               <button
                 type="button"
                 onClick={() => toggleForm(product.id)}
                 className="toggle-button"
               >
-                {state.toggle
+                {!state.singleId
                   ? 'Edit the product'
                   : product.id === state.singleId
                     ? 'Cancel'
                     : 'Edit the product'}
               </button>
-              {!state.toggle &&
-                state.singleId === product.id && (
-                  <CreateProductForm currentProduct={product} />
-                )}
-              {/* currentProduct={product} */}
+              {state.singleId === product.id && (
+                <CreateProductForm currentProduct={product} />
+              )}
             </div>
           </div>
         ))
