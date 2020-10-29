@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {Link} from 'react-router-dom'
@@ -10,6 +10,22 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
   }, [])
   function removeProduct(id) {
     deleteProduct(id)
+  }
+
+  const [state, setstate] = useState({toggle: true})
+
+  const toggleForm = id => {
+    if (!state.toggle) {
+      setstate({
+        toggle: true,
+        singleId: id
+      })
+    } else {
+      setstate({
+        toggle: false,
+        singleId: id
+      })
+    }
   }
 
   return (
@@ -40,6 +56,23 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
               >
                 Remove the product
               </button>
+
+              <button
+                type="button"
+                onClick={() => toggleForm(product.id)}
+                className="toggle-button"
+              >
+                {state.toggle
+                  ? 'Edit the product'
+                  : product.id === state.singleId
+                    ? 'Cancel'
+                    : 'Edit the product'}
+              </button>
+              {!state.toggle &&
+                state.singleId === product.id && (
+                  <CreateProductForm currentProduct={product} />
+                )}
+              {/* currentProduct={product} */}
             </div>
           </div>
         ))

@@ -5,6 +5,7 @@ import {thunkCreateNewProduct} from '../store/products'
 // eslint-disable-next-line complexity
 const CreateProductForm = props => {
   const {createNewProduct} = props
+  console.log(props.currentProduct)
   let initialState = {
     name: '',
     image: '',
@@ -18,7 +19,7 @@ const CreateProductForm = props => {
     requiredOpion: false
   }
 
-  const [state, setstate] = useState(initialState)
+  const [state, setstate] = useState(props.currentProduct || initialState)
   let disable = !state.name || !state.price || !state.volume
 
   const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
@@ -46,7 +47,11 @@ const CreateProductForm = props => {
     <div>
       <div>
         <form onSubmit={handleSubmit} className="newProductForm">
-          <h2>New Product Form</h2>
+          {props.currentProduct ? (
+            <h2>Edit {props.currentProduct.name}</h2>
+          ) : (
+            <h2>New Product Form</h2>
+          )}
           <label>Name</label>
           <input
             name="name"
