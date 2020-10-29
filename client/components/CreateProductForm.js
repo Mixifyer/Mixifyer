@@ -17,8 +17,12 @@ const CreateProductForm = props => {
     errorMessage: '*'
   }
 
-  const [state, setstate] = useState(props.currentProduct || initialState)
+  const [state, setstate] = useState(
+    {...props.currentProduct, price: props.currentProduct.price / 100} ||
+      initialState
+  )
   console.log(state)
+
   let disable = !state.name || !state.price || !state.volume
 
   const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
@@ -45,7 +49,7 @@ const CreateProductForm = props => {
         <h3 id="form-name">
           {props.currentProduct
             ? `Edit ${props.currentProduct.name}`
-            : 'New Product Form'}{' '}
+            : 'New Product Form'}
         </h3>
 
         <label>Name</label>
@@ -53,9 +57,9 @@ const CreateProductForm = props => {
           name="name"
           type="text"
           onChange={handleChange}
-          value={state.name}
+          defaultValue={state.name}
           placeholder="required"
-          className="newProductInput"
+          className="input-newPoduct"
         />
         {!state.name && asterisk}
         <label htmlFor="image">Image</label>
@@ -63,15 +67,15 @@ const CreateProductForm = props => {
           name="image"
           type="text"
           onChange={handleChange}
-          value={state.image}
-          className="newProductInput"
+          defaultValue={state.image}
+          className="input-newPoduct"
         />
         <label htmlFor="category">Category</label>
         <select
           name="category"
           onInput={handleChange}
-          value={state.category}
-          className={state.category ? 'options' : 'optionRequired'}
+          defaultValue={state.category}
+          className={state.category ? 'input-newPoduct' : 'optionRequired'}
         >
           {!state.category && (
             <option key="required" hidden>
@@ -88,17 +92,17 @@ const CreateProductForm = props => {
           name="type"
           type="text"
           onChange={handleChange}
-          value={state.type}
-          className="newProductInput"
+          defaultValue={state.type}
+          className="input-newPoduct"
         />
         <label htmlFor="price">Price</label>
         <input
           name="price"
           type="text"
           onChange={handleChange}
-          value={state.price}
+          defaultValue={state.price}
           placeholder="required"
-          className="newProductInput"
+          className="input-newPoduct"
         />
         {!state.price && asterisk}
         <h6>$</h6>
@@ -107,27 +111,27 @@ const CreateProductForm = props => {
           name="flavor"
           type="text"
           onChange={handleChange}
-          value={state.flavor}
-          className="newProductInput"
+          defaultValue={state.flavor}
+          className="input-newPoduct"
         />
         <label htmlFor="volume">Volume</label>
         <input
           name="volume"
           type="text"
           onChange={handleChange}
-          value={state.volume}
+          defaultValue={state.volume}
           placeholder="required"
-          className="newProductInput"
+          className="input-newPoduct"
         />
         {!state.volume && asterisk}
         <h6>Oz</h6>
-        <label htmlFor="inStock">inStock</label>
+        <label htmlFor="inStock">Available</label>
         <input
           name="inStock"
           type="text"
           onChange={handleChange}
-          value={state.inStock}
-          className="newProductInput"
+          defaultValue={state.inStock}
+          className="input-newPoduct"
         />
         <button disabled={disable} type="submit" className="create-button">
           Submit
@@ -186,7 +190,7 @@ export default connect(mapState, mapDispatch)(CreateProductForm)
 //           onChange={handleChange}
 //           value={state[inputName]}
 //           placeholder={nameOfInput}
-//           className="newProductInput"
+//           className="input-newPoduct"
 
 //         />
 //         {nameOfInput === 'required' && !state[inputName] && asterisk}

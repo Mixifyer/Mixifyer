@@ -8,6 +8,9 @@ a {
 
 label {
   display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(72, 31, 102);
 }
 
 nav a {
@@ -59,22 +62,24 @@ a {
   margin-left: 10px;
   border-radius: 4px;
 }
-.options {
-  color: rgb(11, 56, 255);
-  font-size: 15px;
-}
+
 .optionRequired {
-  color: rgb(100, 99, 97);
-  font-size: 15px;
+  color: rgb(110, 110, 108);
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 6px;
 }
 
-.newProductInput {
-  color: rgb(11, 56, 255);
-  font-size: 15px;
+.input-newPoduct {
+  color: rgb(8, 31, 133);
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 6px;
 }
 
 #editForm {
   margin-left: 30px;
+  margin-bottom: 10px;
 }
 
 .productBox {
@@ -84,6 +89,9 @@ a {
 .productInfo {
   display: flex;
   flex-direction: column;
+}
+.productInfo h5 {
+  margin: 10px;
 }
 
 .toggle-button {
