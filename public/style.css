@@ -19,6 +19,10 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+form h6 {
+  margin: 0.5em;
+  display: inline-block;
+}
 
 img {
   max-width: 300px;
@@ -56,8 +60,15 @@ a {
   border-radius: 4px;
 }
 .options {
-  color: rgb(187, 8, 38);
+  color: rgb(11, 56, 255);
+  font-size: 15px;
 }
 .disabledOption {
   color: rgb(100, 99, 97);
+  font-size: 15px;
+}
+
+.newProductInput {
+  color: rgb(11, 56, 255);
+  font-size: 15px;
 }

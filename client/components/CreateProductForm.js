@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {thunkCreateNewProduct} from '../store/products'
 
+// eslint-disable-next-line complexity
 const CreateProductForm = props => {
   const {createNewProduct} = props
   let initialState = {
@@ -13,33 +14,40 @@ const CreateProductForm = props => {
     flavor: '',
     volume: '',
     inStock: '',
-    errorMessage: '*'
+    errorMessage: '*',
+    requiredOpion: false
   }
 
   const [state, setstate] = useState(initialState)
-  const [disabled, setDisabled] = useState(true)
+  // const [requiredOpion, setDisabled] = useState(true)
+  let disable = !state.name || !state.price || !state.volume
 
-  const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
-    <option key={category} value={category} className="option">
-      {!disabled ? category : 'required'}
-    </option>
-  ))
+  const categoryOptions = // requiredOpion
+    // ? ['required']
+    ['Spirit', 'Soda', 'Bitter'].map(category => (
+      <option
+        key={category}
+        // hidden={state.requiredOpion}
+        value={category}
+        className="option"
+      >
+        {category}
+      </option>
+    ))
 
   function handleSubmit(event) {
     event.preventDefault()
     createNewProduct(state)
     setstate(initialState)
-    setDisabled(true)
+    // setDisabled(false)
   }
   const onClickSelector = () => {
-    setDisabled(false)
+    setstate({...state, requiredOpion: true})
   }
 
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
   }
-
-  let disable = !state.name || !state.price || !state.volume
 
   const asterisk = <div className="asterisk">{state.errorMessage}</div>
 
@@ -55,6 +63,7 @@ const CreateProductForm = props => {
             onChange={handleChange}
             value={state.name}
             placeholder="required"
+            className="newProductInput"
           />
           {!state.name && asterisk}
           <label htmlFor="image">Image</label>
@@ -63,6 +72,7 @@ const CreateProductForm = props => {
             type="text"
             onChange={handleChange}
             value={state.image}
+            className="newProductInput"
           />
           <label htmlFor="category">Category</label>
           <select
@@ -70,8 +80,14 @@ const CreateProductForm = props => {
             onInput={handleChange}
             onClick={() => onClickSelector()}
             required
-            className={!disabled ? 'options' : 'disabledOption'}
+            className={state.requiredOpion ? 'options' : 'disabledOption'}
           >
+            {!state.category && (
+              <option selected key="required" hidden className="option">
+                required
+              </option>
+            )}
+
             {categoryOptions}
           </select>
 
@@ -82,6 +98,7 @@ const CreateProductForm = props => {
             type="text"
             onChange={handleChange}
             value={state.type}
+            className="newProductInput"
           />
           <label htmlFor="price">Price</label>
           <input
@@ -90,14 +107,17 @@ const CreateProductForm = props => {
             onChange={handleChange}
             value={state.price}
             placeholder="required"
+            className="newProductInput"
           />
           {!state.price && asterisk}
+          <h6>$</h6>
           <label htmlFor="flavor">Flavor</label>
           <input
             name="flavor"
             type="text"
             onChange={handleChange}
             value={state.flavor}
+            className="newProductInput"
           />
           <label htmlFor="volume">Volume</label>
           <input
@@ -106,14 +126,17 @@ const CreateProductForm = props => {
             onChange={handleChange}
             value={state.volume}
             placeholder="required"
+            className="newProductInput"
           />
           {!state.volume && asterisk}
+          <h6>Oz</h6>
           <label htmlFor="inStock">inStock</label>
           <input
             name="inStock"
             type="text"
             onChange={handleChange}
             value={state.inStock}
+            className="newProductInput"
           />
           <button disabled={disable} type="submit" className="create-button">
             Submit
