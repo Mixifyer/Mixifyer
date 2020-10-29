@@ -5,7 +5,6 @@ import {thunkCreateNewProduct} from '../store/products'
 // eslint-disable-next-line complexity
 const CreateProductForm = props => {
   const {createNewProduct} = props
-  console.log(props.currentProduct)
   let initialState = {
     name: '',
     image: '',
@@ -20,6 +19,7 @@ const CreateProductForm = props => {
   }
 
   const [state, setstate] = useState(props.currentProduct || initialState)
+  console.log(state)
   let disable = !state.name || !state.price || !state.volume
 
   const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
@@ -44,101 +44,99 @@ const CreateProductForm = props => {
   const asterisk = <div className="asterisk">{state.errorMessage}</div>
 
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit} className="newProductForm">
-          {props.currentProduct ? (
-            <h2>Edit {props.currentProduct.name}</h2>
-          ) : (
-            <h2>New Product Form</h2>
+    <div id="editForm">
+      <form onSubmit={handleSubmit} className="newProductForm">
+        {props.currentProduct ? (
+          <h2>Edit {props.currentProduct.name}</h2>
+        ) : (
+          <h2>New Product Form</h2>
+        )}
+        <label>Name</label>
+        <input
+          name="name"
+          type="text"
+          onChange={handleChange}
+          value={state.name}
+          placeholder="required"
+          className="newProductInput"
+        />
+        {!state.name && asterisk}
+        <label htmlFor="image">Image</label>
+        <input
+          name="image"
+          type="text"
+          onChange={handleChange}
+          value={state.image}
+          className="newProductInput"
+        />
+        <label htmlFor="category">Category</label>
+        <select
+          name="category"
+          onInput={handleChange}
+          onChange={() => onClickSelector()}
+          value="required"
+          className={state.requiredOpion ? 'options' : 'optionRequired'}
+        >
+          {!state.category && (
+            <option key="required" hidden>
+              required
+            </option>
           )}
-          <label>Name</label>
-          <input
-            name="name"
-            type="text"
-            onChange={handleChange}
-            value={state.name}
-            placeholder="required"
-            className="newProductInput"
-          />
-          {!state.name && asterisk}
-          <label htmlFor="image">Image</label>
-          <input
-            name="image"
-            type="text"
-            onChange={handleChange}
-            value={state.image}
-            className="newProductInput"
-          />
-          <label htmlFor="category">Category</label>
-          <select
-            name="category"
-            onInput={handleChange}
-            onChange={() => onClickSelector()}
-            value="required"
-            className={state.requiredOpion ? 'options' : 'optionRequired'}
-          >
-            {!state.category && (
-              <option key="required" hidden>
-                required
-              </option>
-            )}
 
-            {categoryOptions}
-          </select>
+          {categoryOptions}
+        </select>
 
-          {!state.category && asterisk}
-          <label htmlFor="type">Type</label>
-          <input
-            name="type"
-            type="text"
-            onChange={handleChange}
-            value={state.type}
-            className="newProductInput"
-          />
-          <label htmlFor="price">Price</label>
-          <input
-            name="price"
-            type="text"
-            onChange={handleChange}
-            value={state.price}
-            placeholder="required"
-            className="newProductInput"
-          />
-          {!state.price && asterisk}
-          <h6>$</h6>
-          <label htmlFor="flavor">Flavor</label>
-          <input
-            name="flavor"
-            type="text"
-            onChange={handleChange}
-            value={state.flavor}
-            className="newProductInput"
-          />
-          <label htmlFor="volume">Volume</label>
-          <input
-            name="volume"
-            type="text"
-            onChange={handleChange}
-            value={state.volume}
-            placeholder="required"
-            className="newProductInput"
-          />
-          {!state.volume && asterisk}
-          <h6>Oz</h6>
-          <label htmlFor="inStock">inStock</label>
-          <input
-            name="inStock"
-            type="text"
-            onChange={handleChange}
-            value={state.inStock}
-            className="newProductInput"
-          />
-          <button disabled={disable} type="submit" className="create-button">
-            Submit
-          </button>
-        </form>
-      </div>
+        {!state.category && asterisk}
+        <label htmlFor="type">Type</label>
+        <input
+          name="type"
+          type="text"
+          onChange={handleChange}
+          value={state.type}
+          className="newProductInput"
+        />
+        <label htmlFor="price">Price</label>
+        <input
+          name="price"
+          type="text"
+          onChange={handleChange}
+          value={state.price}
+          placeholder="required"
+          className="newProductInput"
+        />
+        {!state.price && asterisk}
+        <h6>$</h6>
+        <label htmlFor="flavor">Flavor</label>
+        <input
+          name="flavor"
+          type="text"
+          onChange={handleChange}
+          value={state.flavor}
+          className="newProductInput"
+        />
+        <label htmlFor="volume">Volume</label>
+        <input
+          name="volume"
+          type="text"
+          onChange={handleChange}
+          value={state.volume}
+          placeholder="required"
+          className="newProductInput"
+        />
+        {!state.volume && asterisk}
+        <h6>Oz</h6>
+        <label htmlFor="inStock">inStock</label>
+        <input
+          name="inStock"
+          type="text"
+          onChange={handleChange}
+          value={state.inStock}
+          className="newProductInput"
+        />
+        <button disabled={disable} type="submit" className="create-button">
+          Submit
+        </button>
+      </form>
     </div>
   )
 }

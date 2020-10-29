@@ -13,6 +13,11 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
   }
 
   const [state, setstate] = useState({singleId: ''})
+  const [newFormState, setNewFormState] = useState(false)
+
+  const toggleCreateForm = () => {
+    setNewFormState(!newFormState)
+  }
 
   const toggleForm = id => {
     if (state.singleId !== id) {
@@ -28,7 +33,18 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
 
   return (
     <div>
-      {user.isAdmin && <CreateProductForm />}
+      <div className="newFormToggle">
+        {user.isAdmin && (
+          <button
+            type="button"
+            onClick={() => toggleCreateForm()}
+            id="toggle-button"
+          >
+            {!newFormState ? 'Create New Product' : 'Close Form'}
+          </button>
+        )}
+        {newFormState && <CreateProductForm />}
+      </div>
       {!products.length ? (
         <div>Loading...</div>
       ) : (
@@ -38,15 +54,22 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
               <img src={product.image} />
             </Link>
             <div>
-              <Link to={`/products/${product.id}`}>
-                <h3>{product.name}</h3>
-              </Link>
-              <h5>Category: {product.category}</h5>
-              <h5>Type: {product.type}</h5>
-              <h5>Price: {product.price / 100} $</h5>
-              <h5>Flavor: {product.flavor}</h5>
-              <h5>Volume: {product.volume} oz</h5>
-              <h5>Available: {product.inStock}</h5>
+              <div className="productBox">
+                <div className="productInfo">
+                  <Link to={`/products/${product.id}`}>
+                    <h3>{product.name}</h3>
+                  </Link>
+                  <h5>Category: {product.category}</h5>
+                  <h5>Type: {product.type}</h5>
+                  <h5>Price: {product.price / 100} $</h5>
+                  <h5>Flavor: {product.flavor}</h5>
+                  <h5>Volume: {product.volume} oz</h5>
+                  <h5>Available: {product.inStock}</h5>
+                </div>
+                {state.singleId === product.id && (
+                  <CreateProductForm currentProduct={product} />
+                )}
+              </div>
               <button
                 type="button"
                 onClick={() => removeProduct(product.id)}
@@ -65,9 +88,6 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
                     ? 'Cancel'
                     : 'Edit the product'}
               </button>
-              {state.singleId === product.id && (
-                <CreateProductForm currentProduct={product} />
-              )}
             </div>
           </div>
         ))
