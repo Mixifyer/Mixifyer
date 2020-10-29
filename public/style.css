@@ -63,7 +63,7 @@ a {
   color: rgb(11, 56, 255);
   font-size: 15px;
 }
-.disabledOption {
+.optionRequired {
   color: rgb(100, 99, 97);
   font-size: 15px;
 }

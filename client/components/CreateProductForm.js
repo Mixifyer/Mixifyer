@@ -19,27 +19,18 @@ const CreateProductForm = props => {
   }
 
   const [state, setstate] = useState(initialState)
-  // const [requiredOpion, setDisabled] = useState(true)
   let disable = !state.name || !state.price || !state.volume
 
-  const categoryOptions = // requiredOpion
-    // ? ['required']
-    ['Spirit', 'Soda', 'Bitter'].map(category => (
-      <option
-        key={category}
-        // hidden={state.requiredOpion}
-        value={category}
-        className="option"
-      >
-        {category}
-      </option>
-    ))
+  const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
+    <option key={category} value={category} className="option">
+      {category}
+    </option>
+  ))
 
   function handleSubmit(event) {
     event.preventDefault()
     createNewProduct(state)
     setstate(initialState)
-    // setDisabled(false)
   }
   const onClickSelector = () => {
     setstate({...state, requiredOpion: true})
@@ -78,12 +69,12 @@ const CreateProductForm = props => {
           <select
             name="category"
             onInput={handleChange}
-            onClick={() => onClickSelector()}
-            required
-            className={state.requiredOpion ? 'options' : 'disabledOption'}
+            onChange={() => onClickSelector()}
+            value="required"
+            className={state.requiredOpion ? 'options' : 'optionRequired'}
           >
             {!state.category && (
-              <option selected key="required" hidden className="option">
+              <option key="required" hidden>
                 required
               </option>
             )}
@@ -169,11 +160,22 @@ export default connect(mapState, mapDispatch)(CreateProductForm)
 //     return (
 //       <div key={inputName}>
 //         <label htmlFor="category">{inputName.toUpperCase()}</label>
-//         <select name="category" onInput={handleChange} required>
+//          <select
+//           name="category"
+//           onInput={handleChange}
+//           onChange={() => onClickSelector()}
+//           value="required"
+//           className={state.requiredOpion ? 'options' : 'optionRequired'}
+//           >
+//           {!state.category && (
+//             <option key="required" hidden>
+//               required
+//             </option>
+//           )}
+
 //           {categoryOptions}
 //         </select>
-//         {!state[inputName] && asterisk}
-//       </div>
+//     </div>
 //     )
 //   } else {
 //     return (
@@ -185,6 +187,8 @@ export default connect(mapState, mapDispatch)(CreateProductForm)
 //           onChange={handleChange}
 //           value={state[inputName]}
 //           placeholder={nameOfInput}
+//           className="newProductInput"
+
 //         />
 //         {nameOfInput === 'required' && !state[inputName] && asterisk}
 //       </div>
