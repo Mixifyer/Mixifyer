@@ -4,7 +4,10 @@ import {thunkCreateNewProduct} from '../store/products'
 
 // eslint-disable-next-line complexity
 const CreateProductForm = props => {
-  const {createNewProduct} = props
+  let {createNewProduct, currentProduct} = props
+  if (currentProduct)
+    currentProduct = {...currentProduct, price: currentProduct.price / 100}
+
   let initialState = {
     name: '',
     image: '',
@@ -17,10 +20,7 @@ const CreateProductForm = props => {
     errorMessage: '*'
   }
 
-  const [state, setstate] = useState(
-    {...props.currentProduct, price: props.currentProduct.price / 100} ||
-      initialState
-  )
+  const [state, setstate] = useState(currentProduct || initialState)
   console.log(state)
 
   let disable = !state.name || !state.price || !state.volume
