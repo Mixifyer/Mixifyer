@@ -14,8 +14,7 @@ const CreateProductForm = props => {
     flavor: '',
     volume: '',
     inStock: '',
-    errorMessage: '*',
-    requiredOpion: false
+    errorMessage: '*'
   }
 
   const [state, setstate] = useState(props.currentProduct || initialState)
@@ -33,9 +32,6 @@ const CreateProductForm = props => {
     createNewProduct(state)
     setstate(initialState)
   }
-  const onClickSelector = () => {
-    setstate({...state, requiredOpion: true})
-  }
 
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
@@ -46,11 +42,12 @@ const CreateProductForm = props => {
   return (
     <div id="editForm">
       <form onSubmit={handleSubmit} className="newProductForm">
-        {props.currentProduct ? (
-          <h2>Edit {props.currentProduct.name}</h2>
-        ) : (
-          <h2>New Product Form</h2>
-        )}
+        <h3 id="form-name">
+          {props.currentProduct
+            ? `Edit ${props.currentProduct.name}`
+            : 'New Product Form'}{' '}
+        </h3>
+
         <label>Name</label>
         <input
           name="name"
@@ -73,9 +70,8 @@ const CreateProductForm = props => {
         <select
           name="category"
           onInput={handleChange}
-          onChange={() => onClickSelector()}
           value={state.category}
-          className={state.requiredOpion ? 'options' : 'optionRequired'}
+          className={state.category ? 'options' : 'optionRequired'}
         >
           {!state.category && (
             <option key="required" hidden>

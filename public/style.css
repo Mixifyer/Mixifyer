@@ -90,6 +90,7 @@ a {
   margin-left: 20px;
   color: white;
   background-color: cornflowerblue;
+  border-radius: 3px;
 }
 
 .newFormToggle {
@@ -100,4 +101,10 @@ a {
 
 #toggle-button {
   width: 200px;
+  color: aliceblue;
+  background-color: rgb(84, 165, 82);
+  border-radius: 3px;
+}
+#form-name {
+  color: rgb(6, 131, 153);
 }
