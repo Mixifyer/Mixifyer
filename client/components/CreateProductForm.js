@@ -74,7 +74,7 @@ const CreateProductForm = props => {
           name="category"
           onInput={handleChange}
           onChange={() => onClickSelector()}
-          value="required"
+          value={state.category}
           className={state.requiredOpion ? 'options' : 'optionRequired'}
         >
           {!state.category && (
