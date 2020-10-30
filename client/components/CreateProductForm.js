@@ -1,12 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {thunkCreateNewProduct} from '../store/products'
+import {thunkCreateNewProduct, thunkEditProduct} from '../store/products'
+// import {thunkEditProduct} from '../store/singleProduct'
 
 // eslint-disable-next-line complexity
 const CreateProductForm = props => {
-  let {createNewProduct, currentProduct} = props
-  if (currentProduct)
-    currentProduct = {...currentProduct, price: currentProduct.price / 100}
+  let {
+    createNewProduct,
+    currentProduct,
+    editProduct,
+    products,
+    setNewFormState,
+    setState
+  } = props
 
   let initialState = {
     name: '',
@@ -19,9 +25,11 @@ const CreateProductForm = props => {
     inStock: '',
     errorMessage: '*'
   }
+  const product = currentProduct
+    ? {...currentProduct, price: currentProduct.price / 100}
+    : initialState
 
-  const [state, setstate] = useState(currentProduct || initialState)
-  console.log(state)
+  let [state, setstate] = useState(product)
 
   let disable = !state.name || !state.price || !state.volume
 
@@ -33,8 +41,24 @@ const CreateProductForm = props => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    createNewProduct(state)
-    setstate(initialState)
+    if (currentProduct) {
+      const items = products.map(element => {
+        if (element.id === state.id) {
+          element = state
+          element.price = element.price * 100
+        }
+        return element
+      })
+      editProduct(state.id, state, items)
+      setstate(initialState)
+      setNewFormState(true)
+      setState({
+        singleId: ''
+      })
+    } else {
+      createNewProduct(state)
+      setstate(initialState)
+    }
   }
 
   function handleChange(event) {
@@ -148,7 +172,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    createNewProduct: product => dispatch(thunkCreateNewProduct(product))
+    createNewProduct: product => dispatch(thunkCreateNewProduct(product)),
+    editProduct: (productId, product, products) =>
+      dispatch(thunkEditProduct(productId, product, products))
   }
 }
 

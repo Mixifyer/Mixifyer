@@ -18,6 +18,7 @@ router.get('/:id', async (req, res, next) => {
         id: req.params.id
       }
     })
+
     res.json(selectedProduct)
   } catch (error) {
     next(error)
@@ -41,16 +42,10 @@ router.post('/', isAdmin, async (req, res, next) => {
 
 router.put('/:id', isAdmin, async (req, res, next) => {
   try {
-    req.body.price = req.body.price * 100
-    const productTemplate = req.body
-    for (let key in productTemplate) {
-      if (productTemplate[key] === 0 || productTemplate[key] === '')
-        delete productTemplate[key]
-    }
-
     const productToEdit = await Product.findByPk(req.params.id)
-    const changedProduct = await productToEdit.update(productTemplate)
-    res.json(changedProduct).statusMessage('the product informaion was edited')
+    const changedProduct = await productToEdit.update(req.body)
+
+    res.json(changedProduct)
   } catch (error) {
     next(error)
   }

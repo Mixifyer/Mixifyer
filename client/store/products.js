@@ -26,7 +26,9 @@ export const thunkFetchAllProducts = () => async dispatch => {
 
 export const thunkCreateNewProduct = product => async dispatch => {
   try {
+    console.log('creatThunk :', product)
     const {data} = await axios.post('/api/products', product)
+    console.log('data :', data)
     dispatch(createNewProduct(data))
   } catch (error) {
     console.log(error)
@@ -37,6 +39,14 @@ export const thunkRemoveProduct = id => async dispatch => {
   try {
     const {data} = await axios.delete(`/api/products/${id}`)
     dispatch(removeSelectedProduct(data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const thunkEditProduct = (id, product, products) => async dispatch => {
+  try {
+    const {data} = await axios.put(`/api/products/${id}`, product)
+    dispatch(getAllProducts(products))
   } catch (error) {
     console.log(error)
   }

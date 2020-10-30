@@ -67,7 +67,12 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
                   <h5>Available: {product.inStock}</h5>
                 </div>
                 {state.singleId === product.id && (
-                  <CreateProductForm currentProduct={product} />
+                  <CreateProductForm
+                    currentProduct={product}
+                    products={products}
+                    setNewFormState={setNewFormState}
+                    setState={setstate}
+                  />
                 )}
               </div>
               <button
@@ -82,7 +87,9 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
                 onClick={() => toggleForm(product.id)}
                 className="toggle-button"
               >
-                {product.id === state.singleId ? 'Cancel' : 'Edit the product'}
+                {!newFormState && product.id === state.singleId
+                  ? 'Cancel'
+                  : 'Edit the product'}
               </button>
             </div>
           </div>
