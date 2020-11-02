@@ -12,7 +12,10 @@ const Product = db.define('product', {
     allowNull: false
   },
   type: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: false
+    }
   },
   flavor: {
     type: Sequelize.STRING,

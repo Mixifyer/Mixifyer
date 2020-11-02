@@ -87,9 +87,7 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
                 onClick={() => toggleForm(product.id)}
                 className="toggle-button"
               >
-                {!newFormState && product.id === state.singleId
-                  ? 'Cancel'
-                  : 'Edit the product'}
+                {product.id === state.singleId ? 'Cancel' : 'Edit the product'}
               </button>
             </div>
           </div>

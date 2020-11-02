@@ -25,6 +25,7 @@ const CreateProductForm = props => {
     inStock: '',
     errorMessage: '*'
   }
+
   const product = currentProduct
     ? {...currentProduct, price: currentProduct.price / 100}
     : initialState
@@ -38,6 +39,18 @@ const CreateProductForm = props => {
       {category}
     </option>
   ))
+
+  // const nullFiller = () => {
+  //   if (!state.type) {
+  //     setstate({...state, type: ""})
+  //   }
+  //   if (!state.flavor) {
+  //     setstate({...state, flavor: ""})
+  //   }
+  // }
+  // if (!state.type || !state.flavor) {
+  //   nullFiller()
+  // }
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -57,10 +70,12 @@ const CreateProductForm = props => {
       })
     } else {
       createNewProduct(state)
+      // console.log("INITIALSTATE>>>>", initialState)
       setstate(initialState)
+      // console.log("STATE >>>>>>>", state)
     }
   }
-
+  console.log('STATE>>>>>>', state)
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
   }
@@ -81,7 +96,7 @@ const CreateProductForm = props => {
           name="name"
           type="text"
           onChange={handleChange}
-          defaultValue={state.name}
+          value={state.name}
           placeholder="required"
           className="input-newPoduct"
         />
@@ -91,14 +106,14 @@ const CreateProductForm = props => {
           name="image"
           type="text"
           onChange={handleChange}
-          defaultValue={state.image}
+          value={state.image}
           className="input-newPoduct"
         />
         <label htmlFor="category">Category</label>
         <select
           name="category"
-          onInput={handleChange}
-          defaultValue={state.category}
+          onChange={handleChange}
+          value={state.category}
           className={state.category ? 'input-newPoduct' : 'optionRequired'}
         >
           {!state.category && (
@@ -116,7 +131,7 @@ const CreateProductForm = props => {
           name="type"
           type="text"
           onChange={handleChange}
-          defaultValue={state.type}
+          value={state.type || ''}
           className="input-newPoduct"
         />
         <label htmlFor="price">Price</label>
@@ -124,7 +139,7 @@ const CreateProductForm = props => {
           name="price"
           type="text"
           onChange={handleChange}
-          defaultValue={state.price}
+          value={state.price}
           placeholder="required"
           className="input-newPoduct"
         />
@@ -135,7 +150,7 @@ const CreateProductForm = props => {
           name="flavor"
           type="text"
           onChange={handleChange}
-          defaultValue={state.flavor}
+          value={state.flavor || ''}
           className="input-newPoduct"
         />
         <label htmlFor="volume">Volume</label>
@@ -143,7 +158,7 @@ const CreateProductForm = props => {
           name="volume"
           type="text"
           onChange={handleChange}
-          defaultValue={state.volume}
+          value={state.volume}
           placeholder="required"
           className="input-newPoduct"
         />
@@ -154,7 +169,7 @@ const CreateProductForm = props => {
           name="inStock"
           type="text"
           onChange={handleChange}
-          defaultValue={state.inStock}
+          value={state.inStock}
           className="input-newPoduct"
         />
         <button disabled={disable} type="submit" className="create-button">
