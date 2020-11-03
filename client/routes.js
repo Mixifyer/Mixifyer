@@ -7,8 +7,8 @@ import {
   Signup,
   UserHome,
   Products,
-  SingleProduct
-  // FilteredProducts,
+  SingleProduct,
+  FilteredProducts
 } from './components'
 import {me} from './store'
 
@@ -29,7 +29,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/products" component={Products} />
-        {/* <Route exact path="/products/:tagName" component={FilteredProducts} /> */}
+
+        <Route exact path="/products/filtered" component={FilteredProducts} />
         <Route exact path="/products/:id" component={SingleProduct} />
         {isLoggedIn && (
           <Switch>

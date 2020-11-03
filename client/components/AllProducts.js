@@ -12,21 +12,21 @@ const AllProducts = ({
   products,
   getProducts,
   user,
-  deleteProduct
-  // filter,
-  // name,
+  deleteProduct,
+  // filter
+  name
 }) => {
+  const [productState, setProducts] = useState(products)
+  if (products.length && !productState.length) setProducts(products)
+
   useEffect(() => {
-    // if (name === 'products') {
-    getProducts()
-    // }
+    if (name === 'products') getProducts()
+    else setProducts(products)
   }, [])
   function removeProduct(id) {
     deleteProduct(id)
   }
-  // function filterProducts(tagType, tagName) {
-  //   filter(tagType, tagName)
-  // }
+
   const [state, setstate] = useState({singleId: ''})
   const [newFormState, setNewFormState] = useState(false)
 
@@ -45,6 +45,14 @@ const AllProducts = ({
       })
     }
   }
+  function filterProducts(tagType, tagName) {
+    let filteredProducts = products
+
+    const newList = filteredProducts.filter(
+      product => product[tagType] === tagName
+    )
+    setProducts(newList)
+  }
 
   return (
     <div>
@@ -60,10 +68,10 @@ const AllProducts = ({
         )}
         {newFormState && <CreateProductForm />}
       </div>
-      {!products.length ? (
+      {!productState.length ? (
         <div>Loading...</div>
       ) : (
-        products.map(product => (
+        productState.map(product => (
           <div key={product.id} id="product">
             <Link to={`/products/${product.id}`}>
               <img src={product.image} />
@@ -86,28 +94,28 @@ const AllProducts = ({
                       <h5>
                         <span>
                           <Link
-                            // onClick={() =>
-                            //   filterProducts('catergory', product.category)
-                            // }
-                            to={`/products/${product.category}`}
+                            onClick={() =>
+                              filterProducts('category', product.category)
+                            }
+                            to="/products/filtered"
                           >
                             <h5>{product.category} </h5>
                           </Link>
                         </span>
                         <span>
                           <Link
-                            // onClick={() => filterProducts('type', product.type)}
-                            to={`/products/${product.type}`}
+                            onClick={() => filterProducts('type', product.type)}
+                            to="/products/filtered"
                           >
                             <h5>{product.type} </h5>
                           </Link>
                         </span>
                         <span>
                           <Link
-                            // onClick={() =>
-                            //   filterProducts('flavor', product.flavor)
-                            // }
-                            to={`/products/${product.flavor}`}
+                            onClick={() =>
+                              filterProducts('flavor', product.flavor)
+                            }
+                            to="/products/filtered"
                           >
                             <h5>{product.flavor}</h5>
                           </Link>
@@ -165,13 +173,13 @@ const mapState = state => {
     user: state.user
   }
 }
-// const filterState = (state) => {
-//   return {
-//     name: 'filter',
-//     products: state.products,
-//     user: state.user,
-//   }
-// }
+const filterState = state => {
+  return {
+    name: 'filter',
+    products: state.products,
+    user: state.user
+  }
+}
 
 const mapDispatch = dispatch => {
   return {
@@ -187,4 +195,4 @@ const mapDispatch = dispatch => {
 // }
 
 export const Products = connect(mapState, mapDispatch)(AllProducts)
-// export const FilteredProducts = connect(filterState, mapDispatch)(AllProducts)
+export const FilteredProducts = connect(filterState, mapDispatch)(AllProducts)
