@@ -83,12 +83,12 @@ a {
 }
 
 .productBox {
-  display: flex;
+  /* display: flex; */
 }
 
 .productInfo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 .productInfo h5 {
   margin: 10px;
@@ -115,4 +115,7 @@ a {
 }
 #form-name {
   color: rgb(6, 131, 153);
+}
+span {
+  display: inline-block;
 }

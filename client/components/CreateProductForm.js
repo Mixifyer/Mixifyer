@@ -40,18 +40,6 @@ const CreateProductForm = props => {
     </option>
   ))
 
-  // const nullFiller = () => {
-  //   if (!state.type) {
-  //     setstate({...state, type: ""})
-  //   }
-  //   if (!state.flavor) {
-  //     setstate({...state, flavor: ""})
-  //   }
-  // }
-  // if (!state.type || !state.flavor) {
-  //   nullFiller()
-  // }
-
   function handleSubmit(event) {
     event.preventDefault()
     if (currentProduct) {
@@ -64,18 +52,16 @@ const CreateProductForm = props => {
       })
       editProduct(state.id, state, items)
       setstate(initialState)
-      setNewFormState(true)
       setState({
         singleId: ''
       })
     } else {
       createNewProduct(state)
-      // console.log("INITIALSTATE>>>>", initialState)
       setstate(initialState)
-      // console.log("STATE >>>>>>>", state)
+      setNewFormState(true)
     }
   }
-  console.log('STATE>>>>>>', state)
+
   function handleChange(event) {
     setstate({...state, [event.target.name]: event.target.value})
   }

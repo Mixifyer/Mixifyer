@@ -1,17 +1,32 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
+import {
+  thunkFetchAllProducts,
+  thunkRemoveProduct
+  // filterByTagName,
+} from '../store/products'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
 
-const AllProducts = ({products, getProducts, user, deleteProduct}) => {
+const AllProducts = ({
+  products,
+  getProducts,
+  user,
+  deleteProduct
+  // filter,
+  // name,
+}) => {
   useEffect(() => {
+    // if (name === 'products') {
     getProducts()
+    // }
   }, [])
   function removeProduct(id) {
     deleteProduct(id)
   }
-
+  // function filterProducts(tagType, tagName) {
+  //   filter(tagType, tagName)
+  // }
   const [state, setstate] = useState({singleId: ''})
   const [newFormState, setNewFormState] = useState(false)
 
@@ -56,39 +71,85 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
             <div>
               <div className="productBox">
                 <div className="productInfo">
-                  <Link to={`/products/${product.id}`}>
-                    <h3>{product.name}</h3>
-                  </Link>
-                  <h5>Category: {product.category}</h5>
-                  <h5>Type: {product.type}</h5>
-                  <h5>Price: {product.price / 100} $</h5>
-                  <h5>Flavor: {product.flavor}</h5>
-                  <h5>Volume: {product.volume} oz</h5>
-                  <h5>Available: {product.inStock}</h5>
+                  <div>
+                    <Link to={`/products/${product.id}`}>
+                      <h3>{product.name}</h3>
+                    </Link>
+
+                    {user.isAdmin ? (
+                      <div>
+                        <h5>Category: {product.category}</h5>
+                        <h5>Type: {product.type}</h5>
+                        <h5>Flavor: {product.flavor}</h5>
+                      </div>
+                    ) : (
+                      <h5>
+                        <span>
+                          <Link
+                            // onClick={() =>
+                            //   filterProducts('catergory', product.category)
+                            // }
+                            to={`/products/${product.category}`}
+                          >
+                            <h5>{product.category} </h5>
+                          </Link>
+                        </span>
+                        <span>
+                          <Link
+                            // onClick={() => filterProducts('type', product.type)}
+                            to={`/products/${product.type}`}
+                          >
+                            <h5>{product.type} </h5>
+                          </Link>
+                        </span>
+                        <span>
+                          <Link
+                            // onClick={() =>
+                            //   filterProducts('flavor', product.flavor)
+                            // }
+                            to={`/products/${product.flavor}`}
+                          >
+                            <h5>{product.flavor}</h5>
+                          </Link>
+                        </span>
+                      </h5>
+                    )}
+
+                    <h5>Price: {product.price / 100} $</h5>
+                    <h5>Volume: {product.volume} oz</h5>
+                    <h5>Available: {product.inStock}</h5>
+                  </div>
+                  {state.singleId === product.id && (
+                    <CreateProductForm
+                      currentProduct={product}
+                      products={products}
+                      setNewFormState={setNewFormState}
+                      setState={setstate}
+                    />
+                  )}
                 </div>
-                {state.singleId === product.id && (
-                  <CreateProductForm
-                    currentProduct={product}
-                    products={products}
-                    setNewFormState={setNewFormState}
-                    setState={setstate}
-                  />
+                {user.isAdmin && (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => removeProduct(product.id)}
+                      className="delete-button"
+                    >
+                      Remove the product
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleForm(product.id)}
+                      className="toggle-button"
+                    >
+                      {product.id === state.singleId
+                        ? 'Cancel'
+                        : 'Edit the product'}
+                    </button>
+                  </div>
                 )}
               </div>
-              <button
-                type="button"
-                onClick={() => removeProduct(product.id)}
-                className="delete-button"
-              >
-                Remove the product
-              </button>
-              <button
-                type="button"
-                onClick={() => toggleForm(product.id)}
-                className="toggle-button"
-              >
-                {product.id === state.singleId ? 'Cancel' : 'Edit the product'}
-              </button>
             </div>
           </div>
         ))
@@ -99,16 +160,31 @@ const AllProducts = ({products, getProducts, user, deleteProduct}) => {
 
 const mapState = state => {
   return {
+    name: 'products',
     products: state.products,
     user: state.user
   }
 }
+// const filterState = (state) => {
+//   return {
+//     name: 'filter',
+//     products: state.products,
+//     user: state.user,
+//   }
+// }
 
 const mapDispatch = dispatch => {
   return {
-    getProducts: () => dispatch(thunkFetchAllProducts()),
-    deleteProduct: id => dispatch(thunkRemoveProduct(id))
+    deleteProduct: id => dispatch(thunkRemoveProduct(id)),
+    // filter: (tagType, tagName) => dispatch(filterByTagName(tagType, tagName)),
+    getProducts: () => dispatch(thunkFetchAllProducts())
   }
 }
+// const filterByTageName = (dispatch) => {
+//   return {
+//     filter: (tagType, tagName) => dispatch(filterByTagName(tagType, tagName)),
+//   }
+// }
 
-export default connect(mapState, mapDispatch)(AllProducts)
+export const Products = connect(mapState, mapDispatch)(AllProducts)
+// export const FilteredProducts = connect(filterState, mapDispatch)(AllProducts)
