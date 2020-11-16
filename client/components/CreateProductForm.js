@@ -34,7 +34,7 @@ const CreateProductForm = props => {
 
   let disable = !state.name || !state.price || !state.volume
 
-  const categoryOptions = ['Spirit', 'Non-alcoholic', 'Bitter'].map(
+  const categoryOptions = ['spirit', 'non-alcoholic', 'bitter'].map(
     category => (
       <option key={category} value={category} className="option">
         {category}
