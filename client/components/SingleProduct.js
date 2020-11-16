@@ -5,12 +5,12 @@ import {thunkFetchSingleProduct} from '../store/singleProduct'
 const SingleProduct = props => {
   const {product, match, getProduct} = props
   useEffect(() => {
-    getProduct(match.params.id)
+    getProduct(match.params.name)
   }, [])
 
   return (
     <div>
-      {!product.id ? (
+      {!product.name ? (
         <h1>Product Doesn't Exist</h1>
       ) : (
         <div>

@@ -28,14 +28,20 @@ form h6 {
 }
 
 img {
-  max-width: 300px;
-  padding-right: 40px;
+  max-width: 150px;
+  max-height: 150px;
+  padding: 15px;
 }
 
 #product {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
+  margin: 15px;
+  border: solid 0.5px rgb(190, 197, 197);
+  border-radius: 3px;
+  background-color: white;
+  width: 300px;
 }
 
 a {
@@ -82,16 +88,25 @@ a {
   margin-bottom: 10px;
 }
 
-.productBox {
-  /* display: flex; */
+.productsBox {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  background-color: #f9f9f9;
+  align-content: space-between;
 }
 
 .productInfo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .productInfo h5 {
   margin: 10px;
+  margin-left: 0px;
+}
+.productInfo h3 {
+  text-align: center;
+  width: 100px;
 }
 
 .toggle-button {

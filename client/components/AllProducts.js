@@ -50,7 +50,7 @@ const AllProducts = ({
   }
 
   return (
-    <div>
+    <div className="productsBox">
       <div className="newFormToggle">
         {user.isAdmin && (
           <button
@@ -68,73 +68,71 @@ const AllProducts = ({
       ) : (
         products.map(product => (
           <div key={product.id} id="product">
-            <Link to={`/products/${product.id}`}>
+            <Link to={`/products/${product.name}`}>
               <img src={product.image} />
             </Link>
             <div>
-              <div className="productBox">
-                <div className="productInfo">
-                  <div>
-                    <Link to={`/products/${product.id}`}>
-                      <h3>{product.name}</h3>
-                    </Link>
+              <div className="productInfo">
+                <div>
+                  <Link to={`/products/${product.name}`}>
+                    <h3>{product.name}</h3>
+                  </Link>
 
-                    {user.isAdmin ? (
-                      <div>
-                        <h5>Category: {product.category}</h5>
-                        <h5>Type: {product.type}</h5>
-                        <h5>Flavor: {product.flavor}</h5>
-                      </div>
-                    ) : (
-                      <h5>
-                        <span>
-                          <Link to={`/products/${product.type}`}>
-                            <h5>{product.type} </h5>
-                          </Link>
-                        </span>
-                        <span>
-                          <Link to={`/products/${product.flavor}`}>
-                            <h5>{product.flavor}</h5>
-                          </Link>
-                        </span>
-                      </h5>
-                    )}
-
-                    <h5>Price: {product.price / 100} $</h5>
-                    <h5>Volume: {product.volume} oz</h5>
-                    <h5>Available: {product.inStock}</h5>
-                  </div>
-                  {state.singleId === product.id && (
-                    <CreateProductForm
-                      currentProduct={product}
-                      products={products}
-                      setNewFormState={setNewFormState}
-                      setState={setstate}
-                    />
+                  {user.isAdmin ? (
+                    <div>
+                      <h5>Category: {product.category}</h5>
+                      <h5>Type: {product.type}</h5>
+                      <h5>Flavor: {product.flavor}</h5>
+                    </div>
+                  ) : (
+                    <h5>
+                      <span>
+                        <Link to={`/products/${product.type}`}>
+                          <h5>{product.type} </h5>
+                        </Link>
+                      </span>
+                      <span>
+                        <Link to={`/products/${product.flavor}`}>
+                          <h5>{product.flavor}</h5>
+                        </Link>
+                      </span>
+                    </h5>
                   )}
-                </div>
-                {user.isAdmin && (
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => removeProduct(product.id)}
-                      className="delete-button"
-                    >
-                      Remove the product
-                    </button>
 
-                    <button
-                      type="button"
-                      onClick={() => toggleForm(product.id)}
-                      className="toggle-button"
-                    >
-                      {product.id === state.singleId
-                        ? 'Cancel'
-                        : 'Edit the product'}
-                    </button>
-                  </div>
+                  <h5>Price: {product.price / 100} $</h5>
+                  <h5>Volume: {product.volume} oz</h5>
+                  <h5>Available: {product.inStock}</h5>
+                </div>
+                {state.singleId === product.id && (
+                  <CreateProductForm
+                    currentProduct={product}
+                    products={products}
+                    setNewFormState={setNewFormState}
+                    setState={setstate}
+                  />
                 )}
               </div>
+              {user.isAdmin && (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => removeProduct(product.id)}
+                    className="delete-button"
+                  >
+                    Remove the product
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleForm(product.id)}
+                    className="toggle-button"
+                  >
+                    {product.id === state.singleId
+                      ? 'Cancel'
+                      : 'Edit the product'}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ))

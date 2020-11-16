@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {thunkCreateNewProduct, thunkEditProduct} from '../store/products'
-// import {thunkEditProduct} from '../store/singleProduct'
 
 // eslint-disable-next-line complexity
 const CreateProductForm = props => {

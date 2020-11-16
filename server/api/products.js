@@ -11,12 +11,12 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:name', async (req, res, next) => {
   try {
     console.log('>>>>> :', req.params)
     const selectedProduct = await Product.findOne({
       where: {
-        id: req.params.id
+        name: req.params.name
       }
     })
 
@@ -25,21 +25,6 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
-// router.get('/:tagName', async (req, res, next) => {
-//   try {
-//     console.log('>>>>> :', req.params)
-//     const tagName = req.params.tagName
-//     const selectedProduct = await Product.findAll({
-//       where: {
-//         type: tagName,
-//       } || {category: tagName} || {flavor: tagName},
-//     })
-
-//     res.json(selectedProduct)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
 
 router.post('/', isAdmin, async (req, res, next) => {
   try {
@@ -77,4 +62,3 @@ router.delete('/:id', isAdmin, async (req, res, next) => {
   }
 })
 module.exports = router
-// ``
