@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {
-  thunkFetchAllProducts,
-  thunkRemoveProduct
-  // filterByTagName,
-} from '../store/products'
+import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
 
@@ -13,15 +9,10 @@ const AllProducts = ({
   getProducts,
   user,
   deleteProduct,
-  // filter
-  name
+  ...props
 }) => {
-  const [productState, setProducts] = useState(products)
-  if (products.length && !productState.length) setProducts(products)
-
   useEffect(() => {
-    if (name === 'products') getProducts()
-    else setProducts(products)
+    getProducts()
   }, [])
   function removeProduct(id) {
     deleteProduct(id)
@@ -45,13 +36,17 @@ const AllProducts = ({
       })
     }
   }
-  function filterProducts(tagType, tagName) {
-    let filteredProducts = products
 
-    const newList = filteredProducts.filter(
-      product => product[tagType] === tagName
+  const {categoryOrTypeOrFlavor} = props.match.params
+
+  if (categoryOrTypeOrFlavor) {
+    console.log(props)
+    products = products.filter(
+      product =>
+        product.type === categoryOrTypeOrFlavor ||
+        product.flavor === categoryOrTypeOrFlavor ||
+        product.category === categoryOrTypeOrFlavor
     )
-    setProducts(newList)
   }
 
   return (
@@ -68,10 +63,10 @@ const AllProducts = ({
         )}
         {newFormState && <CreateProductForm />}
       </div>
-      {!productState.length ? (
+      {!products.length ? (
         <div>Loading...</div>
       ) : (
-        productState.map(product => (
+        products.map(product => (
           <div key={product.id} id="product">
             <Link to={`/products/${product.id}`}>
               <img src={product.image} />
@@ -93,30 +88,12 @@ const AllProducts = ({
                     ) : (
                       <h5>
                         <span>
-                          <Link
-                            onClick={() =>
-                              filterProducts('category', product.category)
-                            }
-                            to="/products/filtered"
-                          >
-                            <h5>{product.category} </h5>
-                          </Link>
-                        </span>
-                        <span>
-                          <Link
-                            onClick={() => filterProducts('type', product.type)}
-                            to="/products/filtered"
-                          >
+                          <Link to={`/products/${product.type}`}>
                             <h5>{product.type} </h5>
                           </Link>
                         </span>
                         <span>
-                          <Link
-                            onClick={() =>
-                              filterProducts('flavor', product.flavor)
-                            }
-                            to="/products/filtered"
-                          >
+                          <Link to={`/products/${product.flavor}`}>
                             <h5>{product.flavor}</h5>
                           </Link>
                         </span>
@@ -168,14 +145,6 @@ const AllProducts = ({
 
 const mapState = state => {
   return {
-    name: 'products',
-    products: state.products,
-    user: state.user
-  }
-}
-const filterState = state => {
-  return {
-    name: 'filter',
     products: state.products,
     user: state.user
   }
@@ -184,15 +153,8 @@ const filterState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteProduct: id => dispatch(thunkRemoveProduct(id)),
-    // filter: (tagType, tagName) => dispatch(filterByTagName(tagType, tagName)),
     getProducts: () => dispatch(thunkFetchAllProducts())
   }
 }
-// const filterByTageName = (dispatch) => {
-//   return {
-//     filter: (tagType, tagName) => dispatch(filterByTagName(tagType, tagName)),
-//   }
-// }
 
 export const Products = connect(mapState, mapDispatch)(AllProducts)
-export const FilteredProducts = connect(filterState, mapDispatch)(AllProducts)

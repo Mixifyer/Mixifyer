@@ -34,11 +34,13 @@ const CreateProductForm = props => {
 
   let disable = !state.name || !state.price || !state.volume
 
-  const categoryOptions = ['Spirit', 'Soda', 'Bitter'].map(category => (
-    <option key={category} value={category} className="option">
-      {category}
-    </option>
-  ))
+  const categoryOptions = ['Spirit', 'Non-alcoholic', 'Bitter'].map(
+    category => (
+      <option key={category} value={category} className="option">
+        {category}
+      </option>
+    )
+  )
 
   function handleSubmit(event) {
     event.preventDefault()
