@@ -4,6 +4,7 @@ import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
 
+// eslint-disable-next-line complexity
 const AllProducts = ({
   products,
   getProducts,
@@ -48,9 +49,11 @@ const AllProducts = ({
         product.category === categoryOrTypeOrFlavor
     )
   }
-
+  const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
+  const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
+  const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
   return (
-    <div className="productsBox">
+    <div className={productsBoxStyle}>
       <div className="newFormToggle">
         {user.isAdmin && (
           <button
@@ -67,12 +70,12 @@ const AllProducts = ({
         <div>Loading...</div>
       ) : (
         products.map(product => (
-          <div key={product.id} id="product">
+          <div key={product.id} id={productStyle}>
             <Link to={`/products/${product.name}`}>
               <img src={product.image} />
             </Link>
             <div>
-              <div className="productInfo">
+              <div className={productInfoStyle}>
                 <div>
                   <Link to={`/products/${product.name}`}>
                     <h3>{product.name}</h3>
@@ -87,12 +90,12 @@ const AllProducts = ({
                   ) : (
                     <h5>
                       <span>
-                        <Link to={`/products/${product.type}`}>
+                        <Link to={`/${product.type}/products/`}>
                           <h5>{product.type} </h5>
                         </Link>
                       </span>
                       <span>
-                        <Link to={`/products/${product.flavor}`}>
+                        <Link to={`/${product.flavor}/products`}>
                           <h5>{product.flavor}</h5>
                         </Link>
                       </span>

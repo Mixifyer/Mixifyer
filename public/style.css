@@ -39,9 +39,13 @@ img {
   justify-content: space-around;
   margin: 15px;
   border: solid 0.5px rgb(190, 197, 197);
-  border-radius: 3px;
+  border-radius: 10px;
   background-color: white;
   width: 300px;
+}
+#productAdmin {
+  display: flex;
+  align-items: center;
 }
 
 a {
@@ -95,10 +99,18 @@ a {
   background-color: #f9f9f9;
   align-content: space-between;
 }
+.productsBoxAdmin {
+  display: flex;
+  flex-direction: column;
+}
 
 .productInfo {
   display: flex;
   flex-direction: column;
+}
+.productInfoAdmin {
+  display: flex;
+  flex-direction: row;
 }
 .productInfo h5 {
   margin: 10px;
