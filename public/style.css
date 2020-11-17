@@ -146,3 +146,21 @@ a {
 span {
   display: inline-block;
 }
+
+#searchBar {
+  display: flex;
+}
+
+#magnifyingGlass {
+  border: solid 1px;
+  border-left: 0px;
+}
+
+#searchInput {
+  border: solid 1px;
+  border-right: 0px;
+}
+
+#searchInput:focus {
+  outline: none;
+}

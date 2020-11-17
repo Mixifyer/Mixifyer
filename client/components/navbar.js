@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import SearchBar from './SearchBar'
 
 const links = (
   <div>
@@ -13,26 +14,11 @@ const links = (
   </div>
 )
 
-const search = (
-  <div>
-    {/* <label htmlFor="productSearch">Product Search:</label> */}
-    <input
-      type="search"
-      alt="alt"
-      name="productSearch"
-      placeholder="Search..."
-    />
-    <button type="submit">
-      <i className="fa fa-search" />
-    </button>
-  </div>
-)
-
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <h1>Mixifyer</h1>
     <nav>
-      {search}
+      <SearchBar />
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}

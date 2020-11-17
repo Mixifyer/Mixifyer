@@ -10,6 +10,7 @@ const AllProducts = ({
   getProducts,
   user,
   deleteProduct,
+  searchBar,
   ...props
 }) => {
   useEffect(() => {
@@ -49,6 +50,13 @@ const AllProducts = ({
         product.category === categoryOrTypeOrFlavor
     )
   }
+
+  if (searchBar.length) {
+    products = products.filter(singleProd => {
+      return singleProd.name.toLowerCase().includes(searchBar.toLowerCase())
+    })
+  }
+
   const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
   const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
   const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
@@ -66,7 +74,10 @@ const AllProducts = ({
         )}
         {newFormState && <CreateProductForm />}
       </div>
-      {!products.length ? (
+      {!products.length && searchBar.length ? (
+        <div>No Products Match Your Search</div>
+      ) : null}
+      {!products.length && !searchBar.length ? (
         <div>Loading...</div>
       ) : (
         products.map(product => (
@@ -147,7 +158,8 @@ const AllProducts = ({
 const mapState = state => {
   return {
     products: state.products,
-    user: state.user
+    user: state.user,
+    searchBar: state.searchBar
   }
 }
 
