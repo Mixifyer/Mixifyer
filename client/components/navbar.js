@@ -13,10 +13,26 @@ const links = (
   </div>
 )
 
+const search = (
+  <div>
+    {/* <label htmlFor="productSearch">Product Search:</label> */}
+    <input
+      type="search"
+      alt="alt"
+      name="productSearch"
+      placeholder="Search..."
+    />
+    <button type="submit">
+      <i className="fa fa-search" />
+    </button>
+  </div>
+)
+
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>BOILERMAKER</h1>
+    <h1>Mixifyer</h1>
     <nav>
+      {search}
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
