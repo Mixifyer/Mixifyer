@@ -8,44 +8,19 @@ const db = require('../db')
 User.hasMany(Order)
 Order.belongsTo(User)
 
-const ProductOrder = db.define('ProductOrder', {
+const OrderedProduct = db.define('ordered_product', {
   savedPrice: {
     type: Sequelize.INTEGER
   },
-  sodaQuantity: {
+  productQuantity: {
     type: Sequelize.INTEGER,
     defaultValue: 0
   }
 })
 
-// const SpiritOrder = db.define('SpiritOrder', {
-//   savedPrice: {
-//     type: Sequelize.INTEGER
-//   },
-//   sodaQuantity: {
-//     type: Sequelize.INTEGER,
-//     defaultValue: 0
-//   }
-// })
-
-// const BitterOrder = db.define('BitterOrder', {
-//   savedPrice: {
-//     type: Sequelize.INTEGER
-//   },
-//   sodaQuantity: {
-//     type: Sequelize.INTEGER,
-//     defaultValue: 0
-//   }
-// })
-
 Order.belongsToMany(Product, {through: 'ProductOrder'})
 Product.belongsToMany(Order, {through: 'ProductOrder'})
 
-// Order.belongsToMany(Spirit, {through: 'SpiritOrder'})
-// Spirit.belongsToMany(Order, {through: 'SpiritOrder'})
-
-// Order.belongsToMany(Bitter, {through: 'BitterOrder'})
-// Bitter.belongsToMany(Order, {through: 'BitterOrder'})
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -64,5 +39,5 @@ module.exports = {
   Product,
   Cocktail,
   Order,
-  ProductOrder
+  OrderedProduct
 }
