@@ -1,26 +1,27 @@
 const router = require('express').Router()
 const Order = require('../db/models/order')
-const {OrderedProduct, Product} = require('../db/models')
+const {OrderedProduct} = require('../db/models')
+const Product = require('../db/models/product')
 // const Cocktail = require('../db/models')
 // const {CocktailOrder} = require('../db/models')
 
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const order = await Order.findOne({
-//       where: {
-//         userId: req.user.id,
-//         isCheckedout: true,
-//       },
-//     })
-//     const currentOrder = await OrderedProduct.findAll({
-//       where: {orderId: order.id},
-//       include: Product,
-//     })
-//     res.json(currentOrder)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+router.get('/', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        isCheckedout: true
+      }
+    })
+    const currentOrder = await OrderedProduct.findAll({
+      where: {orderId: order.id},
+      include: [Product]
+    })
+    res.json(currentOrder)
+  } catch (error) {
+    next(error)
+  }
+})
 
 router.put('/', async (req, res, next) => {
   try {
@@ -32,7 +33,7 @@ router.put('/', async (req, res, next) => {
     })
     const product = await Product.findOne({
       where: {
-        id: req.body.productId
+        id: req.body.id
       }
     })
     const orderChange = {
@@ -46,6 +47,8 @@ router.put('/', async (req, res, next) => {
           productId: product.id
         }
       })
+      orderChange.productQuantity =
+        productOrder.productQuantity + req.body.quantity
       await productOrder.update(orderChange)
     } else {
       await order.addProduct(product, {through: orderChange})
@@ -53,7 +56,7 @@ router.put('/', async (req, res, next) => {
 
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
-      include: product
+      include: [Product]
     })
 
     res.json(currentOrder)

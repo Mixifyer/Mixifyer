@@ -40,6 +40,39 @@ async function seed() {
       price: 199,
       volume: 8,
       inStock: 100
+    }),
+    Product.create({
+      name: 'Carona',
+      category: 'spirit',
+      type: 'beer',
+      flavor: null,
+      price: 199,
+      volume: 16,
+      inStock: 100,
+      image:
+        'https://imbibemagazine.com/wp-content/uploads/2015/03/cranberry-bitters-crdt-stu-mullenberg.jpg'
+    }),
+    Product.create({
+      name: 'Modelo',
+      category: 'spirit',
+      type: 'beer',
+      flavor: 'lemon',
+      price: 199,
+      volume: 2,
+      inStock: 0,
+      image:
+        'https://dydza6t6xitx6.cloudfront.net/ci-corona-extra-2501fe5ca490cb1d.jpeg'
+    }),
+    Product.create({
+      name: 'Cranberry Juice Cons',
+      category: 'non-alcoholic',
+      type: 'Juice',
+      flavor: null,
+      price: 299,
+      volume: 16,
+      inStock: 100,
+      image:
+        'https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/hb9/h7a/10987886280734.png'
     })
   ])
 

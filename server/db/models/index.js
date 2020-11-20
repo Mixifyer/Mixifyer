@@ -17,9 +17,11 @@ const OrderedProduct = db.define('ordered_product', {
     defaultValue: 0
   }
 })
+Product.hasMany(OrderedProduct)
+OrderedProduct.belongsTo(Product)
 
-Order.belongsToMany(Product, {through: 'ProductOrder'})
-Product.belongsToMany(Order, {through: 'ProductOrder'})
+Order.belongsToMany(Product, {through: 'ordered_product'})
+Product.belongsToMany(Order, {through: 'ordered_product'})
 
 /**
  * If we had any associations to make, this would be a great place to put them!

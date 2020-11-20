@@ -34,6 +34,7 @@ export const getShoppingCartOrCheckoutThunk = (
 
 export const updateShoppingCartThunk = (product, method) => async dispatch => {
   try {
+    console.log('thunk-----:', product)
     if (method === 'remove') {
       const {data} = await axios.delete(`api/cart/${product.id}`)
       dispatch(removeProductFromShoppingCart(product.id))

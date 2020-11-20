@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
+import {updateShoppingCartThunk} from '../store/shoppingCart'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
 
@@ -11,6 +12,7 @@ const AllProducts = ({
   user,
   deleteProduct,
   searchBar,
+  addToCart,
   ...props
 }) => {
   useEffect(() => {
@@ -60,6 +62,15 @@ const AllProducts = ({
   const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
   const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
   const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
+
+  const addToShoppingCart = product => {
+    const productInfo = {
+      id: product.id,
+      quantity: 1
+    }
+
+    addToCart(productInfo)
+  }
   return (
     <div className={productsBoxStyle}>
       <div className="newFormToggle">
@@ -117,6 +128,13 @@ const AllProducts = ({
                   <h5>Volume: {product.volume} oz</h5>
                   <h5>Available: {product.inStock}</h5>
                 </div>
+                <button
+                  type="button"
+                  id="addToCart"
+                  onClick={() => addToShoppingCart(product)}
+                >
+                  ADD TO CART
+                </button>
                 {state.singleId === product.id && (
                   <CreateProductForm
                     currentProduct={product}
@@ -166,7 +184,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     deleteProduct: id => dispatch(thunkRemoveProduct(id)),
-    getProducts: () => dispatch(thunkFetchAllProducts())
+    getProducts: () => dispatch(thunkFetchAllProducts()),
+    addToCart: product => dispatch(updateShoppingCartThunk(product))
   }
 }
 
