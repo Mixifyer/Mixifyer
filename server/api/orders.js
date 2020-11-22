@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     const order = await Order.findOne({
       where: {
         userId: req.user.id,
-        isCheckedout: true
+        isActive: true
       }
     })
     const currentOrder = await OrderedProduct.findAll({
