@@ -4,6 +4,7 @@ import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
 import {Link} from 'react-router-dom'
 import CreateProductForm from './CreateProductForm'
+import {useToasts} from 'react-toast-notifications'
 
 // eslint-disable-next-line complexity
 const AllProducts = ({
@@ -62,7 +63,7 @@ const AllProducts = ({
   const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
   const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
   const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
-
+  const {addToast} = useToasts()
   const addToShoppingCart = product => {
     const productInfo = {
       id: product.id,
@@ -70,6 +71,11 @@ const AllProducts = ({
     }
 
     addToCart(productInfo)
+
+    addToast(`${product.name} was successfully added to the cart`, {
+      appearance: 'success',
+      autoDismiss: true
+    })
   }
   return (
     <div className={productsBoxStyle}>
