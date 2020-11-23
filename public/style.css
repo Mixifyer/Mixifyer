@@ -197,12 +197,17 @@ form h6 {
 
 #magnifyingGlass {
   border: solid 1px;
+  font-size: 15px;
   border-left: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #searchInput {
   border: solid 1px;
   border-right: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 #searchInput:focus {
