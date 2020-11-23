@@ -1,10 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {updateSearchWord} from '../store/searchBar'
+import history from '../history'
 
 const SearchBar = ({searchValue, editSearchWord}) => {
   const onChange = event => {
     editSearchWord(event.target.value)
+    history.push('/products')
   }
 
   return (
