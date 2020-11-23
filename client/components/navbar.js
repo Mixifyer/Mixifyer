@@ -8,10 +8,10 @@ import SearchBar from './SearchBar'
 const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
   const links = (
     <div>
-      <Link to="/products">All Products</Link>
-      <Link to="/spirit/products">Spirits</Link>
-      <Link to="/non-alcoholic/products">Non-Alcoholic</Link>
-      <Link to="/bitter/products">Bitters</Link>
+      <Link to="/products">ALL PRODUCTS</Link>
+      <Link to="/spirit/products">SPIRITS</Link>
+      <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
+      <Link to="/bitter/products">BITTERS</Link>
     </div>
   )
   // const [quantity, setQuantity] = useState(0)
@@ -29,24 +29,24 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
 
   return (
     <div>
-      <h1>Mixifyer</h1>
+      <h1 id="label">Mixifyer</h1>
       <nav>
         <SearchBar />
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
+            <Link to="/home">HOME</Link>
             {links}
             <a href="#" onClick={handleClick}>
-              Logout
+              LOGOUT
             </a>
           </div>
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
             {links}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">LOGIN</Link>
+            <Link to="/signup">SIGN UP</Link>
           </div>
         )}
       </nav>

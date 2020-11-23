@@ -103,7 +103,7 @@ const AllProducts = ({
               <img src={product.image} />
             </Link>
             <div>
-              <div className={productInfoStyle}>
+              <div id={productInfoStyle}>
                 <div>
                   <Link to={`/products/${product.name}`}>
                     <h3>{product.name}</h3>
@@ -116,31 +116,32 @@ const AllProducts = ({
                       <h5>Flavor: {product.flavor}</h5>
                     </div>
                   ) : (
-                    <h5>
-                      <span>
-                        <Link to={`/${product.type}/products/`}>
-                          <h5>{product.type} </h5>
-                        </Link>
-                      </span>
-                      <span>
-                        <Link to={`/${product.flavor}/products`}>
-                          <h5>{product.flavor}</h5>
-                        </Link>
-                      </span>
-                    </h5>
+                    <div id="tags">
+                      <Link to={`/${product.type}/products/`}>
+                        <h5>{product.type} </h5>
+                      </Link>
+
+                      <Link to={`/${product.flavor}/products`}>
+                        <h5>{product.flavor}</h5>
+                      </Link>
+                    </div>
                   )}
 
                   <h5>Price: {product.price / 100} $</h5>
                   <h5>Volume: {product.volume} oz</h5>
                   <h5>Available: {product.inStock}</h5>
                 </div>
-                <button
-                  type="button"
-                  id="addToCart"
-                  onClick={() => addToShoppingCart(product)}
-                >
-                  ADD TO CART
-                </button>
+                {product.inStock !== 0 ? (
+                  <button
+                    type="button"
+                    id="addToCart"
+                    onClick={() => addToShoppingCart(product)}
+                  >
+                    ADD TO CART
+                  </button>
+                ) : (
+                  <div id="outOfStock">OUT OF STOCK</div>
+                )}
                 {state.singleId === product.id && (
                   <CreateProductForm
                     currentProduct={product}

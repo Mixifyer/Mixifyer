@@ -5,16 +5,23 @@ body {
 a {
   text-decoration: none;
 }
+a:hover {
+  color: rgb(118, 135, 160);
+}
 
 label {
   display: block;
   font-size: 13px;
   font-weight: bold;
-  color: rgb(72, 31, 102);
+  color: rgb(43, 18, 61);
 }
 
 nav a {
   display: inline-block;
+  font-family: Optima, sans-serif;
+  color: rgb(71, 4, 160);
+  font-size: 14px;
+  font-weight: bold;
   margin: 1em;
 }
 
@@ -27,12 +34,6 @@ form h6 {
   display: inline-block;
 }
 
-img {
-  max-width: 150px;
-  max-height: 150px;
-  padding: 15px;
-}
-
 #product {
   display: flex;
   align-items: center;
@@ -43,15 +44,57 @@ img {
   background-color: white;
   width: 300px;
 }
+#product img {
+  max-width: 150px;
+  max-height: 140px;
+  padding: 15px;
+}
+#productInfo a {
+  color: rgb(20, 42, 105);
+}
+
+#tags {
+  width: 120px;
+}
+
+#tags a {
+  display: inline-block;
+  color: rgb(65, 79, 207);
+}
+#productInfo a:hover {
+  color: rgb(138, 145, 206);
+}
+
 #productAdmin {
   display: flex;
   align-items: center;
 }
-
-a {
-  text-decoration: underline;
-  color: blue;
+/* add to cart button: */
+#addToCart {
+  cursor: copy;
+  color: rgb(250, 245, 245);
+  font-size: 11px;
+  border: solid 0.1px;
+  background-color: rgb(26, 190, 94);
+  border-color: rgb(150, 148, 148);
+  border-radius: 5px;
+  width: 100px;
 }
+#outOfStock {
+  cursor: not-allowed;
+  text-align: center;
+  padding-top: 1.5px;
+
+  color: rgb(122, 0, 0);
+  font-size: 11px;
+  border: solid 0.1px;
+  background-color: rgb(189, 197, 192);
+  border-color: rgb(207, 204, 204);
+  border-radius: 5px;
+  width: 100px;
+  height: 13px;
+}
+
 .asterisk {
   /* padding: 0px; */
   margin: 0px;
@@ -104,21 +147,25 @@ a {
   flex-direction: column;
 }
 
-.productInfo {
+#productInfo {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
-.productInfoAdmin {
+
+#productInfoAdmin {
   display: flex;
   flex-direction: row;
 }
-.productInfo h5 {
+#productInfo h5 {
   margin: 10px;
   margin-left: 0px;
 }
-.productInfo h3 {
-  text-align: center;
+#productInfo h3 {
+  text-align: left;
   width: 100px;
+  height: 30px;
 }
 
 .toggle-button {
@@ -142,9 +189,6 @@ a {
 }
 #form-name {
   color: rgb(6, 131, 153);
-}
-span {
-  display: inline-block;
 }
 
 #searchBar {
