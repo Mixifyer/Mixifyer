@@ -17,7 +17,13 @@ router.get('/', async (req, res, next) => {
       where: {orderId: order.id},
       include: [Product]
     })
-    res.json(currentOrder)
+    let totalQuantity = 0
+    currentOrder.map(eachProduct => {
+      totalQuantity += eachProduct.productQuantity
+      return eachProduct
+    })
+
+    res.json({currentOrder, totalQuantity})
   } catch (error) {
     next(error)
   }
@@ -58,8 +64,12 @@ router.put('/', async (req, res, next) => {
       where: {orderId: order.id},
       include: [Product]
     })
-
-    res.json(currentOrder)
+    let totalQuantity = 0
+    currentOrder.map(eachProduct => {
+      totalQuantity += eachProduct.productQuantity
+      return eachProduct
+    })
+    res.json({currentOrder, totalQuantity})
   } catch (err) {
     console.log('Error in Orders put')
     next(err)

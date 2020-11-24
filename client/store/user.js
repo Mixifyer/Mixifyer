@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {getOrUpdateShoppingCart} from './shoppingCart'
 
 /**
  * ACTION TYPES
@@ -24,7 +25,9 @@ const removeUser = () => ({type: REMOVE_USER})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
+    const currentOrder = await axios.get('api/cart')
     dispatch(getUser(res.data || defaultUser))
+    dispatch(getOrUpdateShoppingCart(currentOrder.data))
   } catch (err) {
     console.error(err)
   }
@@ -39,7 +42,9 @@ export const auth = (email, password, method) => async dispatch => {
   }
 
   try {
+    const currentOrder = await axios.get('api/cart')
     dispatch(getUser(res.data))
+    dispatch(getOrUpdateShoppingCart(currentOrder.data))
     history.push('/home')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)

@@ -5,7 +5,7 @@ const GET_OR_UPDATE_SHOPPINGCART = 'GET_OR_UPDATE_SHOPPINGCART'
 const REMOVE_PRODUCT_FROM_SHOPPINGCART = 'REMOVE_PRODUCT_FROM_SHOPPINGCART'
 
 // ACTION CREATORS:
-const getOrUpdateShoppingCart = shoppingCart => ({
+export const getOrUpdateShoppingCart = shoppingCart => ({
   type: GET_OR_UPDATE_SHOPPINGCART,
   shoppingCart
 })
@@ -25,6 +25,7 @@ export const getShoppingCartOrCheckoutThunk = (
       dispatch(getOrUpdateShoppingCart(data))
     } else {
       const {data} = await axios.get('api/cart')
+      console.log('thunk>>>>>>:', data)
       dispatch(getOrUpdateShoppingCart(data))
     }
   } catch (error) {
@@ -34,24 +35,26 @@ export const getShoppingCartOrCheckoutThunk = (
 
 export const updateShoppingCartThunk = (product, method) => async dispatch => {
   try {
-    console.log('thunk-----:', product)
     if (method === 'remove') {
       const {data} = await axios.delete(`api/cart/${product.id}`)
       dispatch(removeProductFromShoppingCart(product.id))
     } else {
       const {data} = await axios.put(`api/cart`, product)
+      console.log('thunk----->:', data)
       dispatch(getOrUpdateShoppingCart(data))
     }
   } catch (error) {
     console.error(error)
   }
 }
-export default function(state, action) {
+export default function(state = {currentOrder: [], totalQuantity: 0}, action) {
   switch (action.type) {
     case GET_OR_UPDATE_SHOPPINGCART:
       return action.shoppingCart
     case REMOVE_PRODUCT_FROM_SHOPPINGCART:
-      return state.filter(product => product.id === action.productId)
+      return state.currentOrder.filter(
+        product => product.id === action.productId
+      )
     default:
       return state
   }

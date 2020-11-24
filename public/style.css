@@ -24,6 +24,15 @@ nav a {
   font-weight: bold;
   margin: 1em;
 }
+#shoppingCart {
+  border: solid 1px rgb(121, 121, 214);
+  background-color: rgb(219, 230, 250);
+  color: rgb(3, 122, 85);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1.5px;
+}
 
 form div {
   margin: 1em;

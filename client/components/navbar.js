@@ -14,18 +14,6 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
       <Link to="/bitter/products">BITTERS</Link>
     </div>
   )
-  // const [quantity, setQuantity] = useState(0)
-  // let quantity = 0
-  // if (shoppingCart.quantity !== 0) quantity = shoppingCart.quantity
-
-  // const shopCart = (
-  //   <div id="shoppingCartBox">
-  //     <p>{quantity}</p>
-  //     <div id="shoppingCart">
-  //       <i className="fa fa-search" />
-  //     </div>
-  //   </div>
-  // )
 
   return (
     <div>
@@ -40,6 +28,9 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <a href="#" onClick={handleClick}>
               LOGOUT
             </a>
+            <Link to="/checkout" id="shoppingCart">
+              CART ({shoppingCart.totalQuantity})
+            </Link>
           </div>
         ) : (
           <div>
@@ -61,7 +52,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    shoppingCart: state.shoppingCard
+    shoppingCart: state.shoppingCart
   }
 }
 
