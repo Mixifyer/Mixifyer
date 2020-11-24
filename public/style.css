@@ -1,3 +1,10 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
 body {
   font-family: sans-serif;
 }
@@ -16,13 +23,34 @@ label {
   color: rgb(43, 18, 61);
 }
 
+/* nav {
+  display: flexbox;
+  background-color: #98d3fa;
+} */
+hr {
+  display: none;
+}
+#nav-bar {
+  position: fixed;
+  display: flexbox;
+  background-color: #98d3fa;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
+  height: 12%;
+  width: 100%;
+}
 nav a {
-  display: inline-block;
   font-family: Optima, sans-serif;
   color: rgb(71, 4, 160);
   font-size: 14px;
   font-weight: bold;
   margin: 1em;
+}
+.nav-links {
+  float: right;
+  padding-top: 50px;
+  margin-right: 50px;
 }
 #shoppingCart {
   border: solid 1px rgb(121, 121, 214);
@@ -32,6 +60,21 @@ nav a {
   font-size: 10px;
   font-weight: bold;
   padding: 1.5px;
+}
+#label {
+  border: solid 0.5px rgb(70, 57, 57);
+  float: left;
+  border-radius: 50%;
+  font-family: Snell Roundhand, cursive;
+  color: rgb(47, 77, 23);
+  font-size: 30px;
+  font-weight: 600;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 25px;
+  margin-left: 25px;
 }
 
 form div {
@@ -58,17 +101,20 @@ form h6 {
   max-height: 140px;
   padding: 15px;
 }
-#productInfo a {
+#productInfo h3 {
   color: rgb(20, 42, 105);
 }
 
 #tags {
   width: 120px;
+  margin-top: 25px;
 }
 
 #tags a {
   display: inline-block;
   color: rgb(65, 79, 207);
+
+  margin-right: 10px;
 }
 #productInfo a:hover {
   color: rgb(138, 145, 206);
@@ -80,6 +126,8 @@ form h6 {
 }
 /* add to cart button: */
 #addToCart {
+  text-align: center;
+  padding-left: 2px;
   cursor: copy;
   color: rgb(250, 245, 245);
   font-size: 11px;
@@ -87,21 +135,20 @@ form h6 {
   background-color: rgb(26, 190, 94);
   border-color: rgb(150, 148, 148);
   border-radius: 5px;
-  width: 100px;
+  width: 90px;
 }
 #outOfStock {
   cursor: not-allowed;
   text-align: center;
-  padding-top: 1.5px;
 
   color: rgb(122, 0, 0);
   font-size: 11px;
   border: solid 0.1px;
   background-color: rgb(189, 197, 192);
-  border-color: rgb(207, 204, 204);
+  border-color: rgb(100, 97, 97);
   border-radius: 5px;
-  width: 100px;
-  height: 13px;
+  width: 90px;
+  height: 14px;
 }
 
 .asterisk {
@@ -150,6 +197,10 @@ form h6 {
   justify-content: flex-start;
   background-color: #f9f9f9;
   align-content: space-between;
+  margin-top: 100px;
+}
+#main-container {
+  margin-top: 100px;
 }
 .productsBoxAdmin {
   display: flex;
@@ -168,11 +219,13 @@ form h6 {
   flex-direction: row;
 }
 #productInfo h5 {
-  margin: 10px;
+  margin-bottom: 10px;
   margin-left: 0px;
 }
 #productInfo h3 {
   text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100px;
   height: 30px;
 }
@@ -202,10 +255,14 @@ form h6 {
 
 #searchBar {
   display: flex;
+  float: left;
+  height: 20px;
+  margin-right: 30px;
 }
 
 #magnifyingGlass {
   border: solid 1px;
+  background-color: white;
   font-size: 15px;
   border-left: 0px;
   border-top-right-radius: 5px;

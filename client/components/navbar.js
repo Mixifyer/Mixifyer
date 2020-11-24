@@ -16,15 +16,19 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
   )
 
   return (
-    <div>
-      <h1 id="label">Mixifyer</h1>
+    <div id="nav-bar">
       <nav>
-        <SearchBar />
+        <div id="label">Mixifyer</div>
+
         {isLoggedIn ? (
-          <div>
+          <div className="nav-links">
+            <SearchBar />
             {/* The navbar will show these links after you log in */}
             <Link to="/home">HOME</Link>
-            {links}
+            <Link to="/products">ALL PRODUCTS</Link>
+            <Link to="/spirit/products">SPIRITS</Link>
+            <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
+            <Link to="/bitter/products">BITTERS</Link>
             <a href="#" onClick={handleClick}>
               LOGOUT
             </a>
@@ -33,11 +37,18 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             </Link>
           </div>
         ) : (
-          <div>
+          <div className="nav-links">
+            <SearchBar />
             {/* The navbar will show these links before you log in */}
-            {links}
+            <Link to="/products">ALL PRODUCTS</Link>
+            <Link to="/spirit/products">SPIRITS</Link>
+            <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
+            <Link to="/bitter/products">BITTERS</Link>
             <Link to="/login">LOGIN</Link>
             <Link to="/signup">SIGN UP</Link>
+            <Link to="/checkout" id="shoppingCart">
+              CART ({shoppingCart.totalQuantity})
+            </Link>
           </div>
         )}
       </nav>
