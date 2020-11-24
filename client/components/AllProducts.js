@@ -63,7 +63,9 @@ const AllProducts = ({
   const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
   const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
   const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
+
   const {addToast} = useToasts()
+
   const addToShoppingCart = product => {
     const productInfo = {
       id: product.id,
@@ -74,7 +76,8 @@ const AllProducts = ({
 
     addToast(`${product.name} was successfully added to the cart`, {
       appearance: 'success',
-      autoDismiss: true
+      autoDismiss: true,
+      autoDismissTimeout: 1500
     })
   }
   return (

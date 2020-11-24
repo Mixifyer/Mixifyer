@@ -6,15 +6,6 @@ import {logout} from '../store'
 import SearchBar from './SearchBar'
 
 const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
-  const links = (
-    <div>
-      <Link to="/products">ALL PRODUCTS</Link>
-      <Link to="/spirit/products">SPIRITS</Link>
-      <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
-      <Link to="/bitter/products">BITTERS</Link>
-    </div>
-  )
-
   return (
     <div id="nav-bar">
       <nav>
@@ -47,7 +38,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <Link to="/login">LOGIN</Link>
             <Link to="/signup">SIGN UP</Link>
             <Link to="/checkout" id="shoppingCart">
-              CART ({shoppingCart.totalQuantity})
+              CART (0)
             </Link>
           </div>
         )}
