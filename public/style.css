@@ -5,6 +5,7 @@
   list-style: none;
   box-sizing: border-box;
 }
+
 body {
   font-family: sans-serif;
 }
@@ -12,24 +13,15 @@ body {
 a {
   text-decoration: none;
 }
+
 a:hover {
   color: rgb(118, 135, 160);
 }
 
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  color: rgb(43, 18, 61);
-}
-
-/* nav {
-  display: flexbox;
-  background-color: #98d3fa;
-} */
 hr {
   display: none;
 }
+/* navbar styling */
 #nav-bar {
   position: fixed;
   display: flexbox;
@@ -39,6 +31,21 @@ hr {
   padding: 0px;
   height: 12%;
   width: 100%;
+}
+#label {
+  border: solid 0.5px rgb(70, 57, 57);
+  float: left;
+  border-radius: 50%;
+  font-family: Snell Roundhand, cursive;
+  color: rgb(47, 77, 23);
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  width: 140px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  margin-top: 25px;
+  margin-left: 35px;
 }
 nav a {
   font-family: Optima, sans-serif;
@@ -61,32 +68,72 @@ nav a {
   font-weight: bold;
   padding: 1.5px;
 }
-#label {
-  border: solid 0.5px rgb(70, 57, 57);
-  float: left;
-  border-radius: 50%;
-  font-family: Snell Roundhand, cursive;
-  color: rgb(47, 77, 23);
-  font-size: 30px;
-  font-weight: 600;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-top: 25px;
-  margin-left: 25px;
-}
 
+/* create and edit forms styling */
 form div {
-  margin: 1em;
   display: inline-block;
 }
 form h6 {
   margin: 0.5em;
   display: inline-block;
 }
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(43, 18, 61);
+}
+.asterisk {
+  margin: 0px;
+  margin-left: 10px;
+  font-size: 17px;
+  color: rgb(241, 15, 15);
+}
 
-#product {
+.optionRequired {
+  color: rgb(110, 110, 108);
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.input-newPoduct {
+  color: rgb(8, 31, 133);
+  font-size: 14px;
+}
+
+#editForm {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.delete-button {
+  background-color: rgb(245, 10, 10);
+  height: 25px;
+  font-weight: bold;
+  color: rgb(248, 248, 248);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.create-button {
+  background-color: rgb(84, 165, 82);
+  color: rgb(255, 255, 255);
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+/* all products styling */
+.products-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  background-color: #f9f9f9;
+  align-content: space-between;
+}
+#singleProduct-container,
+#singleProduct-container-admin {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -96,13 +143,26 @@ form h6 {
   background-color: white;
   width: 300px;
 }
-#product img {
+#singleProduct-container img {
   max-width: 150px;
   max-height: 140px;
   padding: 15px;
 }
-#productInfo h3 {
+
+#product-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+#product-name {
   color: rgb(20, 42, 105);
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 30px;
 }
 
 #tags {
@@ -116,13 +176,47 @@ form h6 {
 
   margin-right: 10px;
 }
-#productInfo a:hover {
+#product-info a:hover {
   color: rgb(138, 145, 206);
 }
 
-#productAdmin {
+#product-info h5 {
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+
+.products-container-admin {
   display: flex;
-  align-items: center;
+  flex-flow: column wrap;
+  background-color: #f9f9f9;
+  margin-top: 100px;
+}
+#singleProduct-container-admin {
+  width: 700px;
+}
+#singleProduct-container-admin img {
+  max-width: 250px;
+  max-height: 200px;
+  padding: 5px;
+}
+#singleProduct-container-admin h3 {
+  width: 150px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+#singleProduct-container-admin h5 {
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+#product-info-admin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  font-size: 20px;
 }
 /* add to cart button: */
 #addToCart {
@@ -135,6 +229,8 @@ form h6 {
   background-color: rgb(26, 190, 94);
   border-color: rgb(150, 148, 148);
   border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   width: 90px;
 }
 #outOfStock {
@@ -151,83 +247,8 @@ form h6 {
   height: 14px;
 }
 
-.asterisk {
-  /* padding: 0px; */
-  margin: 0px;
-  margin-left: 10px;
-  font-size: 17px;
-  color: rgb(241, 15, 15);
-}
-.delete-button {
-  background-color: rgb(245, 10, 10);
-  height: 25px;
-  font-weight: bold;
-  color: rgb(248, 248, 248);
-  border-radius: 4px;
-}
-.create-button {
-  background-color: rgb(84, 165, 82);
-  color: rgb(255, 255, 255);
-  margin-left: 10px;
-  border-radius: 4px;
-}
-
-.optionRequired {
-  color: rgb(110, 110, 108);
-  font-size: 14px;
-  margin-top: 2px;
-  margin-bottom: 6px;
-}
-
-.input-newPoduct {
-  color: rgb(8, 31, 133);
-  font-size: 14px;
-  margin-top: 2px;
-  margin-bottom: 6px;
-}
-
-#editForm {
-  margin-left: 30px;
-  margin-bottom: 10px;
-}
-
-.productsBox {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  background-color: #f9f9f9;
-  align-content: space-between;
-  margin-top: 100px;
-}
 #main-container {
   margin-top: 100px;
-}
-.productsBoxAdmin {
-  display: flex;
-  flex-direction: column;
-}
-
-#productInfo {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  margin-right: 10px;
-}
-
-#productInfoAdmin {
-  display: flex;
-  flex-direction: row;
-}
-#productInfo h5 {
-  margin-bottom: 10px;
-  margin-left: 0px;
-}
-#productInfo h3 {
-  text-align: left;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100px;
-  height: 30px;
 }
 
 .toggle-button {
@@ -240,16 +261,20 @@ form h6 {
 .newFormToggle {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin: 20px;
 }
 
 #toggle-button {
   width: 200px;
   color: aliceblue;
   background-color: rgb(84, 165, 82);
-  border-radius: 3px;
+  height: 30px;
+  margin: 20px;
+  border-radius: 10px;
 }
 #form-name {
+  margin-top: 10px;
   color: rgb(6, 131, 153);
 }
 

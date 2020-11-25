@@ -4,17 +4,11 @@ import axios from 'axios'
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 const CREATE_NEW_PRODUCT = 'CREATE_NEW_PRODUCT'
 const REMOVE_SELECTED_PRODUCT = 'REMOVE_SELECTED_PRODUCT'
-const FILTER_BY_TAG_NAME = 'FILTER_BY_TAG_NAME'
 
 //ACTION CREATORS
 const getAllProducts = products => ({type: GET_ALL_PRODUCTS, products})
 const createNewProduct = product => ({type: CREATE_NEW_PRODUCT, product})
 const removeSelectedProduct = id => ({type: REMOVE_SELECTED_PRODUCT, id})
-// export const filterByTagName = (tagType, tagName) => ({
-//   type: FILTER_BY_TAG_NAME,
-//   tagName,
-//   tagType,
-// })
 
 //INITIAL STATE
 let initialState = []
@@ -32,9 +26,7 @@ export const thunkFetchAllProducts = () => async dispatch => {
 
 export const thunkCreateNewProduct = product => async dispatch => {
   try {
-    console.log('creatThunk :', product)
     const {data} = await axios.post('/api/products', product)
-    console.log('data :', data)
     dispatch(createNewProduct(data))
   } catch (error) {
     console.log(error)
@@ -42,9 +34,12 @@ export const thunkCreateNewProduct = product => async dispatch => {
 }
 
 export const thunkRemoveProduct = id => async dispatch => {
+  console.log('removeThunk-->: ', id)
   try {
-    const {data} = await axios.delete(`/api/products/${id}`)
-    dispatch(removeSelectedProduct(data))
+    console.log('data-->: ', id)
+    const data = await axios.delete(`/api/products/${id}`)
+    console.log('removeThunk-->: ', data)
+    dispatch(removeSelectedProduct(id))
   } catch (error) {
     console.log(error)
   }

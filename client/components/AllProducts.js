@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {thunkFetchAllProducts, thunkRemoveProduct} from '../store/products'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
 import {Link} from 'react-router-dom'
-import CreateProductForm from './CreateProductForm'
+import CreateOrUpdateProductForm from './CreateOrUpdateProductForm'
 import {useToasts} from 'react-toast-notifications'
 
 // eslint-disable-next-line complexity
@@ -19,6 +19,7 @@ const AllProducts = ({
   useEffect(() => {
     getProducts()
   }, [])
+
   function removeProduct(id) {
     deleteProduct(id)
   }
@@ -59,10 +60,13 @@ const AllProducts = ({
       return singleProd.name.toLowerCase().includes(searchBar.toLowerCase())
     })
   }
-
-  const productStyle = !user.isAdmin ? 'product' : 'productAdmin'
-  const productsBoxStyle = !user.isAdmin ? 'productsBox' : 'productsBoxAdmin'
-  const productInfoStyle = !user.isAdmin ? 'productInfo' : 'productInfoAdmin'
+  const productsContainerStyle = !user.isAdmin
+    ? 'products-container'
+    : 'products-container-admin'
+  const singleProductContainer = !user.isAdmin
+    ? 'singleProduct-container'
+    : 'singleProduct-container-admin'
+  const productInfoStyle = !user.isAdmin ? 'product-info' : 'product-info-admin'
 
   const {addToast} = useToasts()
 
@@ -81,7 +85,7 @@ const AllProducts = ({
     })
   }
   return (
-    <div className={productsBoxStyle}>
+    <div>
       <div className="newFormToggle">
         {user.isAdmin && (
           <button
@@ -92,24 +96,24 @@ const AllProducts = ({
             {!newFormState ? 'Create New Product' : 'Close Form'}
           </button>
         )}
-        {newFormState && <CreateProductForm />}
+        {newFormState && <CreateOrUpdateProductForm />}
       </div>
-      {!products.length && searchBar.length ? (
-        <div>No Products Match Your Search</div>
-      ) : null}
-      {!products.length && !searchBar.length ? (
-        <div>Loading...</div>
-      ) : (
-        products.map(product => (
-          <div key={product.id} id={productStyle}>
-            <Link to={`/products/${product.name}`}>
-              <img src={product.image} />
-            </Link>
-            <div>
+      <div className={productsContainerStyle}>
+        {!products.length && searchBar.length ? (
+          <div>No Products Match Your Search</div>
+        ) : null}
+        {!products.length && !searchBar.length ? (
+          <div>Loading...</div>
+        ) : (
+          products.map(product => (
+            <div key={product.id} id={singleProductContainer}>
+              <Link to={`/products/${product.name}`}>
+                <img src={product.image} />
+              </Link>
               <div id={productInfoStyle}>
                 <div>
                   <Link to={`/products/${product.name}`}>
-                    <h3>{product.name}</h3>
+                    <h3 id="product-name">{product.name}</h3>
                   </Link>
 
                   {user.isAdmin ? (
@@ -145,40 +149,41 @@ const AllProducts = ({
                 ) : (
                   <div id="outOfStock">OUT OF STOCK</div>
                 )}
-                {state.singleId === product.id && (
-                  <CreateProductForm
-                    currentProduct={product}
-                    products={products}
-                    setNewFormState={setNewFormState}
-                    setState={setstate}
-                  />
+                {user.isAdmin && (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => removeProduct(product.id)}
+                      className="delete-button"
+                    >
+                      Remove the product
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleForm(product.id)}
+                      className="toggle-button"
+                    >
+                      {product.id === state.singleId
+                        ? 'Cancel'
+                        : 'Edit the product'}
+                    </button>
+                  </div>
                 )}
               </div>
-              {user.isAdmin && (
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => removeProduct(product.id)}
-                    className="delete-button"
-                  >
-                    Remove the product
-                  </button>
 
-                  <button
-                    type="button"
-                    onClick={() => toggleForm(product.id)}
-                    className="toggle-button"
-                  >
-                    {product.id === state.singleId
-                      ? 'Cancel'
-                      : 'Edit the product'}
-                  </button>
-                </div>
+              {state.singleId === product.id && (
+                <CreateOrUpdateProductForm
+                  currentProduct={product}
+                  products={products}
+                  setNewFormState={setNewFormState}
+                  setState={setstate}
+                />
               )}
             </div>
-          </div>
-        ))
-      )}
+          ))
+        )}
+      </div>
     </div>
   )
 }

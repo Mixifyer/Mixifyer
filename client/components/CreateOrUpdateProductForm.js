@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {thunkCreateNewProduct, thunkEditProduct} from '../store/products'
 
 // eslint-disable-next-line complexity
-const CreateProductForm = props => {
+const CreateOrUpdateProductForm = props => {
   let {
     createNewProduct,
     currentProduct,
@@ -180,7 +180,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(CreateProductForm)
+export default connect(mapState, mapDispatch)(CreateOrUpdateProductForm)
 
 // const inputNames = Object.keys(initialState).map((inputName) => {
 //   let nameOfInput =

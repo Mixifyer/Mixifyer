@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const Product = require('../db/models/product')
+// const {Order,
+//   OrderedProduct} = require('../db')
 const {isAdmin} = require('./permission')
 
 router.get('/', async (req, res, next) => {
@@ -13,7 +15,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:name', async (req, res, next) => {
   try {
-    console.log('>>>>> :', req.params)
     const selectedProduct = await Product.findOne({
       where: {
         name: req.params.name
@@ -56,6 +57,7 @@ router.delete('/:id', isAdmin, async (req, res, next) => {
   try {
     const productToRemove = await Product.findByPk(req.params.id)
     await productToRemove.destroy()
+
     res.send(req.params.id)
   } catch (error) {
     next(error)
