@@ -165,7 +165,7 @@ const AllProducts = ({
                       className="toggle-button"
                     >
                       {product.id === state.singleId
-                        ? 'Cancel'
+                        ? 'Cancel edit'
                         : 'Edit the product'}
                     </button>
                   </div>
