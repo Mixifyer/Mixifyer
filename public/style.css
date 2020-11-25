@@ -176,7 +176,8 @@ label {
 
   margin-right: 10px;
 }
-#product-info a:hover {
+#product-info a:hover,
+#product-name:hover {
   color: rgb(138, 145, 206);
 }
 
@@ -219,7 +220,8 @@ label {
   font-size: 20px;
 }
 /* add to cart button: */
-#addToCart {
+#addToCart,
+#outOfStock {
   text-align: center;
   padding-left: 2px;
   cursor: copy;
@@ -236,14 +238,9 @@ label {
 #outOfStock {
   cursor: not-allowed;
   text-align: center;
-
   color: rgb(122, 0, 0);
-  font-size: 11px;
-  border: solid 0.1px;
   background-color: rgb(189, 197, 192);
-  border-color: rgb(100, 97, 97);
   border-radius: 5px;
-  width: 90px;
   height: 14px;
 }
 
