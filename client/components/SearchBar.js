@@ -16,7 +16,7 @@ const SearchBar = ({searchValue, editSearchWord}) => {
         id="searchInput"
         alt="alt"
         name="productSearch"
-        placeholder="Search..."
+        placeholder="  Search..."
         onChange={onChange}
         value={searchValue}
       />
