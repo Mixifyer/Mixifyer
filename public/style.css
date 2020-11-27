@@ -305,3 +305,23 @@ label {
   background-color: rgb(189, 197, 192);
   border-radius: 5px;
 }
+
+.auth-form {
+  /* flex-flow: wrap column center; */
+  display: flexbox;
+
+  /* justify-content: center; */
+  background-color: #f9f9f9;
+}
+
+.auth-form form {
+  display: flex;
+  direction: column;
+  justify-content: center;
+
+  margin: 15px;
+}
+.auth-form a {
+  display: flex;
+  justify-content: center;
+}
