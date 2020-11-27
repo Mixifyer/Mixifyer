@@ -355,7 +355,7 @@ label {
 
 .auth-form button {
   height: 30px;
-  box-shadow: 0px 1.3px rgb(155, 153, 153);
+  box-shadow: 0px 1.3px 2px rgb(155, 153, 153);
   width: 100px;
   border: solid 0.3px rgb(209, 205, 205);
   font-size: 20px;
