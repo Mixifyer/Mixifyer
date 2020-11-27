@@ -325,3 +325,7 @@ label {
   display: flex;
   justify-content: center;
 }
+.auth-form form label,
+.auth-form form input {
+  margin: 10px;
+}
