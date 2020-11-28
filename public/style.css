@@ -34,7 +34,7 @@ img {
   display: flexbox;
   background-color: #98d3fa;
   /* border: solid 0.3px rgb(224, 227, 231); */
-  box-shadow: 2px 3px 10px rgb(71, 71, 102);
+  box-shadow: 1px 1px 10px rgb(71, 71, 102);
   top: 0px;
   margin: 0px;
   padding: 0px;
@@ -102,6 +102,17 @@ nav a {
 
 #searchInput:focus {
   outline: none;
+}
+
+/* user-home page */
+#home-container {
+  display: flexbox;
+  background-color: rgb(226, 233, 236);
+  position: absolute;
+  top: 125px;
+  max-width: 400px;
+  width: 40%;
+  left: 30%;
 }
 
 /* create and edit forms styling */
@@ -307,15 +318,11 @@ label {
   background-color: rgb(189, 197, 192);
   border-radius: 5px;
 }
-
+/* auth(login/sing up) form */
 .auth-form {
   display: flex;
   justify-content: center;
   padding-top: 20px;
-}
-#auth-method {
-  margin: 25px;
-  font-size: 25px;
 }
 #auth-form {
   background-color: #f8f8ff;
@@ -324,10 +331,16 @@ label {
   border-radius: 7px;
   width: 500px;
 }
-#auth-form form * {
+.auth-form * {
   margin-left: 5px;
   margin-top: 15px;
 }
+
+#auth-method {
+  margin: 25px;
+  font-size: 25px;
+}
+
 #auth-form label {
   display: none;
 }
