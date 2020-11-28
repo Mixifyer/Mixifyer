@@ -4,7 +4,7 @@ const db = require('../db')
 const Order = require('./order')
 
 const User = db.define('user', {
-  name: {
+  firstName: {
     type: Sequelize.STRING,
     allowNull: false
   },

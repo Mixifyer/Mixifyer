@@ -106,13 +106,16 @@ nav a {
 
 /* user-home page */
 #home-container {
-  display: flexbox;
+  display: flex;
   background-color: rgb(226, 233, 236);
   position: absolute;
+  justify-content: center;
+  align-content: center;
   top: 125px;
-  max-width: 400px;
-  width: 40%;
-  left: 30%;
+  width: 50%;
+  border-radius: 7px;
+  padding: 20px;
+  left: 25%;
 }
 
 /* create and edit forms styling */
