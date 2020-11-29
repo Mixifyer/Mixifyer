@@ -107,6 +107,7 @@ nav a {
 /* user-home page */
 #home-container {
   display: flex;
+  flex-direction: column;
   background-color: rgb(226, 233, 236);
   position: absolute;
   justify-content: center;
@@ -116,6 +117,27 @@ nav a {
   border-radius: 7px;
   padding: 20px;
   left: 25%;
+}
+.home-user-info {
+  flex-direction: row;
+  margin: 20px;
+}
+.user-lable-down {
+  font-size: 25px;
+}
+.user-lable-up {
+  font-size: 15px;
+}
+.home-user-info input {
+  border: 0px;
+  background-color: rgb(226, 233, 236);
+  border-bottom: solid 0.5px black;
+  width: 200px;
+  height: 30px;
+}
+.home-user-info input:focus {
+  outline: none;
+  outline-offset: 10px;
 }
 
 /* create and edit forms styling */
@@ -184,7 +206,7 @@ label {
 
 .newFormToggle {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   margin: 20px;
 }
