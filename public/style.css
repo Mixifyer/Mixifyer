@@ -122,10 +122,14 @@ nav a {
   flex-direction: row;
   margin: 20px;
 }
-.user-lable-down {
-  font-size: 25px;
+.firstName-down,
+.lastName-down {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
 }
-.user-lable-up {
+.firstName-up,
+.lastName {
   font-size: 15px;
 }
 .home-user-info input {
@@ -135,6 +139,7 @@ nav a {
   width: 200px;
   height: 30px;
 }
+
 .home-user-info input:focus {
   outline: none;
   outline-offset: 10px;
