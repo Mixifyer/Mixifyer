@@ -43,12 +43,10 @@ export const UserHome = props => {
     <div>
       <div id="home-container">
         <h3>
-          Welcome, {user.firstName} {user.lastName}!
+          Welcome! {user.firstName} {user.lastName}
         </h3>
         <div className="home-user-info">
-          <label className={userName.firstName} htmlFor="firstName">
-            First
-          </label>
+          <div className={userName.firstName}>First name</div>
           <input
             name="firstName"
             type="text"
@@ -58,7 +56,7 @@ export const UserHome = props => {
             onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
           />
 
-          <div className={userName.lastName}>Last</div>
+          <div className={userName.lastName}>Last name</div>
           <input
             name="lastName"
             type="text"
@@ -66,6 +64,24 @@ export const UserHome = props => {
             onChange={handleChange}
             onFocus={() => onFocus(userInfoState.lastName, 'lastName')}
             onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
+          />
+          <div className={userName.address}>Address</div>
+          <input
+            name="address"
+            type="text"
+            value={userInfoState.address}
+            onChange={handleChange}
+            onFocus={() => onFocus(userInfoState.address, 'address')}
+            onBlur={() => onBlur(userInfoState.address, 'address')}
+          />
+          <div className={userName.email}>email</div>
+          <input
+            name="email"
+            type="text"
+            value={userInfoState.email}
+            onChange={handleChange}
+            onFocus={() => onFocus(userInfoState.email, 'email')}
+            onBlur={() => onBlur(userInfoState.email, 'email')}
           />
         </div>
       </div>

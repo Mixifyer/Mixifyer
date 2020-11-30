@@ -118,31 +118,40 @@ nav a {
   padding: 20px;
   left: 25%;
 }
+#home-container h3 {
+  font-family: Times, Times New Roman, serif;
+  font-size: 20px;
+  margin: 20px;
+  color: rgb(95, 92, 92);
+}
 .home-user-info {
   flex-direction: row;
   margin: 20px;
 }
 .firstName-down,
-.lastName-down {
-  font-size: 30px;
-  font-weight: bold;
-  color: red;
+.lastName-down,
+.firstName-up,
+.lastName-up {
+  font-family: Times, Times New Roman, serif;
+  font-size: 20px;
+  color: rgb(141, 137, 137);
 }
 .firstName-up,
-.lastName {
-  font-size: 15px;
+.lastName-up {
+  font-size: 12px;
 }
 .home-user-info input {
   border: 0px;
   background-color: rgb(226, 233, 236);
   border-bottom: solid 0.5px black;
   width: 200px;
-  height: 30px;
+  height: 25px;
+  margin-bottom: 15px;
 }
 
 .home-user-info input:focus {
   outline: none;
-  outline-offset: 10px;
+  /* outline-offset: 5px; */
 }
 
 /* create and edit forms styling */
