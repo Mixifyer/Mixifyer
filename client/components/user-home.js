@@ -12,11 +12,23 @@ export const UserHome = props => {
   const [userInfoState, setUserInfo] = useState(currentUser)
 
   const emptyNames =
-    userInfoState.firstName === '' || userInfoState.lastName === ''
+    userInfoState.firstName === '' ||
+    userInfoState.lastName === '' ||
+    userInfoState.address
   const [userName, setUserName] = useState(
-    emptyNames
-      ? {firstName: 'firstName-down', lastName: 'lastName-down'}
-      : {firstName: 'firstName-up', lastName: 'lastName-up'}
+    !emptyNames
+      ? {
+          firstName: 'firstName-down',
+          lastName: 'lastName-down',
+          address: 'address-down',
+          email: 'email-down'
+        }
+      : {
+          firstName: 'firstName-up',
+          lastName: 'lastName-up',
+          address: 'address-up',
+          email: 'email-up'
+        }
   )
 
   function handleChange(event) {
@@ -43,7 +55,7 @@ export const UserHome = props => {
     <div>
       <div id="home-container">
         <h3>
-          Welcome! {user.firstName} {user.lastName}
+          Welcome, {user.firstName} {user.lastName}!
         </h3>
         <div className="home-user-info">
           <div className={userName.firstName}>First name</div>
