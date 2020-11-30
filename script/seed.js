@@ -11,6 +11,7 @@ async function seed() {
     User.create({
       firstName: 'Cody',
       lastName: 'Banks',
+      address: '555 Park Avenue, New York, NY 10055',
       email: 'cody@email.com',
       password: '123',
       isAdmin: true
@@ -18,6 +19,7 @@ async function seed() {
     User.create({
       firstName: 'Murphy',
       lastName: 'Addy',
+      address: '777 Broadway, New York, NY 10077',
       email: 'murphy@email.com',
       password: '123'
     })
