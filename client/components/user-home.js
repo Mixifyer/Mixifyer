@@ -14,7 +14,7 @@ export const UserHome = props => {
   const emptyNames =
     userInfoState.firstName === '' ||
     userInfoState.lastName === '' ||
-    userInfoState.address
+    userInfoState.address === ''
   const [userName, setUserName] = useState(
     !emptyNames
       ? {
@@ -33,7 +33,6 @@ export const UserHome = props => {
 
   function handleChange(event) {
     event.preventDefault()
-    console.log(event)
     setUserInfo({...userInfoState, [event.target.name]: event.target.value})
   }
 
@@ -66,6 +65,7 @@ export const UserHome = props => {
             onChange={handleChange}
             onFocus={() => onFocus(userInfoState.firstName, 'firstName')}
             onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
+            required
           />
 
           <div className={userName.lastName}>Last name</div>
@@ -76,6 +76,7 @@ export const UserHome = props => {
             onChange={handleChange}
             onFocus={() => onFocus(userInfoState.lastName, 'lastName')}
             onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
+            required
           />
           <div className={userName.address}>Address</div>
           <input
@@ -85,6 +86,7 @@ export const UserHome = props => {
             onChange={handleChange}
             onFocus={() => onFocus(userInfoState.address, 'address')}
             onBlur={() => onBlur(userInfoState.address, 'address')}
+            required
           />
           <div className={userName.email}>email</div>
           <input
@@ -94,6 +96,7 @@ export const UserHome = props => {
             onChange={handleChange}
             onFocus={() => onFocus(userInfoState.email, 'email')}
             onBlur={() => onBlur(userInfoState.email, 'email')}
+            required
           />
         </div>
       </div>

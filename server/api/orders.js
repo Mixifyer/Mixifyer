@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
         isActive: true
       }
     })
-    console.log('order----> :', order)
+
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
       include: [Product]
