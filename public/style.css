@@ -7,10 +7,13 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Optima, sans-serif;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://theculturetrip.com/wp-content/uploads/2015/08/shutterstock_524740675-goncharov_artem.jpg');
 }
 #main-container {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 a {
@@ -18,7 +21,7 @@ a {
 }
 
 a:hover {
-  color: rgb(118, 135, 160);
+  color: rgb(160, 177, 204);
 }
 
 hr {
@@ -32,9 +35,8 @@ img {
 #nav-bar {
   position: fixed;
   display: flexbox;
-  background-color: #98d3fa;
-  /* border: solid 0.3px rgb(224, 227, 231); */
-  box-shadow: 1px 1px 10px rgb(71, 71, 102);
+  background-color: rgba(75, 56, 56, 0.975);
+  box-shadow: 0px 1px 3px rgb(6, 6, 12);
   top: 0px;
   margin: 0px;
   padding: 0px;
@@ -42,11 +44,17 @@ img {
   width: 100%;
 }
 #label {
-  border: solid 0.5px rgb(70, 57, 57);
+  border: solid 0.5px rgb(51, 42, 42);
+  box-shadow: 1px 0.5px 10px rgb(183, 183, 233);
   float: left;
   border-radius: 50%;
   font-family: Snell Roundhand, cursive;
-  color: rgb(47, 77, 23);
+  background: linear-gradient(
+    to right,
+    rgb(249, 248, 248),
+    rgba(252, 251, 240, 0.75) 100%
+  );
+  color: rgb(1, 126, 88);
   font-size: 30px;
   font-weight: 600;
   text-align: center;
@@ -57,10 +65,10 @@ img {
   margin-left: 35px;
 }
 nav a {
-  font-family: Optima, sans-serif;
-  color: rgb(71, 4, 160);
+  /* font-family: cursive; */
+  color: rgb(216, 216, 218);
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
   margin: 1em;
 }
 .nav-links {
@@ -71,8 +79,8 @@ nav a {
 #shoppingCart {
   border: solid 1px rgb(121, 121, 214);
   background-color: rgb(219, 230, 250);
+
   color: rgb(3, 122, 85);
-  border-radius: 4px;
   font-size: 10px;
   font-weight: bold;
   padding: 1.5px;
@@ -203,7 +211,6 @@ label {
 
 .delete-button {
   background-color: rgb(245, 10, 10);
-  /* height: 25px; */
   font-weight: bold;
   color: rgb(12, 12, 12);
   border-radius: 7px;
@@ -247,14 +254,21 @@ label {
 
 /* all products styling */
 .products-container {
+  margin-top: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  background-color: #f9f9f9;
+  background: linear-gradient(
+    to right,
+    rgb(105, 64, 116),
+    rgba(252, 28, 32, 0.5) 100%
+  );
   align-content: space-between;
+  background-blend-mode: screen;
 }
 #singleProduct-container,
 #singleProduct-container-admin {
+  /* opacity: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -371,6 +385,7 @@ label {
   padding-top: 20px;
 }
 #auth-form {
+  height: 100%;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   box-shadow: 1px 1px 1px 1px rgb(155, 153, 153);
