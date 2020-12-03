@@ -128,7 +128,6 @@ nav a {
   height: 100%;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
-  box-shadow: 1px 1px 1px 1px rgb(155, 153, 153);
   border-radius: 7px;
   width: 500px;
 }
@@ -143,9 +142,6 @@ nav a {
   font-size: 25px;
 }
 
-#auth-form label {
-  display: none;
-}
 #auth-form form {
   display: flex;
   flex-direction: column;
