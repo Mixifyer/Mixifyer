@@ -50,7 +50,6 @@ img {
   width: 100%;
 }
 nav a {
-  /* font-family: cursive; */
   color: rgb(253, 230, 253);
   font-size: 14px;
   font-weight: 600;
@@ -117,6 +116,66 @@ nav a {
 
 #searchInput:focus {
   outline: none;
+}
+
+/* auth(login/sing up)-form */
+#auth-container {
+  display: flex;
+  justify-content: center;
+}
+#auth-form {
+  margin-top: 5%;
+  height: 100%;
+  background-color: #f8f8ff;
+  border: solid 3px rgb(249, 251, 252);
+  box-shadow: 1px 1px 1px 1px rgb(155, 153, 153);
+  border-radius: 7px;
+  width: 500px;
+}
+
+#auth-form * {
+  margin-left: 5px;
+  margin-top: 15px;
+}
+
+#auth-method {
+  margin: 25px;
+  font-size: 25px;
+}
+
+#auth-form label {
+  display: none;
+}
+#auth-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 15px;
+}
+#auth-form a {
+  display: flex;
+  justify-content: start;
+  margin: 25px;
+}
+
+#auth-form input {
+  border: solid 0.5px rgb(155, 155, 155);
+  font-size: 20px;
+  border-radius: 4px;
+  background-color: white;
+  padding: 5px;
+  width: 450px;
+  height: 45px;
+}
+
+#auth-form button {
+  height: 30px;
+  box-shadow: 0px 1.3px 2px rgb(155, 153, 153);
+  width: 100px;
+  border: solid 0.3px rgb(209, 205, 205);
+  font-size: 20px;
+  background-color: rgb(229, 241, 247);
+  border-radius: 5px;
 }
 
 /* user-home page */
@@ -380,63 +439,5 @@ label {
   text-align: center;
   color: rgb(122, 0, 0);
   background-color: rgb(189, 197, 192);
-  border-radius: 5px;
-}
-/* auth(login/sing up) form */
-.auth-form {
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-}
-#auth-form {
-  height: 100%;
-  background-color: #f8f8ff;
-  border: solid 3px rgb(249, 251, 252);
-  box-shadow: 1px 1px 1px 1px rgb(175, 173, 173);
-  border-radius: 7px;
-  width: 500px;
-}
-.auth-form * {
-  margin-left: 5px;
-  margin-top: 15px;
-}
-
-#auth-method {
-  margin: 25px;
-  font-size: 25px;
-}
-
-#auth-form label {
-  display: none;
-}
-.auth-form form {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin: 15px;
-}
-.auth-form a {
-  display: flex;
-  justify-content: start;
-  margin: 25px;
-}
-
-.auth-form form input {
-  border: solid 0.5px rgb(155, 155, 155);
-  font-size: 20px;
-  border-radius: 4px;
-  background-color: white;
-  padding: 5px;
-  width: 450px;
-  height: 45px;
-}
-
-.auth-form button {
-  height: 30px;
-  box-shadow: 0px 1.3px 2px rgb(155, 153, 153);
-  width: 100px;
-  border: solid 0.3px rgb(209, 205, 205);
-  font-size: 20px;
-  background-color: rgb(229, 241, 247);
   border-radius: 5px;
 }
