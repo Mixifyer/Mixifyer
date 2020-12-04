@@ -51,54 +51,53 @@ export const UserHome = props => {
   }
 
   return (
-    <div>
-      <div id="home-container">
-        <h3>
+    <div id="home-container">
+      {/* <h3>
           Welcome, {user.firstName} {user.lastName}!
-        </h3>
-        <div className="home-user-info">
-          <div className={userName.firstName}>First name</div>
-          <input
-            name="firstName"
-            type="text"
-            value={userInfoState.firstName}
-            onChange={handleChange}
-            onFocus={() => onFocus(userInfoState.firstName, 'firstName')}
-            onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
-            required
-          />
+        </h3> */}
+      <div className="home-user-info">
+        <div className={userName.firstName}>First name</div>
+        <input
+          name="firstName"
+          type="text"
+          value={userInfoState.firstName}
+          onChange={handleChange}
+          onFocus={() => onFocus(userInfoState.firstName, 'firstName')}
+          onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
+          required
+        />
 
-          <div className={userName.lastName}>Last name</div>
-          <input
-            name="lastName"
-            type="text"
-            value={userInfoState.lastName}
-            onChange={handleChange}
-            onFocus={() => onFocus(userInfoState.lastName, 'lastName')}
-            onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
-            required
-          />
-          <div className={userName.address}>Address</div>
-          <input
-            name="address"
-            type="text"
-            value={userInfoState.address}
-            onChange={handleChange}
-            onFocus={() => onFocus(userInfoState.address, 'address')}
-            onBlur={() => onBlur(userInfoState.address, 'address')}
-            required
-          />
-          <div className={userName.email}>email</div>
-          <input
-            name="email"
-            type="text"
-            value={userInfoState.email}
-            onChange={handleChange}
-            onFocus={() => onFocus(userInfoState.email, 'email')}
-            onBlur={() => onBlur(userInfoState.email, 'email')}
-            required
-          />
-        </div>
+        <div className={userName.lastName}>Last name</div>
+        <input
+          name="lastName"
+          type="text"
+          placeholder="name"
+          value={userInfoState.lastName}
+          onChange={handleChange}
+          onFocus={() => onFocus(userInfoState.lastName, 'lastName')}
+          onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
+          required
+        />
+        <div className={userName.address}>Address</div>
+        <input
+          name="address"
+          type="text"
+          value={userInfoState.address}
+          onChange={handleChange}
+          onFocus={() => onFocus(userInfoState.address, 'address')}
+          onBlur={() => onBlur(userInfoState.address, 'address')}
+          required
+        />
+        <div className={userName.email}>email</div>
+        <input
+          name="email"
+          type="text"
+          value={userInfoState.email}
+          onChange={handleChange}
+          onFocus={() => onFocus(userInfoState.email, 'email')}
+          onBlur={() => onBlur(userInfoState.email, 'email')}
+          required
+        />
       </div>
     </div>
   )

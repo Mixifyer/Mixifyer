@@ -85,7 +85,7 @@ const AllProducts = ({
     })
   }
   return (
-    <div>
+    <div id="main-container-products">
       <div className="newFormToggle">
         {user.isAdmin && (
           <button
