@@ -56,7 +56,9 @@ export const UserHome = props => {
           Welcome, {user.firstName} {user.lastName}!
         </h3> */}
       <div className="home-user-info">
-        <div className={userName.firstName}>First name</div>
+        <div className={userName.firstName}>
+          First name <span>*</span>
+        </div>
         <input
           name="firstName"
           type="text"
@@ -67,18 +69,21 @@ export const UserHome = props => {
           required
         />
 
-        <div className={userName.lastName}>Last name</div>
+        <div className={userName.lastName}>
+          Last name <span>*</span>
+        </div>
         <input
           name="lastName"
           type="text"
-          placeholder="name"
           value={userInfoState.lastName}
           onChange={handleChange}
           onFocus={() => onFocus(userInfoState.lastName, 'lastName')}
           onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
           required
         />
-        <div className={userName.address}>Address</div>
+        <div className={userName.address}>
+          Address <span>*</span>
+        </div>
         <input
           name="address"
           type="text"
@@ -88,7 +93,9 @@ export const UserHome = props => {
           onBlur={() => onBlur(userInfoState.address, 'address')}
           required
         />
-        <div className={userName.email}>email</div>
+        <div className={userName.email}>
+          email <span>*</span>
+        </div>
         <input
           name="email"
           type="text"
