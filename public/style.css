@@ -17,9 +17,11 @@ body {
     url('https://img1.mashed.com/img/gallery/the-best-cheap-mixed-drinks-to-order-at-a-bar/intro-1571943589.jpg');
 
   background-attachment: fixed;
+  width: 100%;
 }
 #main-container {
   margin-top: 5%;
+  width: 100%;
 }
 
 a {
@@ -40,7 +42,6 @@ img {
 /* navbar styling */
 #nav-bar {
   position: fixed;
-  display: flexbox;
   background-color: rgba(19, 98, 100, 0.975);
   box-shadow: 0px 1px 3px rgb(6, 6, 12);
   top: 0px;
@@ -124,11 +125,11 @@ nav a {
   justify-content: center;
 } */
 #auth-container {
-  margin: 10% 0% 0% 32%;
+  margin: 10% 0% 0% 35%;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
-  width: 35%;
+  width: 500px;
 }
 
 #auth-container * {
@@ -183,6 +184,7 @@ nav a {
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
   width: 35%;
+  max-width: inherit;
 }
 /* #home-container h3 {
   font-family: Times, Times New Roman, serif;
@@ -237,6 +239,7 @@ nav a {
   background-color: #f8f8ff;
   border-bottom: solid 0.5px black;
   width: 300px;
+  max-width: 80%;
   height: 35px;
   margin-bottom: 15px;
 }
@@ -352,6 +355,7 @@ label {
     rgb(223, 163, 243, 0.3) 30%,
     rgba(245, 115, 117, 0.5) 100%
   );
+  width: 100%;
 }
 #singleProduct-container,
 #singleProduct-container-admin {
@@ -363,6 +367,7 @@ label {
   border-radius: 10px;
   background-color: white;
   width: 300px;
+  max-width: inherit;
 }
 #singleProduct-container img {
   max-width: 150px;
@@ -461,4 +466,35 @@ label {
   color: rgb(122, 0, 0);
   background-color: rgb(189, 197, 192);
   border-radius: 5px;
+}
+
+@media (max-width: 1025px) {
+  #main-container {
+    margin-top: 14%;
+    justify-content: center;
+  }
+  #auth-container {
+    margin: 20% 0% 0% 0%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #main-container,
+  #auth-container,
+  #nav-bar,
+  .products-container {
+    width: 100%x;
+  }
+  #main-container {
+    margin-top: 15%;
+    justify-content: center;
+  }
+  #auth-container {
+    width: 80%;
+    height: 300px;
+    margin: 30% 0% 0% 0%;
+  }
+  input {
+    max-width: 200px;
+  }
 }
