@@ -141,7 +141,7 @@ nav a {
 }
 
 #auth-container * {
-  margin-left: 5px;
+  /* margin-left: 5px; */
   margin-top: 15px;
 }
 
@@ -153,7 +153,7 @@ nav a {
 #auth-container form {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   margin: 15px;
 }
 
@@ -169,7 +169,7 @@ nav a {
   border-radius: 4px;
   background-color: white;
   padding: 5px;
-  width: 450px;
+  width: 400px;
   height: 45px;
 }
 
@@ -197,6 +197,7 @@ nav a {
 
 .home-user-info {
   width: 400px;
+  margin: 8%;
 }
 
 .home-user-info span {
@@ -218,9 +219,9 @@ nav a {
   font-size: 20px;
   height: 35px;
   padding-bottom: 0px;
-  margin-left: 5%;
+  margin-left: 5px;
   color: rgb(122, 119, 119);
-  margin-top: 40;
+  /* margin-top: 0px; */
 }
 
 .firstName-up,
@@ -246,7 +247,7 @@ nav a {
   border-bottom: solid 0.5px black;
   width: 400px;
   height: 35px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .home-user-info input:focus {
@@ -480,12 +481,12 @@ label {
     height: 350px;
     margin: 20% 15%;
   }
-  #home-container {
-    margin: 15% 15%;
-  }
 }
 
 @media screen and (max-width: 755px) {
+  .nav-links {
+    display: none;
+  }
   #label {
     font-size: 18px;
     width: 90px;
@@ -499,17 +500,33 @@ label {
     justify-content: center;
   }
   #auth-container {
-    width: 350px;
-    margin: 25% 1%;
-  }
-  #home-container {
     width: 400px;
+    margin: 15% 15%;
+  }
+  #auth-container #auth-method,
+  input {
+    max-width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  #auth-container button {
+    margin-right: 60%;
+  }
+
+  #home-container {
+    max-width: 400px;
+    margin: 15% 15%;
   }
   .home-user-info {
     max-width: 80%;
-    margin: 2px 10%;
+    margin: 10%;
   }
-  input {
+  .home-user-info div {
+  }
+
+  .home-user-info input {
     max-width: 100%;
+    margin: 0px;
+    margin-bottom: 20px;
   }
 }
