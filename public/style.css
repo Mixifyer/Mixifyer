@@ -11,15 +11,18 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-image: linear-gradient(
-      rgb(255, 255, 255, 0.3),
-      rgba(53, 12, 12, 0.7)
+      rgba(255, 255, 255, 0.9),
+      rgba(196, 188, 188, 0.9)
     ),
     url('https://img1.mashed.com/img/gallery/the-best-cheap-mixed-drinks-to-order-at-a-bar/intro-1571943589.jpg');
 
   background-attachment: fixed;
   width: 100%;
 }
+
 #main-container {
+  display: flex;
+  justify-content: center;
   margin-top: 5%;
   width: 100%;
 }
@@ -35,6 +38,7 @@ a:hover {
 hr {
   display: none;
 }
+
 img {
   max-width: 400px;
   max-height: 400px;
@@ -42,7 +46,7 @@ img {
 /* navbar styling */
 #nav-bar {
   position: fixed;
-  background-color: rgba(19, 98, 100, 0.975);
+  background-color: rgba(19, 81, 100, 0.975);
   box-shadow: 0px 1px 3px rgb(6, 6, 12);
   top: 0px;
   margin: 0px;
@@ -50,12 +54,14 @@ img {
   height: 12%;
   width: 100%;
 }
+
 nav a {
-  color: rgb(253, 230, 253);
+  color: rgb(250, 244, 250);
   font-size: 14px;
   font-weight: 600;
   margin: 1em;
 }
+
 #label {
   border: solid 0.1px rgb(138, 115, 115);
   box-shadow: 1px 0.5px 10px rgb(183, 183, 233);
@@ -83,6 +89,7 @@ nav a {
   padding-top: 50px;
   margin-right: 50px;
 }
+
 #shoppingCart {
   border: solid 1px rgb(121, 121, 214);
   background-color: rgb(219, 230, 250);
@@ -92,6 +99,7 @@ nav a {
   font-weight: bold;
   padding: 1.5px;
 }
+
 #searchBar {
   display: flex;
   float: left;
@@ -125,7 +133,7 @@ nav a {
   justify-content: center;
 } */
 #auth-container {
-  margin: 10% 0% 0% 35%;
+  margin: 120px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
@@ -148,6 +156,7 @@ nav a {
   align-items: start;
   margin: 15px;
 }
+
 #auth-container a {
   display: flex;
   justify-content: start;
@@ -176,29 +185,26 @@ nav a {
 
 /* user-home page */
 #home-container {
-  margin: 10% 0% 0% 32%;
   display: flex;
-  justify-self: center;
-  height: 100%;
+  justify-content: center;
+  margin: 120px 50px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
-  width: 35%;
-  max-width: inherit;
+  width: 500px;
+  max-width: 70%;
 }
-/* #home-container h3 {
-  font-family: Times, Times New Roman, serif;
-  font-size: 20px;
-  margin: 20px;
-  color: rgb(95, 92, 92);
-} */
+
 .home-user-info {
-  flex-direction: row;
-  margin: 20px;
+  width: 400px;
 }
+
 .home-user-info span {
   vertical-align: text-top;
+  font-size: 13px;
+  margin: 2px;
 }
+
 .firstName-down,
 .lastName-down,
 .address-down,
@@ -212,10 +218,11 @@ nav a {
   font-size: 20px;
   height: 35px;
   padding-bottom: 0px;
-  margin-left: 25px;
+  margin-left: 5%;
   color: rgb(122, 119, 119);
   margin-top: 40;
 }
+
 .firstName-up,
 .lastName-up,
 .address-up,
@@ -231,22 +238,19 @@ nav a {
 .address-up + input,
 .email-up + input,
 .home-user-info input {
-  padding-left: 25px;
   color: rgb(10, 10, 102);
   border: 0px;
   font-size: 20px;
   padding-bottom: 10px;
   background-color: #f8f8ff;
   border-bottom: solid 0.5px black;
-  width: 300px;
-  max-width: 80%;
+  width: 400px;
   height: 35px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .home-user-info input:focus {
   outline: none;
-  padding-left: 25px;
   font-size: 20px;
   padding-bottom: 10px;
   height: 35px;
@@ -258,9 +262,7 @@ nav a {
   height: 25px;
   padding-bottom: 0px;
 }
-.home-user-info input::placeholder {
-  overflow: visible;
-}
+
 /* create and edit forms styling */
 form div {
   display: inline-block;
@@ -349,26 +351,26 @@ label {
 .products-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: start;
-  background: linear-gradient(
-    to right,
-    rgb(223, 163, 243, 0.3) 30%,
-    rgba(245, 115, 117, 0.5) 100%
-  );
   width: 100%;
 }
+
 #singleProduct-container,
 #singleProduct-container-admin {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 15px;
-  border: solid 0.5px rgb(190, 197, 197);
-  border-radius: 10px;
-  background-color: white;
+  border-bottom: solid 0.5px rgb(115, 121, 121);
+  /* border-radius: 10px; */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
   width: 300px;
   max-width: inherit;
 }
+
 #singleProduct-container img {
   max-width: 150px;
   max-height: 140px;
@@ -382,7 +384,7 @@ label {
 }
 
 #product-name {
-  color: rgb(20, 42, 105);
+  color: rgb(8, 13, 27);
   text-align: left;
   margin-bottom: 10px;
   width: 100px;
@@ -400,6 +402,7 @@ label {
 
   margin-right: 10px;
 }
+
 #product-info a:hover,
 #product-name:hover {
   color: rgb(138, 145, 206);
@@ -416,20 +419,24 @@ label {
   background-color: #f9f9f9;
   margin-top: 100px;
 }
+
 #singleProduct-container-admin {
   width: 750px;
 }
+
 #singleProduct-container-admin img {
   max-width: 250px;
   max-height: 200px;
   padding: 5px;
 }
+
 #singleProduct-container-admin h3 {
   width: 150px;
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
 #singleProduct-container-admin h5 {
   font-size: 16px;
   margin-top: 40px;
@@ -440,7 +447,6 @@ label {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-
   font-size: 20px;
 }
 /* add to cart button: */
@@ -468,33 +474,42 @@ label {
   border-radius: 5px;
 }
 
-@media (max-width: 1025px) {
-  #main-container {
-    margin-top: 14%;
-    justify-content: center;
-  }
+@media (max-width: 1024px) {
   #auth-container {
-    margin: 20% 0% 0% 0%;
+    width: 500px;
+    height: 350px;
+    margin: 20% 15%;
+  }
+  #home-container {
+    margin: 15% 15%;
   }
 }
 
-@media screen and (max-width: 800px) {
-  #main-container,
-  #auth-container,
-  #nav-bar,
+@media screen and (max-width: 755px) {
+  #label {
+    font-size: 18px;
+    width: 90px;
+  }
   .products-container {
-    width: 100%x;
+    justify-content: center;
   }
   #main-container {
+    display: flex;
     margin-top: 15%;
     justify-content: center;
   }
   #auth-container {
-    width: 80%;
-    height: 300px;
-    margin: 30% 0% 0% 0%;
+    width: 350px;
+    margin: 25% 1%;
+  }
+  #home-container {
+    width: 400px;
+  }
+  .home-user-info {
+    max-width: 80%;
+    margin: 2px 10%;
   }
   input {
-    max-width: 200px;
+    max-width: 100%;
   }
 }

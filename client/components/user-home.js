@@ -57,7 +57,7 @@ export const UserHome = props => {
         </h3> */}
       <div className="home-user-info">
         <div className={userName.firstName}>
-          First name <span>*</span>
+          First name<span>*</span>
         </div>
         <input
           name="firstName"
@@ -70,7 +70,7 @@ export const UserHome = props => {
         />
 
         <div className={userName.lastName}>
-          Last name <span>*</span>
+          Last name<span>*</span>
         </div>
         <input
           name="lastName"
@@ -82,7 +82,7 @@ export const UserHome = props => {
           required
         />
         <div className={userName.address}>
-          Address <span>*</span>
+          Address<span>*</span>
         </div>
         <input
           name="address"
@@ -94,7 +94,7 @@ export const UserHome = props => {
           required
         />
         <div className={userName.email}>
-          email <span>*</span>
+          email<span>*</span>
         </div>
         <input
           name="email"
