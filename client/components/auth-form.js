@@ -15,23 +15,38 @@ const AuthForm = props => {
       <form onSubmit={handleSubmit} name={name}>
         {name === 'signup' && (
           <div>
-            <input name="firstName" type="text" placeholder=" First name" />
+            <input name="firstName" type="text" placeholder="First name" />
 
-            <input name="lastName" type="text" placeholder=" Last name" />
+            <input name="lastName" type="text" placeholder="Last name" />
           </div>
         )}
-        <div>
-          <input name="email" type="text" placeholder=" email" />
-        </div>
-        <div>
-          <input name="password" type="password" placeholder=" password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
+        <input name="email" type="text" placeholder="email" />
+
+        <input name="password" type="password" placeholder="password" />
+        {
+          <div id="auth-submitBttn-google">
+            <button type="submit" id={name}>
+              {displayName}
+            </button>
+            {name === 'login' && (
+              <a href="/auth/google">
+                <span />
+                <div>{displayName} with Google</div>
+              </a>
+            )}
+          </div>
+        }
+
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      {name === 'login' && (
+        <div id="create-Account">
+          <p>
+            New to <span>Mixifyer</span>?
+          </p>
+          <a href="/signup">Create an account</a>
+        </div>
+      )}
     </div>
   )
 }

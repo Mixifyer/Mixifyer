@@ -38,7 +38,6 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
             <Link to="/bitter/products">BITTERS</Link>
             <Link to="/login">LOGIN</Link>
-            <Link to="/signup">SIGN UP</Link>
             <Link to="/checkout" id="shoppingCart">
               CART (0)
             </Link>

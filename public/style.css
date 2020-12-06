@@ -127,40 +127,27 @@ nav a {
   outline: none;
 }
 
-/* auth(login/sing up)-form */
-/* #auth-container {
-  display: flex;
-  justify-content: center;
-} */
 #auth-container {
-  margin: 120px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
   width: 500px;
-}
-
-#auth-container * {
-  /* margin-left: 5px; */
-  margin-top: 15px;
+  padding: 2% 0%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #auth-method {
-  margin: 25px;
+  margin-left: 10%;
   font-size: 25px;
 }
 
 #auth-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 15px;
-}
-
-#auth-container a {
-  display: flex;
-  justify-content: start;
-  margin: 25px;
+  justify-items: start;
+  max-width: 80%;
+  margin: 8% 10%;
 }
 
 #auth-container input {
@@ -168,26 +155,69 @@ nav a {
   font-size: 20px;
   border-radius: 4px;
   background-color: white;
-  padding: 5px;
+  padding-left: 5px;
+  margin: 0px 0px 8%;
   width: 400px;
   height: 45px;
 }
+#auth-submitBttn-google {
+  display: flex;
+  direction: row;
+  justify-content: space-between;
+  margin: 0px;
+}
 
-#auth-container button {
+#auth-container button,
+#auth-container a {
   height: 30px;
   box-shadow: 0px 1.3px 2px rgb(155, 153, 153);
-  width: 100px;
+  width: 30%;
   border: solid 0.3px rgb(209, 205, 205);
   font-size: 20px;
   background-color: rgb(229, 241, 247);
   border-radius: 5px;
 }
+#auth-container a {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 60%;
+  font-size: 15px;
+}
+#auth-container #signup {
+  width: 100%;
+  background-color: rgb(26, 163, 26);
+  color: rgb(250, 239, 239);
+}
+#auth-submitBttn-google a span {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background-image: url('google-icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#auth-container a div {
+  margin: 5px;
+}
 
+#create-Account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: solid 0.3px rgb(185, 185, 185);
+  padding-top: 5%;
+  margin: 5% 10%;
+}
+#create-Account a {
+  background-color: rgb(26, 163, 26);
+  color: rgb(250, 239, 239);
+}
 /* user-home page */
 #home-container {
   display: flex;
   justify-content: center;
-  margin: 120px 50px;
+  margin: 100px 50px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
@@ -400,7 +430,6 @@ label {
 #tags a {
   display: inline-block;
   color: rgb(65, 79, 207);
-
   margin-right: 10px;
 }
 
@@ -476,9 +505,8 @@ label {
 }
 
 @media (max-width: 1024px) {
-  #auth-container {
-    width: 500px;
-    height: 350px;
+  #auth-container,
+  #home-container {
     margin: 20% 15%;
   }
 }
@@ -500,21 +528,19 @@ label {
     justify-content: center;
   }
   #auth-container {
-    width: 400px;
-    margin: 15% 15%;
+    width: 80%;
+    margin: 15% 10%;
   }
-  #auth-container #auth-method,
-  input {
-    max-width: 80%;
-    margin-right: 10%;
-    margin-left: 10%;
+
+  #auth-container form input {
+    max-width: 60%;
   }
   #auth-container button {
     margin-right: 60%;
   }
 
   #home-container {
-    max-width: 400px;
+    max-width: 70%;
     margin: 15% 15%;
   }
   .home-user-info {
