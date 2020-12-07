@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -29,10 +30,10 @@ const AuthForm = props => {
               {displayName}
             </button>
             {name === 'login' && (
-              <a href="/auth/google">
+              <Link to="/auth/google">
                 <span />
                 <div>{displayName} with Google</div>
-              </a>
+              </Link>
             )}
           </div>
         }
@@ -44,7 +45,7 @@ const AuthForm = props => {
           <p>
             New to <span>Mixifyer</span>?
           </p>
-          <a href="/signup">Create an account</a>
+          <Link to="/signup">Create an account</Link>
         </div>
       )}
     </div>

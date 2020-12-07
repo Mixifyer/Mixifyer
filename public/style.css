@@ -31,10 +31,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: rgb(160, 177, 204);
-}
-
 hr {
   display: none;
 }
@@ -61,7 +57,9 @@ nav a {
   font-weight: 600;
   margin: 1em;
 }
-
+nav a:hover {
+  color: rgb(160, 177, 204);
+}
 #label {
   border: solid 0.1px rgb(138, 115, 115);
   box-shadow: 1px 0.5px 10px rgb(183, 183, 233);
@@ -127,7 +125,9 @@ nav a {
   outline: none;
 }
 
+/* auth-form */
 #auth-container {
+  margin-top: 50px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
@@ -170,7 +170,7 @@ nav a {
 #auth-container button,
 #auth-container a {
   height: 30px;
-  box-shadow: 0px 1.3px 2px rgb(155, 153, 153);
+  box-shadow: 0px 1px 2px rgb(155, 153, 153);
   width: 30%;
   border: solid 0.3px rgb(209, 205, 205);
   font-size: 20px;
@@ -212,12 +212,13 @@ nav a {
 #create-Account a {
   background-color: rgb(26, 163, 26);
   color: rgb(250, 239, 239);
+  padding: 2px;
 }
 /* user-home page */
 #home-container {
   display: flex;
   justify-content: center;
-  margin: 100px 50px;
+  margin: 50px 50px;
   background-color: #f8f8ff;
   border: solid 3px rgb(249, 251, 252);
   border-radius: 7px;
