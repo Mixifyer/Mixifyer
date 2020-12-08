@@ -46,7 +46,6 @@ const AllProducts = ({
   const {categoryOrTypeOrFlavor} = props.match.params
 
   if (categoryOrTypeOrFlavor) {
-    console.log(props)
     products = products.filter(
       product =>
         product.type === categoryOrTypeOrFlavor ||
@@ -84,6 +83,7 @@ const AllProducts = ({
       autoDismissTimeout: 1500
     })
   }
+
   return (
     <div id="main-container-products">
       <div className="newFormToggle">
@@ -124,11 +124,11 @@ const AllProducts = ({
                     </div>
                   ) : (
                     <div id="tags">
-                      <Link to={`/${product.type}/products/`}>
+                      <Link to={`/${product.type}`}>
                         <h5>{product.type} </h5>
                       </Link>
 
-                      <Link to={`/${product.flavor}/products`}>
+                      <Link to={`/${product.flavor}`}>
                         <h5>{product.flavor}</h5>
                       </Link>
                     </div>

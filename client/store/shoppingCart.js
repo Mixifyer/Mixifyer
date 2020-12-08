@@ -25,7 +25,6 @@ export const getShoppingCartOrCheckoutThunk = (
       dispatch(getOrUpdateShoppingCart(data))
     } else {
       const {data} = await axios.get('api/cart')
-      console.log('thunk>>>>>>:', data)
       dispatch(getOrUpdateShoppingCart(data))
     }
   } catch (error) {
@@ -40,7 +39,6 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
       dispatch(removeProductFromShoppingCart(product.id))
     } else {
       const {data} = await axios.put(`api/cart`, product)
-      console.log('thunk----->:', data)
       dispatch(getOrUpdateShoppingCart(data))
     }
   } catch (error) {

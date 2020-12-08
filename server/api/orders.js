@@ -70,6 +70,7 @@ router.put('/', async (req, res, next) => {
       totalQuantity += eachProduct.productQuantity
       return eachProduct
     })
+
     res.json({currentOrder, totalQuantity})
   } catch (err) {
     console.log('Error in Orders put')
