@@ -4,10 +4,10 @@ import {thunkFetchSingleProduct} from '../store/singleProduct'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
 
 const SingleProduct = props => {
-  const {product, match, getProduct, addToCart, shoppingCart} = props
-  useEffect(() => {
-    getProduct(match.params.name)
-  }, [])
+  const {product, match, getProduct, addToCart} = props
+  // useEffect(() => {
+  //   getProduct(match.params.name)
+  // }, [])
 
   async function addToShoppingCart(singleProduct) {
     const productInfo = {
@@ -20,7 +20,7 @@ const SingleProduct = props => {
   }
   console.log('this is cart: ', props)
   return (
-    <div>
+    <div className="modalDetails">
       {!product.name ? (
         <h1>Product Doesn't Exist</h1>
       ) : (
@@ -53,7 +53,7 @@ const SingleProduct = props => {
 
 const mapState = state => {
   return {
-    product: state.singleProduct,
+    // product: state.singleProduct,
     shoppingCart: state.shoppingCart
   }
 }

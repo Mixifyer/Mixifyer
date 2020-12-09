@@ -557,3 +557,45 @@ label {
     margin-bottom: 20px;
   }
 }
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  background-color: orange;
+  border-radius: 8px;
+}
+
+#singleProduct-container .closeButton {
+  border: solid 1px;
+  border-radius: 2px;
+  padding: 2px;
+  height: 15px;
+  width: 15px;
+  z-index: 2;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.modalContainer {
+  position: relative;
+}

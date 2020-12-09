@@ -5,6 +5,7 @@ import {updateShoppingCartThunk} from '../store/shoppingCart'
 import {Link} from 'react-router-dom'
 import CreateOrUpdateProductForm from './CreateOrUpdateProductForm'
 import {useToasts} from 'react-toast-notifications'
+import {SingleProduct} from '/'
 
 // eslint-disable-next-line complexity
 const AllProducts = ({
@@ -26,6 +27,7 @@ const AllProducts = ({
 
   const [state, setstate] = useState({singleId: ''})
   const [newFormState, setNewFormState] = useState(false)
+  const [modalState, setModal] = useState({show: false, id: ''})
 
   const toggleCreateForm = () => {
     setNewFormState(!newFormState)
@@ -83,6 +85,15 @@ const AllProducts = ({
     })
   }
 
+  const showModal = prodId => {
+    setModal({show: true, id: prodId})
+  }
+
+  const hideModal = event => {
+    let cName = ['modal', 'closeButton']
+    if (cName.includes(event.target.className)) setModal({show: false, id: ''})
+  }
+
   return (
     <div id="main-container-products">
       <div className="newFormToggle">
@@ -106,15 +117,12 @@ const AllProducts = ({
         ) : (
           products.map(product => (
             <div key={product.id} id={singleProductContainer}>
-              <Link to={`/products/${product.name}`}>
-                <img src={product.image} />
-              </Link>
+              <img src={product.image} onClick={() => showModal(product.id)} />
               <div id={productInfoStyle}>
                 <div>
-                  <Link to={`/products/${product.name}`}>
-                    <h3 id="product-name">{product.name}</h3>
-                  </Link>
-
+                  <h3 onClick={() => showModal(product.id)} id="product-name">
+                    {product.name}
+                  </h3>
                   {user.isAdmin ? (
                     <div>
                       <h5>Category: {product.category}</h5>
@@ -169,6 +177,19 @@ const AllProducts = ({
                     </button>
                   </div>
                 )}
+                {modalState.show &&
+                  product.id === modalState.id && (
+                    <div className="modal" onClick={e => hideModal(e)}>
+                      <div className="modalContainer">
+                        <SingleProduct product={product} />
+                        <img
+                          src="closebutton.png"
+                          className="closeButton"
+                          onClick={e => hideModal(e)}
+                        />
+                      </div>
+                    </div>
+                  )}
               </div>
 
               {state.singleId === product.id && (
