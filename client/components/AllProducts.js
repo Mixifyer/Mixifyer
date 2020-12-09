@@ -74,7 +74,6 @@ const AllProducts = ({
       id: product.id,
       quantity: 1
     }
-
     addToCart(productInfo)
 
     addToast(`${product.name} was successfully added to the cart`, {
@@ -124,11 +123,11 @@ const AllProducts = ({
                     </div>
                   ) : (
                     <div id="tags">
-                      <Link to={`/${product.type}`}>
+                      <Link to={`/${product.type}/products`}>
                         <h5>{product.type} </h5>
                       </Link>
 
-                      <Link to={`/${product.flavor}`}>
+                      <Link to={`/${product.flavor}/products`}>
                         <h5>{product.flavor}</h5>
                       </Link>
                     </div>

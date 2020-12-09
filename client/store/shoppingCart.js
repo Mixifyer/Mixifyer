@@ -26,6 +26,7 @@ export const getShoppingCartOrCheckoutThunk = (
     } else {
       const {data} = await axios.get('api/cart')
       dispatch(getOrUpdateShoppingCart(data))
+      console.log('getShopThink:  ', data)
     }
   } catch (error) {
     console.log(error)
@@ -38,11 +39,12 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
       const {data} = await axios.delete(`api/cart/${product.id}`)
       dispatch(removeProductFromShoppingCart(product.id))
     } else {
-      const {data} = await axios.put(`api/cart`, product)
-      dispatch(getOrUpdateShoppingCart(data))
+      let startOfURL = 'http://' + window.location.host
+      const data = await axios.put(`${startOfURL}/api/cart`, product)
+      dispatch(getOrUpdateShoppingCart(data.data))
     }
   } catch (error) {
-    console.error(error)
+    console.error('error on Thunk', error)
   }
 }
 export default function(state = {currentOrder: [], totalQuantity: 0}, action) {

@@ -44,8 +44,10 @@ export const thunkRemoveProduct = id => async dispatch => {
   }
 }
 export const thunkEditProduct = (id, product, products) => async dispatch => {
+  console.log('PUT R in PRODUCTS', id)
   try {
     const {data} = await axios.put(`/api/products/${id}`, product)
+    console.log('PUT R in PRODUCTS', data)
     dispatch(getAllProducts(products))
   } catch (error) {
     console.log(error)

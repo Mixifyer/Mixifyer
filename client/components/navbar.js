@@ -19,9 +19,9 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             {/* The navbar will show these links after you log in */}
             <Link to="/home">HOME</Link>
             <Link to="/products">ALL PRODUCTS</Link>
-            <Link to="/spirit">SPIRITS</Link>
-            <Link to="/non-alcoholic">NON-ALCOGOLIC</Link>
-            <Link to="/bitter">BITTERS</Link>
+            <Link to="/spirit/products">SPIRITS</Link>
+            <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
+            <Link to="/bitter/products">BITTERS</Link>
             <a href="#" onClick={handleClick}>
               LOGOUT
             </a>
@@ -34,9 +34,9 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <SearchBar />
             {/* The navbar will show these links before you log in */}
             <Link to="/products">ALL PRODUCTS</Link>
-            <Link to="/spirit">SPIRITS</Link>
-            <Link to="/non-alcoholic">NON-ALCOGOLIC</Link>
-            <Link to="/bitter">BITTERS</Link>
+            <Link to="/spirit/products">SPIRITS</Link>
+            <Link to="/non-alcoholic/products">NON-ALCOGOLIC</Link>
+            <Link to="/bitter/products">BITTERS</Link>
             <Link to="/login">LOGIN</Link>
             <Link to="/checkout" id="shoppingCart">
               CART (0)
