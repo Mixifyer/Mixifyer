@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Order = require('../db/models/order')
-const {OrderedProduct} = require('../db/models')
-const Product = require('../db/models/product')
+const {OrderedProduct, Product} = require('../db/models')
+// const Product = require('../db/models/product')
 // const Cocktail = require('../db/models')
 // const {CocktailOrder} = require('../db/models')
 
@@ -66,12 +66,15 @@ router.put('/', async (req, res, next) => {
       include: [Product]
     })
     let totalQuantity = 0
+    let totalPrice = 0
+    console.log('CURRENTORDER>>>>>>>>>>', currentOrder)
     currentOrder.map(eachProduct => {
       totalQuantity += eachProduct.productQuantity
+      totalPrice += eachProduct.savedPrice * eachProduct.productQuantity
       return eachProduct
     })
-
-    res.json({currentOrder, totalQuantity})
+    order.update({totalQuantity, totalPrice})
+    res.json({currentOrder, totalQuantity, totalPrice})
   } catch (err) {
     console.log('Error in Orders put')
     next(err)

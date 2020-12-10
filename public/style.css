@@ -599,3 +599,48 @@ label {
 .modalContainer {
   position: relative;
 }
+
+.shoppingCartContainer {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  background-color: orange;
+  border-radius: 8px;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-right: solid 1px;
+}
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+  border: solid 1px;
+  box-shadow: 3px 4px;
+  background-color: white;
+}
+
+.cartItemData {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.cartItem img {
+  width: 80px;
+  height: 80px;
+}
+
+.cartDetails {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  /* width: 40%; */
+}

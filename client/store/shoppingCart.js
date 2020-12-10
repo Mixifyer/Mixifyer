@@ -47,14 +47,24 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
     console.error('error on Thunk', error)
   }
 }
-export default function(state = {currentOrder: [], totalQuantity: 0}, action) {
+
+let initialCart = {
+  currentOrder: [],
+  totalQuantity: 0,
+  totalPrice: 0
+}
+
+export default function(state = initialCart, action) {
   switch (action.type) {
     case GET_OR_UPDATE_SHOPPINGCART:
       return action.shoppingCart
     case REMOVE_PRODUCT_FROM_SHOPPINGCART:
-      return state.currentOrder.filter(
-        product => product.id === action.productId
-      )
+      return {
+        ...state,
+        currentOrder: state.currentOrder.filter(
+          product => product.id === action.productId
+        )
+      }
     default:
       return state
   }
