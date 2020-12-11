@@ -37,9 +37,9 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
   try {
     if (method === 'remove') {
       const {data} = await axios.delete(`api/cart/${product.id}`)
-      dispatch(removeProductFromShoppingCart(product.id))
+      console.log('cartThunk: >>>>', data)
+      dispatch(removeProductFromShoppingCart(data))
     } else {
-      console.log('cartThunk: >>>>', product)
       let startOfURL = 'http://' + window.location.host
       const data = await axios.put(`${startOfURL}/api/cart`, product)
       dispatch(getOrUpdateShoppingCart(data.data))
@@ -60,12 +60,14 @@ export default function(state = initialCart, action) {
     case GET_OR_UPDATE_SHOPPINGCART:
       return action.shoppingCart
     case REMOVE_PRODUCT_FROM_SHOPPINGCART:
+      console.log('raducer', state)
       return {
         ...state,
         currentOrder: state.currentOrder.filter(
-          product => product.id === action.productId
+          product => product.productId !== action.productId
         )
       }
+
     default:
       return state
   }

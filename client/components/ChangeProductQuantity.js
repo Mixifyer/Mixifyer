@@ -13,27 +13,22 @@ export default function ChangeProductQuantity({item, updateCart}) {
   }
 
   return (
-    <div>
+    <div className="cart-item-data">
+      <h3>{item.product.name}</h3>
+
       <p className="add-or-remove-quatity-bttns">
-        <div>
-          Qty: {quatity}
-          <button
-            type="button"
-            disabled={item.product.inStock === quatity}
-            onClick={() => onChange(quatity + 1, 1)}
-            id="plus-sign"
-          />
-          <button
-            type="button"
-            id="minus-sign"
-            disabled={quatity < 1}
-            onClick={() => onChange(quatity - 1, -1)}
-          />
-        </div>
-        <img
-          src="remove-img.png"
-          id="delete-item"
-          onClick={() => onChange(item.productId)}
+        Qty: {quatity}
+        <button
+          type="button"
+          disabled={item.product.inStock === quatity}
+          onClick={() => onChange(quatity + 1, 1)}
+          id="plus-sign"
+        />
+        <button
+          type="button"
+          id="minus-sign"
+          disabled={quatity < 1}
+          onClick={() => onChange(quatity - 1, -1)}
         />
       </p>
 

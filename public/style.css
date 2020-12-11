@@ -23,7 +23,7 @@ body {
 #main-container {
   display: flex;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 2.5%;
   width: 100%;
 }
 
@@ -580,20 +580,10 @@ label {
   align-items: center;
   width: 500px;
   height: 500px;
-  background-color: orange;
+  background-color: rgb(254, 255, 254);
   border-radius: 8px;
 }
-/* #singleProduct-container .modal p {
-  border: solid 1px;
-  border-radius: 2px;
-  padding: 2px;
-  font: 15px;
-  width: 20px;
-  z-index: 2;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-} */
+
 #singleProduct-container .closeButton {
   border: solid 1px;
   border-radius: 2px;
@@ -610,41 +600,66 @@ label {
   position: relative;
 }
 
-.shoppingCartContainer {
+.shopping-cart-container {
   width: 100%;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: row;
-  background-color: orange;
-  border-radius: 8px;
-}
-
-.cartItems {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  border-right: solid 1px;
-}
-.cartItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  width: 80%;
-  margin: 50px;
-  border: solid 0.5px rgb(126, 118, 118);
-  border-radius: 5px;
-  box-shadow: 1.5px 1.5px rgb(172, 170, 170);
-  background-color: white;
-}
-.add-or-remove-quatity-bttns {
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  /* background-color: rgb(245, 243, 237); */
+  border-radius: 8px;
+  /* padding-bottom: 400px; */
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  width: 38%;
+  margin: 3% 1% 0% 6%;
   padding: 0px;
-  width: 300px;
-  background-color: blue;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: serif;
+  font-size: 17px;
+  width: 100%;
+  padding: 15px 5px;
+  margin-bottom: 20px;
+  border: solid 1px rgb(241, 235, 235);
+  border-radius: 5px;
+  box-shadow: 1px 1px rgb(117, 115, 115);
+  background-color: white;
+}
+
+.cart-item img {
+  margin-left: 3%;
+  width: 17%;
+  height: 80px;
+}
+.cart-item-data h3 {
+  color: rgb(14, 19, 79);
+}
+
+.cart-item-data {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.cart-details {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.add-or-remove-quatity-bttns {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
 }
 #plus-sign:focus,
 #minus-sign:focus {
@@ -654,42 +669,56 @@ label {
 #minus-sign {
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('https://icon-library.com/images/minus-icon/minus-icon-7.jpg');
-  width: 20px;
-  height: 20px;
-  border: solid 2px rgb(250, 27, 27);
-  border-radius: 50%;
+  background-image: url('minus.png');
+  border: transparent;
+  width: 17px;
+  height: 17px;
+  margin: 10px 0px 10px 4px;
 }
 #plus-sign {
   background-image: url('plus.png');
   background-color: white;
-  border: none;
-  width: 22.5px;
-  height: 22.5px;
-  /* margin: 5px; */
+  margin-left: 10px;
 }
 #delete-item {
-  float: right;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  margin-right: 3%;
 }
 
-.cartItemData {
+.cart-totals {
+  width: 48%;
+  height: 200px;
+  margin: 3% 6% 0% 1%;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0.2px 1px rgb(182, 179, 179);
+}
+.cart-totals h2 {
+  color: #f8f8ff;
+  height: 20%;
+  text-align: center;
+  background-color: rgb(26, 75, 26);
+  border-radius: 5px 5px 0px 0px;
+  padding: 5px;
+}
+.cart-total-details {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  margin-left: 20px;
+  height: 75%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0% 10%;
 }
-
-.cartItem img {
-  width: 80px;
-  height: 80px;
-}
-
-.cartDetails {
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-  /* width: 40%; */
+.cart-totals a {
+  width: 25%;
+  height: 30%;
+  font-size: 17px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(252, 59, 59);
+  color: rgb(254, 254, 254);
+  border: solid 0.3px rgb(63, 63, 63);
+  border-radius: 7px;
+  box-shadow: 0.5px 0.5px rgb(28, 27, 27);
 }

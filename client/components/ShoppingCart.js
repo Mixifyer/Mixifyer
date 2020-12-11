@@ -2,28 +2,44 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ChangeProductQuantity from './ChangeProductQuantity'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
+import {Link} from 'react-router-dom'
 
 const ShoppingCart = ({shoppingCart, updateCart}) => {
-  console.log(shoppingCart.totalPrice)
+  console.log(shoppingCart)
+  function onChange(productId) {
+    updateCart({id: productId}, 'remove')
+  }
+
   return (
-    <div className="shoppingCartContainer">
-      <div className="cartItems">
+    <div className="shopping-cart-container">
+      <div className="cart-items-list">
         {shoppingCart.currentOrder.map(item => {
           return (
-            <div key={item.productId} className="cartItem">
+            <div key={item.productId} className="cart-item">
               <img src={item.product.image} />
-              <div className="cartItemData">
-                <h4>{item.product.name}</h4>
-                <ChangeProductQuantity item={item} updateCart={updateCart} />
-              </div>
+
+              <ChangeProductQuantity item={item} updateCart={updateCart} />
+
+              <img
+                src="remove-img.png"
+                id="delete-item"
+                onClick={() => onChange(item.productId)}
+              />
             </div>
           )
         })}
       </div>
-      <div className="cartDetails">
-        <h1>totalPrice {shoppingCart.totalPrice / 100}</h1>
-        <br />
-        <h1>totalQuantity {shoppingCart.totalQuantity}</h1>
+      <div className="cart-totals">
+        <h2>COMPLETE ORDER</h2>
+        <div className="cart-total-details">
+          <div>
+            <h3>Items In Cart: {shoppingCart.totalQuantity}</h3>
+            <h3>Total Price: {shoppingCart.totalPrice / 100}$</h3>
+          </div>
+          <Link id="checkout-bttn" to="/checkout">
+            CHECKOUT
+          </Link>
+        </div>
       </div>
     </div>
   )
