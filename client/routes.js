@@ -9,6 +9,7 @@ import {
   Products,
   SingleProduct,
   ShoppingCart
+  // Checkout
 } from './components'
 import {me} from './store'
 import {ToastProvider} from 'react-toast-notifications'
@@ -38,6 +39,7 @@ const Routes = props => {
           />
           <Route exact path="/shopping-cart" component={ShoppingCart} />
           <Route exact path="/products/:name" component={SingleProduct} />
+          {/* <Route exact path="/checkout" component={Checkout}/> */}
 
           {/* Displays our Login component as a fallback */}
           {isLoggedIn && (
