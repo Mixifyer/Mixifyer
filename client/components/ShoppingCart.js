@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import ChangeProductQuantity from './ChangeProductQuantity'
+import {updateShoppingCartThunk} from '../store/shoppingCart'
 
-const ShoppingCart = ({shoppingCart}) => {
-  console.log('SHOPPINGCART>>>>>>>>', shoppingCart)
+const ShoppingCart = ({shoppingCart, updateCart}) => {
+  console.log(shoppingCart.totalPrice)
   return (
     <div className="shoppingCartContainer">
       <div className="cartItems">
@@ -11,19 +13,15 @@ const ShoppingCart = ({shoppingCart}) => {
             <div key={item.productId} className="cartItem">
               <img src={item.product.image} />
               <div className="cartItemData">
-                <h1>{item.product.name}</h1>
-                <h2>Quantity: {item.productQuantity}</h2>
-                <h2>
-                  Price: ${item.savedPrice / 100 * item.productQuantity} (${item.savedPrice /
-                    100}/item)
-                </h2>
+                <h4>{item.product.name}</h4>
+                <ChangeProductQuantity item={item} updateCart={updateCart} />
               </div>
             </div>
           )
         })}
       </div>
       <div className="cartDetails">
-        <h1>totalPrice {shoppingCart.totalPrice}</h1>
+        <h1>totalPrice {shoppingCart.totalPrice / 100}</h1>
         <br />
         <h1>totalQuantity {shoppingCart.totalQuantity}</h1>
       </div>
@@ -38,7 +36,10 @@ const mapState = state => {
 }
 
 const mapDispatch = dispatch => {
-  return {}
+  return {
+    updateCart: (item, method) =>
+      dispatch(updateShoppingCartThunk(item, method))
+  }
 }
 
-export default connect(mapState, null)(ShoppingCart)
+export default connect(mapState, mapDispatch)(ShoppingCart)

@@ -583,7 +583,17 @@ label {
   background-color: orange;
   border-radius: 8px;
 }
-
+/* #singleProduct-container .modal p {
+  border: solid 1px;
+  border-radius: 2px;
+  padding: 2px;
+  font: 15px;
+  width: 20px;
+  z-index: 2;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+} */
 #singleProduct-container .closeButton {
   border: solid 1px;
   border-radius: 2px;
@@ -619,10 +629,49 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 17px;
+  width: 80%;
   margin: 50px;
-  border: solid 1px;
-  box-shadow: 3px 4px;
+  border: solid 0.5px rgb(126, 118, 118);
+  border-radius: 5px;
+  box-shadow: 1.5px 1.5px rgb(172, 170, 170);
   background-color: white;
+}
+.add-or-remove-quatity-bttns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 300px;
+  background-color: blue;
+}
+#plus-sign:focus,
+#minus-sign:focus {
+  outline: none;
+}
+#plus-sign,
+#minus-sign {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://icon-library.com/images/minus-icon/minus-icon-7.jpg');
+  width: 20px;
+  height: 20px;
+  border: solid 2px rgb(250, 27, 27);
+  border-radius: 50%;
+}
+#plus-sign {
+  background-image: url('plus.png');
+  background-color: white;
+  border: none;
+  width: 22.5px;
+  height: 22.5px;
+  /* margin: 5px; */
+}
+#delete-item {
+  float: right;
+  width: 30px;
+  height: 30px;
 }
 
 .cartItemData {

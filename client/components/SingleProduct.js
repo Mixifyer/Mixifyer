@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {thunkFetchSingleProduct} from '../store/singleProduct'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
@@ -8,13 +8,12 @@ const SingleProduct = props => {
   // useEffect(() => {
   //   getProduct(match.params.name)
   // }, [])
-
+  // const [quantity, setQuatity] = useState(0)
   async function addToShoppingCart(singleProduct) {
     const productInfo = {
       id: singleProduct.id,
       quantity: 1
     }
-
     console.log('this is cart: ', props)
     await addToCart(productInfo)
   }
@@ -26,6 +25,7 @@ const SingleProduct = props => {
       ) : (
         <div>
           <img src={product.image} />
+          {/* <p>x</p> */}
           <div />
           <h3>{product.name}</h3>
           <h5>Category: {product.category}</h5>

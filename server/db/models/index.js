@@ -9,6 +9,9 @@ User.hasMany(Order)
 Order.belongsTo(User)
 
 const OrderedProduct = db.define('ordered_product', {
+  productName: {
+    type: Sequelize.STRING
+  },
   savedPrice: {
     type: Sequelize.INTEGER
   },

@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const Order = require('../db/models/order')
-const {OrderedProduct, Product} = require('../db/models')
+
+const {OrderedProduct, Product, Order} = require('../db/models')
 // const Product = require('../db/models/product')
 // const Cocktail = require('../db/models')
 // const {CocktailOrder} = require('../db/models')
@@ -16,15 +16,19 @@ router.get('/', async (req, res, next) => {
 
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
+      order: [['productName', 'ASC']],
       include: [Product]
     })
     let totalQuantity = 0
+    let totalPrice = 0
+
     currentOrder.map(eachProduct => {
       totalQuantity += eachProduct.productQuantity
+      totalPrice += eachProduct.savedPrice * eachProduct.productQuantity
       return eachProduct
     })
 
-    res.json({currentOrder, totalQuantity})
+    res.json({currentOrder, totalQuantity, totalPrice})
   } catch (error) {
     next(error)
   }
@@ -38,15 +42,18 @@ router.put('/', async (req, res, next) => {
         isActive: true
       }
     })
+
     const product = await Product.findOne({
       where: {
         id: req.body.id
       }
     })
     const orderChange = {
+      productName: product.name,
       savedPrice: product.price,
       productQuantity: req.body.quantity
     }
+
     if (await order.hasProduct(product)) {
       const productOrder = await OrderedProduct.findOne({
         where: {
@@ -63,16 +70,18 @@ router.put('/', async (req, res, next) => {
 
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
+      order: [['productName', 'ASC']],
       include: [Product]
     })
     let totalQuantity = 0
     let totalPrice = 0
-    console.log('CURRENTORDER>>>>>>>>>>', currentOrder)
+
     currentOrder.map(eachProduct => {
       totalQuantity += eachProduct.productQuantity
       totalPrice += eachProduct.savedPrice * eachProduct.productQuantity
       return eachProduct
     })
+
     order.update({totalQuantity, totalPrice})
     res.json({currentOrder, totalQuantity, totalPrice})
   } catch (err) {
