@@ -5,21 +5,18 @@ import {updateShoppingCartThunk} from '../store/shoppingCart'
 
 const SingleProduct = props => {
   const {product, match, getProduct, addToCart} = props
-  // useEffect(() => {
-  //   getProduct(match.params.name)
-  // }, [])
-  // const [quantity, setQuatity] = useState(0)
+
   async function addToShoppingCart(singleProduct) {
     const productInfo = {
       id: singleProduct.id,
       quantity: 1
     }
-    console.log('this is cart: ', props)
+
     await addToCart(productInfo)
   }
-  console.log('this is cart: ', props)
+
   return (
-    <div className="modalDetails">
+    <div className="modal-details">
       {!product.name ? (
         <h1>Product Doesn't Exist</h1>
       ) : (
@@ -37,13 +34,13 @@ const SingleProduct = props => {
           {product.inStock !== 0 ? (
             <button
               type="button"
-              id="addToCart"
+              id="add-to-cart"
               onClick={() => addToShoppingCart(product)}
             >
               ADD TO CART
             </button>
           ) : (
-            <div id="outOfStock">OUT OF STOCK</div>
+            <div id="out-of-stock">OUT OF STOCK</div>
           )}
         </div>
       )}

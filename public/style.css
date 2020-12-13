@@ -481,8 +481,8 @@ label {
   font-size: 20px;
 }
 /* add to cart button: */
-#addToCart,
-#outOfStock {
+#add-to-cart,
+#out-of-stock {
   text-align: center;
   padding-left: 2px;
   cursor: copy;
@@ -497,7 +497,7 @@ label {
   padding: 2px;
   width: 90px;
 }
-#outOfStock {
+#out-of-stock {
   cursor: not-allowed;
   text-align: center;
   color: rgb(122, 0, 0);
@@ -574,7 +574,7 @@ label {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modalDetails {
+.modal-details {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -584,9 +584,10 @@ label {
   border-radius: 8px;
 }
 
-#singleProduct-container .closeButton {
+#singleProduct-container .close-modal-bttn {
   border: solid 1px;
   border-radius: 2px;
+  background-color: rgb(216, 127, 127);
   padding: 2px;
   height: 15px;
   width: 15px;
@@ -596,7 +597,7 @@ label {
   right: 20px;
 }
 
-.modalContainer {
+.modal-container {
   position: relative;
 }
 

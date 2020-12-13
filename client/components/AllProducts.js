@@ -90,8 +90,10 @@ const AllProducts = ({
   }
 
   const hideModal = event => {
-    let cName = ['modal', 'closeButton']
-    if (cName.includes(event.target.className)) setModal({show: false, id: ''})
+    let className = ['modal', 'close-modal-bttn']
+
+    if (className.includes(event.target.className))
+      setModal({show: false, id: ''})
   }
 
   return (
@@ -148,13 +150,13 @@ const AllProducts = ({
                 {product.inStock !== 0 ? (
                   <button
                     type="button"
-                    id="addToCart"
+                    id="add-to-cart"
                     onClick={() => addToShoppingCart(product)}
                   >
                     ADD TO CART
                   </button>
                 ) : (
-                  <div id="outOfStock">OUT OF STOCK</div>
+                  <div id="out-of-stock">OUT OF STOCK</div>
                 )}
                 {user.isAdmin && (
                   <div>
@@ -180,11 +182,11 @@ const AllProducts = ({
                 {modalState.show &&
                   product.id === modalState.id && (
                     <div className="modal" onClick={e => hideModal(e)}>
-                      <div className="modalContainer">
+                      <div className="modal-container">
                         <SingleProduct product={product} />
                         <img
                           src="closebutton.png"
-                          className="closeButton"
+                          className="close-modal-bttn"
                           onClick={e => hideModal(e)}
                         />
                       </div>
