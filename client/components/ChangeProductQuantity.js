@@ -5,7 +5,7 @@ export default function ChangeProductQuantity({item, updateCart}) {
 
   function onChange(proQuantity, count) {
     setQuantity(proQuantity)
-    console.log('changeCart>>>', item)
+
     updateCart({
       id: item.productId,
       quantity: count

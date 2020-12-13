@@ -119,7 +119,11 @@ const AllProducts = ({
         ) : (
           products.map(product => (
             <div key={product.id} id={singleProductContainer}>
-              <img src={product.image} onClick={() => showModal(product.id)} />
+              <img
+                className="product-img"
+                src={product.image}
+                onClick={() => showModal(product.id)}
+              />
               <div id={productInfoStyle}>
                 <div>
                   <h3 onClick={() => showModal(product.id)} id="product-name">

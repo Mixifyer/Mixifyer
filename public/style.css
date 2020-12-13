@@ -403,7 +403,7 @@ label {
   max-width: inherit;
 }
 
-#single-product-container img {
+#single-product-container .product-img {
   max-width: 150px;
   max-height: 140px;
   padding: 15px 15px 15px 15px;
@@ -577,8 +577,8 @@ label {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background-color: rgb(203, 226, 235);
   border-radius: 8px;
 }
@@ -587,7 +587,7 @@ label {
   margin-bottom: 10px;
 }
 .product-details-container {
-  width: 50%;
+  width: 45%;
 }
 .tags {
   width: 100%;
@@ -596,7 +596,11 @@ label {
   justify-content: space-between;
   color: rgb(65, 79, 207);
 }
-
+.product-image {
+  width: 35%;
+  height: 35%;
+  margin: 3%;
+}
 #single-product-container .close-modal-bttn {
   border: solid 1px;
   border-radius: 2px;
