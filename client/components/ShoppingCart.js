@@ -1,13 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import ChangeProductQuantity from './ChangeProductQuantity'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
-import {Link} from 'react-router-dom'
+import {Checkout} from './'
+// import {Link} from 'react-router-dom'
 
 const ShoppingCart = ({shoppingCart, updateCart}) => {
-  console.log(shoppingCart)
-  function onChange(productId) {
+  const [modalState, setModal] = useState({show: false})
+
+  const onChange = productId => {
     updateCart({id: productId}, 'remove')
+  }
+
+  const showModal = () => {
+    console.log('SHOW BEFORE>>>', modalState.show)
+    setModal({show: true})
+    console.log('SHOW AFTER>>>', modalState.show)
+  }
+
+  const hideModal = event => {
+    let className = ['modal', 'close-modal-bttn']
+
+    if (className.includes(event.target.className)) setModal({show: false})
   }
 
   return (
@@ -36,9 +50,21 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
             <h3>Items In Cart: {shoppingCart.totalQuantity}</h3>
             <h3>Total Price: {shoppingCart.totalPrice / 100}$</h3>
           </div>
-          <Link id="checkout-bttn" to="/checkout">
+          <div id="checkout-bttn" onClick={() => showModal()}>
             CHECKOUT
-          </Link>
+          </div>
+          {modalState.show && (
+            <div className="modal" onClick={e => hideModal(e)}>
+              <div className="modal-container">
+                <Checkout />
+                <img
+                  src="closebutton.png"
+                  className="close-modal-bttn"
+                  onClick={e => hideModal(e)}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
