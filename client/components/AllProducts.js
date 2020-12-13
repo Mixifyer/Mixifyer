@@ -65,8 +65,8 @@ const AllProducts = ({
     ? 'products-container'
     : 'products-container-admin'
   const singleProductContainer = !user.isAdmin
-    ? 'singleProduct-container'
-    : 'singleProduct-container-admin'
+    ? 'single-product-container'
+    : 'single-product-container-admin'
   const productInfoStyle = !user.isAdmin ? 'product-info' : 'product-info-admin'
 
   const {addToast} = useToasts()
@@ -125,21 +125,11 @@ const AllProducts = ({
                   <h3 onClick={() => showModal(product.id)} id="product-name">
                     {product.name}
                   </h3>
-                  {user.isAdmin ? (
+                  {user.isAdmin && (
                     <div>
                       <h5>Category: {product.category}</h5>
                       <h5>Type: {product.type}</h5>
                       <h5>Flavor: {product.flavor}</h5>
-                    </div>
-                  ) : (
-                    <div id="tags">
-                      <Link to={`/${product.type}/products`}>
-                        <h5>{product.type} </h5>
-                      </Link>
-
-                      <Link to={`/${product.flavor}/products`}>
-                        <h5>{product.flavor}</h5>
-                      </Link>
                     </div>
                   )}
 

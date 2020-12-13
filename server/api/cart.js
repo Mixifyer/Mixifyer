@@ -36,6 +36,7 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
+    console.log('quatity', req.body.quantity)
     const order = await Order.findOne({
       where: {
         userId: req.user.id,
@@ -61,8 +62,14 @@ router.put('/', async (req, res, next) => {
           productId: product.id
         }
       })
+      console.log(
+        'orderChange.productQuantity',
+        orderChange.productQuantity,
+        productOrder.productQuantity
+      )
       orderChange.productQuantity =
         productOrder.productQuantity + req.body.quantity
+      console.log('orderChange.productQuantity', orderChange.productQuantity)
       await productOrder.update(orderChange)
     } else {
       await order.addProduct(product, {through: orderChange})

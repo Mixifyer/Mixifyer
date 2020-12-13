@@ -386,8 +386,8 @@ label {
   width: 100%;
 }
 
-#singleProduct-container,
-#singleProduct-container-admin {
+#single-product-container,
+#single-product-container-admin {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -403,7 +403,7 @@ label {
   max-width: inherit;
 }
 
-#singleProduct-container img {
+#single-product-container img {
   max-width: 150px;
   max-height: 140px;
   padding: 15px 15px 15px 15px;
@@ -423,17 +423,6 @@ label {
   height: 30px;
 }
 
-#tags {
-  width: 120px;
-  margin-top: 25px;
-}
-
-#tags a {
-  display: inline-block;
-  color: rgb(65, 79, 207);
-  margin-right: 10px;
-}
-
 #product-info a:hover,
 #product-name:hover {
   color: rgb(138, 145, 206);
@@ -451,24 +440,24 @@ label {
   margin-top: 100px;
 }
 
-#singleProduct-container-admin {
+#single-product-container-admin {
   width: 750px;
 }
 
-#singleProduct-container-admin img {
+#single-product-container-admin img {
   max-width: 250px;
   max-height: 200px;
   padding: 5px;
 }
 
-#singleProduct-container-admin h3 {
+#single-product-container-admin h3 {
   width: 150px;
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 50px;
 }
 
-#singleProduct-container-admin h5 {
+#single-product-container-admin h5 {
   font-size: 16px;
   margin-top: 40px;
 }
@@ -516,6 +505,7 @@ label {
   .nav-links {
     display: none;
   }
+
   #label {
     font-size: 18px;
     width: 90px;
@@ -556,8 +546,13 @@ label {
     margin: 0px;
     margin-bottom: 20px;
   }
+  .modal-container,
+  .modal-details {
+    height: 70%;
+    max-width: 320px;
+  }
 }
-
+/* */
 .modal {
   display: flex;
   justify-content: center;
@@ -573,18 +568,36 @@ label {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
 }
+.modal-container {
+  position: relative;
+}
 
 .modal-details {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 500px;
   height: 500px;
-  background-color: rgb(254, 255, 254);
+  background-color: rgb(203, 226, 235);
   border-radius: 8px;
 }
+.product-details-container h3 {
+  border-bottom: solid 0.5px;
+  margin-bottom: 10px;
+}
+.product-details-container {
+  width: 50%;
+}
+.tags {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(65, 79, 207);
+}
 
-#singleProduct-container .close-modal-bttn {
+#single-product-container .close-modal-bttn {
   border: solid 1px;
   border-radius: 2px;
   background-color: rgb(216, 127, 127);
@@ -595,10 +608,6 @@ label {
   position: absolute;
   top: 20px;
   right: 20px;
-}
-
-.modal-container {
-  position: relative;
 }
 
 .shopping-cart-container {
