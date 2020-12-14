@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Link} from 'react-router-dom'
+import Message from './AuthErrorMessages'
 
 /**
  * COMPONENT
@@ -16,14 +17,29 @@ const AuthForm = props => {
       <form onSubmit={handleSubmit} name={name}>
         {name === 'signup' && (
           <div>
-            <input name="firstName" type="text" placeholder="First name" />
+            <input
+              name="firstName"
+              type="text"
+              placeholder="First name"
+              required
+            />
 
-            <input name="lastName" type="text" placeholder="Last name" />
+            <input
+              name="lastName"
+              type="text"
+              placeholder="Last name"
+              required
+            />
           </div>
         )}
-        <input name="email" type="text" placeholder="email" />
+        <input name="email" type="text" placeholder="email" required />
 
-        <input name="password" type="password" placeholder="password" />
+        <input
+          name="password"
+          type="password"
+          placeholder="password"
+          required
+        />
         {
           <div id="auth-submitBttn-google">
             <button type="submit" id={name}>
@@ -37,8 +53,7 @@ const AuthForm = props => {
             )}
           </div>
         }
-
-        {error && error.response && <div> {error.response.data} </div>}
+        {error && error.response ? Message(name, error) : <div />}
       </form>
       {name === 'login' && (
         <div id="create-Account">
@@ -79,17 +94,17 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
+
+      const formName = evt.target.name
+      const email = evt.target.email.value
+      const password = evt.target.password.value
       let firstName
       let lastName
-      if (name === 'signup') {
+      if (formName === 'signup') {
         firstName = evt.target.firstName.value
         lastName = evt.target.lastName.value
       }
-      const formName = evt.target.name
-
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(auth(email, password, formName, firstName, lastName))
+      dispatch(auth(firstName, lastName, email, password, formName))
     }
   }
 }

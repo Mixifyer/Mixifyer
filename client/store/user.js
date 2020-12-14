@@ -34,14 +34,15 @@ export const me = () => async dispatch => {
 }
 
 export const auth = (
+  firstName,
+  lastName,
   email,
   password,
-  method,
-  firstName,
-  lastName
+  method
 ) => async dispatch => {
   let res
   try {
+    console.log('new user', email, password, method, firstName, lastName)
     res = await axios.post(`/auth/${method}`, {
       firstName,
       lastName,

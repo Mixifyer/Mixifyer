@@ -1,60 +1,101 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {CardInfo} from './CardInfo'
-import {Elements, CardElement} from '@stripe/react-stripe-js'
-import {loadStripe} from '@stripe/stripe-js'
+import {getShoppingCartOrCheckoutThunk} from '../store/shoppingCart'
+import {useStripe, CardElement, useElements} from '@stripe/react-stripe-js'
+import history from '../history'
 
 export const Checkout = props => {
   const [user, setUser] = useState(props.user)
-  const stripePromise = loadStripe(
-    'pk_test_51Hy1ivKFUCccu24m606xgCkpJHsdx0gIc9diGHO6j8tQZkiYYbhvoX9HKFXqVHA4pS8y1PSq876SwlvjUEu1NtAJ009BVL4Ry8'
-  )
+
+  const stripe = useStripe()
+  const elements = useElements()
+
+  const handleSubmit = async event => {
+    console.log('Start success')
+    event.preventDefault()
+
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return
+    }
+
+    console.log('Start success......')
+    const result = await stripe.confirmCardPayment(props.clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          name: 'Jenny Rosen'
+        }
+      }
+    })
+    console.log('Continue success')
+    //PAYMENT FAILED
+    if (result.error) {
+      setOpen(true)
+      // Show error to your customer (e.g., insufficient funds)
+      console.log(result.error.message)
+    } else if (result.paymentIntent.status === 'succeeded') {
+      //SUCCESSFUL PAYMENT
+      console.log('finish success', props)
+      props.createNewOrder(props.currentOrder, 'checkout')
+      history.push('/confirmationPage')
+      //
+    }
+  }
 
   return (
-    <Elements className="checkout-container" stripe={stripePromise}>
-      <div className="checkout-modal-details">
-        <h3>CHECKOUT</h3>
-        <div className="checkout-form">
-          <label name="firstName"> First Name </label>
-          <input
-            type="text"
-            name="firstName"
-            autoComplete="off"
-            defaultValue={user.firstName}
-          />
-          <label name="lastName"> Last Name </label>
-          <input
-            type="text"
-            name="lastName"
-            autoComplete="off"
-            defaultValue={user.lastName}
-          />
-          <label name="email"> Email </label>
-          <input
-            type="text"
-            name="email"
-            autoComplete="off"
-            defaultValue={user.email}
-          />
-          <label name="address"> Shipping Address </label>
-          <input
-            type="text"
-            name="address"
-            autoComplete="off"
-            defaultValue={user.address}
-          />
-          <CardInfo />
-        </div>
-        <button type="button">Place Your Order</button>
+    <form onSubmit={handleSubmit} className="checkout-modal-details">
+      <h3>CHECKOUT</h3>
+      <div className="checkout-form">
+        <label name="firstName"> First Name </label>
+        <input
+          type="text"
+          name="firstName"
+          autoComplete="off"
+          defaultValue={user.firstName}
+        />
+        <label name="lastName"> Last Name </label>
+        <input
+          type="text"
+          name="lastName"
+          autoComplete="off"
+          defaultValue={user.lastName}
+        />
+        <label name="email"> Email </label>
+        <input
+          type="text"
+          name="email"
+          autoComplete="off"
+          defaultValue={user.email}
+        />
+        <label name="address"> Shipping Address </label>
+        <input
+          type="text"
+          name="address"
+          autoComplete="off"
+          defaultValue={user.address}
+        />
+        <CardInfo />
       </div>
-    </Elements>
+      <button type="submit">Place Your Order</button>
+    </form>
   )
 }
 
 const mapState = state => {
   return {
-    user: state.user
+    currentOrder: state.shoppingCart.currentOrder,
+    user: state.user,
+    clientSecret: state.clientSecret
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+    createNewOrder: (order, method) =>
+      dispatch(getShoppingCartOrCheckoutThunk(order, method))
   }
 }
 
-export default connect(mapState, null)(Checkout)
+export default connect(mapState, mapDispatch)(Checkout)

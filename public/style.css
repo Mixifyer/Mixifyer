@@ -806,6 +806,16 @@ label {
 .checkout-card-label {
   width: 40em;
 }
+.pay-confirm-page {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#comfirm-img {
+  height: 5em;
+  width: 5em;
+}
 /* .FormGroup {
   margin: 0 15px 20px;
   padding: 0;

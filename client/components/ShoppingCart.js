@@ -2,10 +2,17 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import ChangeProductQuantity from './ChangeProductQuantity'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
+import {getClientSecret} from '../store/client'
 import {Checkout} from './'
+import {Elements} from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe-js'
+
+const stripePromise = loadStripe(
+  'pk_test_51Hy1ivKFUCccu24m606xgCkpJHsdx0gIc9diGHO6j8tQZkiYYbhvoX9HKFXqVHA4pS8y1PSq876SwlvjUEu1NtAJ009BVL4Ry8'
+)
 // import {Link} from 'react-router-dom'
 
-const ShoppingCart = ({shoppingCart, updateCart}) => {
+const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
   const [modalState, setModal] = useState({show: false})
 
   const onChange = (productId, qty) => {
@@ -14,6 +21,7 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
 
   const showModal = () => {
     setModal({show: true})
+    getSecret()
   }
 
   const hideModal = event => {
@@ -54,7 +62,9 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
           {modalState.show && (
             <div className="modal" onClick={e => hideModal(e)}>
               <div className="modal-container">
-                <Checkout />
+                <Elements className="checkout-container" stripe={stripePromise}>
+                  <Checkout />
+                </Elements>
                 <img
                   src="closebutton.png"
                   className="close-modal-bttn"
@@ -71,14 +81,16 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
 
 const mapState = state => {
   return {
-    shoppingCart: state.shoppingCart
+    shoppingCart: state.shoppingCart,
+    clientSecret: state.clientSecret
   }
 }
 
 const mapDispatch = dispatch => {
   return {
     updateCart: (item, method) =>
-      dispatch(updateShoppingCartThunk(item, method))
+      dispatch(updateShoppingCartThunk(item, method)),
+    getSecret: () => dispatch(getClientSecret())
   }
 }
 

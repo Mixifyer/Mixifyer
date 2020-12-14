@@ -99,6 +99,7 @@ router.put('/', async (req, res, next) => {
 
 router.put('/checkout', async (req, res, next) => {
   try {
+    console.log('new oeder>>>>>>: '.newOrder)
     const order = await Order.findOne({
       where: {
         userId: req.user.id,
@@ -116,10 +117,11 @@ router.put('/checkout', async (req, res, next) => {
         inStock: result
       })
     })
-    await order.update(req.body)
+    await order.update({isActive: false})
     const newOrder = await Order.create({})
+
     await req.user.addOrder(newOrder)
-    res.json(newOrder)
+    res.json({currentOrder: [], totalQuantity: 0, totalPrice: 0})
   } catch (error) {
     next(error)
   }

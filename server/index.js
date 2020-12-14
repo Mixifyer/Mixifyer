@@ -15,6 +15,7 @@ module.exports = app
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
 if (process.env.NODE_ENV === 'test') {
+  console.log('new error>>>>>>>>>')
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
 

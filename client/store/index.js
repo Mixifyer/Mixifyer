@@ -7,13 +7,15 @@ import products from './products'
 import singleProduct from './singleProduct'
 import searchBar from './searchBar'
 import shoppingCart from './shoppingCart'
+import clientSecret from './client'
 
 const reducer = combineReducers({
   user,
   products,
   singleProduct,
   searchBar,
-  shoppingCart
+  shoppingCart,
+  clientSecret
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

@@ -21,12 +21,13 @@ export const getShoppingCartOrCheckoutThunk = (
 ) => async dispatch => {
   try {
     if (method === 'checkout') {
-      const {data} = await axios.get('api/cart', order)
+      console.log('starting new order: ', order)
+      const {data} = await axios.put('api/cart/checkout', order)
+      console.log('new order: ', data)
       dispatch(getOrUpdateShoppingCart(data))
     } else {
       const {data} = await axios.get('api/cart')
       dispatch(getOrUpdateShoppingCart(data))
-      console.log('getShopThink:  ', data)
     }
   } catch (error) {
     console.log(error)
@@ -37,7 +38,7 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
   try {
     if (method === 'remove') {
       const {data} = await axios.delete(`api/cart/${product.id}`)
-      console.log('cartThunk: >>>>', data)
+
       dispatch(removeProductFromShoppingCart(product))
     } else {
       let startOfURL = 'http://' + window.location.host
