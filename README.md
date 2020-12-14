@@ -183,7 +183,7 @@ git commit -m 'travis: activate deployment'
 git push -u origin f/travis-deploy
 ```
 
-4.  Make a Pull Request for the new branch, get it approved, and merge it into
+4.  Make a Pull Request for the new branch, get it approved, and merge it inton
     the master branch.
 
 _**NOTE**_ that this script depends on your local `origin` Git remote matching
