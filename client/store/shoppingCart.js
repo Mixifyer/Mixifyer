@@ -41,7 +41,7 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
 
       dispatch(removeProductFromShoppingCart(product))
     } else {
-      let startOfURL = 'http://' + window.location.host
+      // let startOfURL = 'http://' + window.location.host
       const data = await axios.put(`/api/cart`, product)
       dispatch(getOrUpdateShoppingCart(data.data))
     }
