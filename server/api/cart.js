@@ -99,7 +99,6 @@ router.put('/', async (req, res, next) => {
 
 router.put('/checkout', async (req, res, next) => {
   try {
-    console.log('new oeder>>>>>>: '.newOrder)
     const order = await Order.findOne({
       where: {
         userId: req.user.id,

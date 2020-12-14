@@ -21,7 +21,6 @@ export const Checkout = props => {
       return
     }
 
-    console.log('Start success......')
     const result = await stripe.confirmCardPayment(props.clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -30,7 +29,7 @@ export const Checkout = props => {
         }
       }
     })
-    console.log('Continue success')
+
     //PAYMENT FAILED
     if (result.error) {
       setOpen(true)
@@ -38,7 +37,7 @@ export const Checkout = props => {
       console.log(result.error.message)
     } else if (result.paymentIntent.status === 'succeeded') {
       //SUCCESSFUL PAYMENT
-      console.log('finish success', props)
+
       props.createNewOrder(props.currentOrder, 'checkout')
       history.push('/confirmationPage')
       //

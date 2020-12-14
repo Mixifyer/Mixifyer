@@ -1,10 +1,8 @@
 import React from 'react'
 const Message = (method, error) => {
-  console.log('error.....', error.response.data)
-  let errMessage = error.response.data
   const responseMessage = (
-    <div>
-      <div>{errMessage}</div>
+    <div id="err-message">
+      <div>{error.response.data}</div>
     </div>
   )
   if (

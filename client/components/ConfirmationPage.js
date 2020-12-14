@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-function ConfirmationPage({user, orderId}) {
+function ConfirmationPage() {
   return (
     <div className="pay-confirm-page">
       <img id="comfirm-img" src="confirm-img.png" />
       <h2>Your order is complete!</h2>
-      <h2>The order number is 0000{orderId}</h2>
+      <h2>The order number is 0000</h2>
       <h2>Thank you for your purchase!</h2>
     </div>
   )
@@ -14,8 +14,7 @@ function ConfirmationPage({user, orderId}) {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
-    orderId: state.shoppingCart.currentOrder.orderId
+    currentOrder: state.shoppingCart.currentOrder
   }
 }
 
