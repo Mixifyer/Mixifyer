@@ -8,7 +8,7 @@ import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 
 const stripePromise = loadStripe(
-  'pk_test_51Hy1ivKFUCccu24m606xgCkpJHsdx0gIc9diGHO6j8tQZkiYYbhvoX9HKFXqVHA4pS8y1PSq876SwlvjUEu1NtAJ009BVL4Ry8'
+  'pk_test_51HxxQPA18Upi8vjogiVpqqbF60fd6wylq3kezwrqlM4oDnbZak6sAdlP0gSViQo2YhaqNfTo77NnFWE00YQ8Yqlr00AhZEP2uG'
 )
 // import {Link} from 'react-router-dom'
 
@@ -19,9 +19,15 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
     updateCart({id: productId, quantity: qty}, 'remove')
   }
 
+  const checkoutButtonId = shoppingCart.currentOrder.length
+    ? 'checkout-bttn'
+    : 'checkout-bttn-disabled'
+
   const showModal = () => {
     setModal({show: true})
+    console.log('BEFORE GETSECRET>>>>>>')
     getSecret()
+    console.log('AFTER GETSECRET>>>>>>')
   }
 
   const hideModal = event => {
@@ -56,9 +62,14 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
             <h3>Items In Cart: {shoppingCart.totalQuantity}</h3>
             <h3>Total Price: {shoppingCart.totalPrice / 100}$</h3>
           </div>
-          <div id="checkout-bttn" onClick={() => showModal()}>
+          <button
+            type="button"
+            disabled={!shoppingCart.currentOrder.length}
+            id={checkoutButtonId}
+            onClick={() => showModal()}
+          >
             CHECKOUT
-          </div>
+          </button>
           {modalState.show && (
             <div className="modal" onClick={e => hideModal(e)}>
               <div className="modal-container">

@@ -10,7 +10,9 @@ const updateClient = secret => ({
 export const getClientSecret = () => {
   return async dispatch => {
     try {
+      console.log('InsideGetClientSecretBefore>>>>>')
       const response = await axios.get('/secret')
+      console.log('InsideGetClientSecretAfter>>>>>', response)
 
       dispatch(updateClient(response.data.client_secret))
     } catch (error) {

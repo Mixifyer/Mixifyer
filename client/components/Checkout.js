@@ -12,7 +12,6 @@ export const Checkout = props => {
   const elements = useElements()
 
   const handleSubmit = async event => {
-    console.log('Start success')
     event.preventDefault()
 
     if (!stripe || !elements) {

@@ -35,6 +35,10 @@ hr {
   display: none;
 }
 
+button:focus {
+  outline: none;
+}
+
 img {
   max-width: 400px;
   max-height: 400px;
@@ -585,6 +589,7 @@ label {
   background-color: rgb(203, 226, 235);
   border-radius: 8px;
 }
+
 .product-details-container h3 {
   border-bottom: solid 0.5px;
   margin-bottom: 10px;
@@ -732,7 +737,8 @@ label {
   margin-top: 10px;
 }
 
-#checkout-bttn {
+#checkout-bttn,
+#checkout-bttn-disabled {
   width: 25%;
   height: 30%;
   font-size: 17px;
@@ -743,6 +749,12 @@ label {
   border: transparent;
   border-radius: 7px;
   box-shadow: 0.5px 0.5px rgb(28, 27, 27);
+}
+
+#checkout-bttn-disabled {
+  color: black;
+  background-color: grey;
+  opacity: 0.75;
 }
 
 .checkout-modal-details {

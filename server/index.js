@@ -85,15 +85,18 @@ const createApp = () => {
   })
   //STRIPE
   app.get('/secret', async (req, res) => {
+    console.log('INSIDE GET REQUEST>>>>>')
     const intent = await stripe.paymentIntents.create({
       amount: 1099,
       currency: 'usd',
       // Verify your integration in this guide by including this parameter
       metadata: {integration_check: 'accept_a_payment'}
     })
-
+    console.log('INSIDE GET REQUEST AFTER AXIOS intent>>>>>>', intent)
+    let secret = {client_secret: intent.client_secret}
+    console.log('SECRET/CLIENT SECRET>>>>>')
     // ... Fetch or create the PaymentIntent
-    res.json({client_secret: intent.client_secret})
+    res.json(secret)
   })
 
   // sends index.html
