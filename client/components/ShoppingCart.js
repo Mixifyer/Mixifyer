@@ -9,14 +9,11 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
   const [modalState, setModal] = useState({show: false})
 
   const onChange = (productId, qty) => {
-    console.log(shoppingCart)
     updateCart({id: productId, quantity: qty}, 'remove')
   }
 
   const showModal = () => {
-    console.log('SHOW BEFORE>>>', modalState.show)
     setModal({show: true})
-    console.log('SHOW AFTER>>>', modalState.show)
   }
 
   const hideModal = event => {

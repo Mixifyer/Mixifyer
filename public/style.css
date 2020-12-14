@@ -728,6 +728,9 @@ label {
   align-items: center;
   margin: 0% 10%;
 }
+.cart-total-details h3 {
+  margin-top: 10px;
+}
 
 #checkout-bttn {
   width: 25%;
