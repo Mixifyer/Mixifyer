@@ -55,7 +55,7 @@ const AuthForm = props => {
       {name === 'login' && (
         <div id="create-Account">
           <p>
-            New to <span>Mixifyer</span>?
+            New to <span>HELLO!!!!!!</span>?
           </p>
           <Link to="/signup">Create an account</Link>
         </div>
