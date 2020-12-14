@@ -8,8 +8,9 @@ import {Checkout} from './'
 const ShoppingCart = ({shoppingCart, updateCart}) => {
   const [modalState, setModal] = useState({show: false})
 
-  const onChange = productId => {
-    updateCart({id: productId}, 'remove')
+  const onChange = (productId, qty) => {
+    console.log(shoppingCart)
+    updateCart({id: productId, quantity: qty}, 'remove')
   }
 
   const showModal = () => {
@@ -37,7 +38,7 @@ const ShoppingCart = ({shoppingCart, updateCart}) => {
               <img
                 src="remove-img.png"
                 id="delete-item"
-                onClick={() => onChange(item.productId)}
+                onClick={() => onChange(item.productId, item.productQuantity)}
               />
             </div>
           )

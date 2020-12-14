@@ -553,19 +553,14 @@ label {
   }
 }
 
-#checkout-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 /* */
 .modal {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 10%;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -578,13 +573,15 @@ label {
   position: relative;
 }
 
-.modal-details {
+.modal-details,
+.checkout-modal-details {
+  /* margin-top: 10%; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 600px;
-  height: 600px;
+  height: 500px;
   background-color: rgb(203, 226, 235);
   border-radius: 8px;
 }
@@ -731,15 +728,108 @@ label {
   align-items: center;
   margin: 0% 10%;
 }
-.cart-totals a {
+
+#checkout-bttn {
   width: 25%;
   height: 30%;
   font-size: 17px;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   background-color: rgb(252, 59, 59);
   color: rgb(254, 254, 254);
-  border: solid 0.3px rgb(63, 63, 63);
+  border: transparent;
   border-radius: 7px;
   box-shadow: 0.5px 0.5px rgb(28, 27, 27);
 }
+
+.checkout-modal-details {
+  flex-direction: column;
+}
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 75%;
+}
+.checkout-form input {
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: solid 1px gray;
+}
+.checkout-form label {
+  padding-left: 5px;
+  width: 100%;
+}
+.checkout-modal-details button {
+  background-color: rgb(38, 180, 38);
+  border: transparent;
+  border-radius: 7px;
+  box-shadow: 0.7px 0.7px rgb(28, 27, 27);
+  height: 30px;
+  width: 30%;
+  color: white;
+}
+
+/* STRIPE CARD CSS */
+.StripeElement {
+  height: 30px;
+  width: 100%;
+  padding: 5px 10px;
+  margin: 25px 0px;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 4px;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.checkout-card-label {
+  width: 40em;
+}
+/* .FormGroup {
+  margin: 0 15px 20px;
+  padding: 0;
+  border-style: none;
+  background-color: #7795f8;
+  will-change: opacity, transform;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 #c5cff0;
+  border-radius: 4px;
+  width: 50%;
+  height: 50%;
+}
+
+.FormRow {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 15px;
+  border-top: 1px solid #819efc;
+}
+
+.StripeElement--webkit-autofill {
+  background: transparent !important;
+}
+
+.StripeElement {
+  width: 100%;
+  padding: 11px 15px 11px 0;
+} */

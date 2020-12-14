@@ -9,9 +9,9 @@ export const getOrUpdateShoppingCart = shoppingCart => ({
   type: GET_OR_UPDATE_SHOPPINGCART,
   shoppingCart
 })
-const removeProductFromShoppingCart = productId => ({
+const removeProductFromShoppingCart = product => ({
   type: REMOVE_PRODUCT_FROM_SHOPPINGCART,
-  productId
+  product
 })
 
 // THUNKS:
@@ -38,7 +38,7 @@ export const updateShoppingCartThunk = (product, method) => async dispatch => {
     if (method === 'remove') {
       const {data} = await axios.delete(`api/cart/${product.id}`)
       console.log('cartThunk: >>>>', data)
-      dispatch(removeProductFromShoppingCart(data))
+      dispatch(removeProductFromShoppingCart(product))
     } else {
       let startOfURL = 'http://' + window.location.host
       const data = await axios.put(`${startOfURL}/api/cart`, product)
@@ -60,12 +60,12 @@ export default function(state = initialCart, action) {
     case GET_OR_UPDATE_SHOPPINGCART:
       return action.shoppingCart
     case REMOVE_PRODUCT_FROM_SHOPPINGCART:
-      console.log('raducer', state)
       return {
         ...state,
         currentOrder: state.currentOrder.filter(
-          product => product.productId !== action.productId
-        )
+          product => product.productId !== action.product.id
+        ),
+        totalQuantity: state.totalQuantity - action.product.quantity
       }
 
     default:
