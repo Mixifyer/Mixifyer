@@ -1510,10 +1510,12 @@ var Navbar = function Navbar(_ref) {
       isLoggedIn = _ref.isLoggedIn,
       shoppingCart = _ref.shoppingCart;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       statusBurger = _useState2[0],
       setStatus = _useState2[1];
+
+  console.log('.......', window.innerWidth);
 
   var onClickBurger = function onClickBurger() {
     setStatus(!statusBurger);
@@ -1525,10 +1527,38 @@ var Navbar = function Navbar(_ref) {
     console.log(statusBurger);
   };
 
-  var linksClass = statusBurger ? "nav-links-burger" : "nav-links-x";
-  var burgerFirstLine = !statusBurger ? "first-line-burger" : "first-line-x";
-  var burgerSecondLine = !statusBurger ? "second-line-burger" : "second-line-x";
-  console.log(linksClass);
+  var linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x';
+  var burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x';
+  var burgerSecondLine = !statusBurger ? 'second-line-burger' : 'second-line-x';
+
+  var cart = function cart(idName) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "shopCart-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      to: "/shopping-cart",
+      onClick: function onClick() {
+        return onClickLinks();
+      },
+      id: idName
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-body"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-left"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-bottom"
+    }, shoppingCart.totalQuantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-right"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-handle"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "wheels"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "wheels"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "wheels"
+    }))));
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "nav-bar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1546,7 +1576,7 @@ var Navbar = function Navbar(_ref) {
     },
     to: "/home",
     id: "label"
-  }, "Mixifyer"), isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Mixifyer"), window.innerWidth <= 755 && cart("shopping-cart-mobile"), isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
@@ -1576,13 +1606,7 @@ var Navbar = function Navbar(_ref) {
   }, "BITTERS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: handleClick
-  }, "LOGOUT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    onClick: function onClick() {
-      return onClickLinks();
-    },
-    to: "/shopping-cart",
-    id: "shoppingCart"
-  }, "CART (", shoppingCart.totalQuantity, ")")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "LOGOUT"), cart("shopping-cart")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/products",
@@ -1609,13 +1633,7 @@ var Navbar = function Navbar(_ref) {
     onClick: function onClick() {
       return onClickLinks();
     }
-  }, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/checkout",
-    onClick: function onClick() {
-      return onClickLinks();
-    },
-    id: "shoppingCart"
-  }, "CART (0)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+  }, "LOGIN"), cart("shopping-cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
 };
 /**
  * CONTAINER

@@ -6,7 +6,8 @@ import {logout} from '../store'
 import SearchBar from './SearchBar'
 
 const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
-  const [statusBurger, setStatus] = useState(true)
+  const [statusBurger, setStatus] = useState(false)
+  console.log('.......', window.innerWidth)
 
   const onClickBurger = () => {
     setStatus(!statusBurger)
@@ -21,7 +22,24 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
   const burgerSecondLine = !statusBurger
     ? 'second-line-burger'
     : 'second-line-x'
-  console.log(linksClass)
+
+  const cart = idName => (
+    <div className="shopCart-container">
+      <Link to="/shopping-cart" onClick={() => onClickLinks()} id={idName}>
+        <div id="cart-body">
+          <div id="cart-left" />
+          <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
+          <div id="cart-right" />
+
+          <div id="cart-handle" />
+        </div>
+        <div id="wheels">
+          <div className="wheels" />
+          <div className="wheels" />
+        </div>
+      </Link>
+    </div>
+  )
   return (
     <div id="nav-bar">
       <nav>
@@ -32,7 +50,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
         <Link onClick={() => onClickLinks()} to="/home" id="label">
           Mixifyer
         </Link>
-
+        {window.innerWidth <= 755 && cart('shopping-cart-mobile')}
         {isLoggedIn ? (
           <div className={linksClass}>
             <SearchBar />
@@ -55,13 +73,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <a href="#" onClick={handleClick}>
               LOGOUT
             </a>
-            <Link
-              onClick={() => onClickLinks()}
-              to="/shopping-cart"
-              id="shoppingCart"
-            >
-              CART ({shoppingCart.totalQuantity})
-            </Link>
+            {cart('shopping-cart')}
           </div>
         ) : (
           <div className={linksClass}>
@@ -82,13 +94,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <Link to="/login" onClick={() => onClickLinks()}>
               LOGIN
             </Link>
-            <Link
-              to="/checkout"
-              onClick={() => onClickLinks()}
-              id="shoppingCart"
-            >
-              CART (0)
-            </Link>
+            {cart('shopping-cart')}
           </div>
         )}
       </nav>
