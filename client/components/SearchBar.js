@@ -10,7 +10,7 @@ const SearchBar = ({searchValue, editSearchWord}) => {
   }
 
   return (
-    <div id="searchBar">
+    <div id="search-bar">
       <input
         type="search"
         id="searchInput"

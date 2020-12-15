@@ -23,7 +23,7 @@ body {
 #main-container {
   display: flex;
   justify-content: center;
-  margin-top: 4%;
+  margin-top: 7%;
   width: 100%;
 }
 
@@ -53,6 +53,35 @@ img {
   padding: 0px;
   height: 12%;
   width: 100%;
+}
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  margin: 30px;
+  height: 10px;
+  width: 25px;
+}
+
+#first-line-burger,
+#second-line-burger {
+  height: 0.1px;
+  width: 25px;
+  border: solid 0.1px;
+}
+
+#first-line-x {
+  height: 0.1px;
+  width: 25px;
+  border: solid 0.1px;
+  transform: rotate(-45deg) translate(-0.5px, 5.5px);
+}
+#second-line-x {
+  height: 0.1px;
+  width: 25px;
+  border: solid 0.1px;
+  transform: rotate(45deg) translate(-0.5px, -5.5px);
 }
 
 nav a {
@@ -86,7 +115,8 @@ nav a:hover {
   margin-left: 35px;
 }
 
-.nav-links {
+.nav-links-burger,
+.nav-links-x {
   float: right;
   padding-top: 50px;
   margin-right: 50px;
@@ -102,7 +132,7 @@ nav a:hover {
   padding: 1.5px;
 }
 
-#searchBar {
+#search-bar {
   display: flex;
   float: left;
   height: 20px;
@@ -165,6 +195,7 @@ nav a:hover {
   height: 45px;
 }
 #auth-submitBttn-google {
+  width: 100%;
   display: flex;
   direction: row;
   justify-content: space-between;
@@ -173,12 +204,13 @@ nav a:hover {
 
 #auth-container button,
 #auth-container a {
+  width: 100%;
   height: 30px;
   box-shadow: 0px 1px 2px rgb(155, 153, 153);
-  width: 30%;
+  color: white;
   border: solid 0.3px rgb(209, 205, 205);
-  font-size: 20px;
-  background-color: rgb(229, 241, 247);
+  font-size: 1.3em;
+  background-color: rgb(110, 186, 223);
   border-radius: 5px;
 }
 #auth-container a {
@@ -216,7 +248,7 @@ nav a:hover {
 #create-Account a {
   background-color: rgb(26, 163, 26);
   color: rgb(250, 239, 239);
-  padding: 2px;
+  padding: 5px;
 }
 /* user-home page */
 #home-container {
@@ -506,14 +538,55 @@ label {
 }
 
 @media screen and (max-width: 755px) {
-  .nav-links {
+  .burger {
+    display: flex;
+  }
+  #search-bar {
     display: none;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    margin: 1.7em 0em 0em 1.3em;
+    width: 20px;
+    height: 15px;
   }
 
   #label {
     font-size: 18px;
     width: 90px;
   }
+  .nav-links-burger {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #424957;
+    top: 10%;
+    text-align: left;
+    transition: all 0.5s ease-in-out;
+    margin: 0px;
+    padding-top: 5%;
+  }
+  .nav-links-x {
+    display: none;
+  }
+  .nav-links-burger a {
+    display: block;
+    width: 80%;
+    padding: 5px 0px;
+    border-bottom: solid 1px rgb(192, 188, 188);
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0% 10% 5% 10%;
+  }
+
   .products-container {
     justify-content: center;
   }
@@ -528,7 +601,7 @@ label {
   }
 
   #auth-container form input {
-    max-width: 60%;
+    max-width: 100%;
   }
   #auth-container button {
     margin-right: 60%;
