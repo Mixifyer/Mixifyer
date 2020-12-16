@@ -1084,9 +1084,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
     setModal({
       show: true
     });
-    console.log('BEFORE GETSECRET>>>>>>');
     getSecret();
-    console.log('AFTER GETSECRET>>>>>>');
   };
 
   var hideModal = function hideModal(event) {
@@ -1104,9 +1102,11 @@ var ShoppingCart = function ShoppingCart(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: item.productId,
       className: "cart-item"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "cart-item-img"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: item.product.image
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChangeProductQuantity__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChangeProductQuantity__WEBPACK_IMPORTED_MODULE_2__["default"], {
       item: item,
       updateCart: updateCart
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

@@ -25,9 +25,7 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
 
   const showModal = () => {
     setModal({show: true})
-    console.log('BEFORE GETSECRET>>>>>>')
     getSecret()
-    console.log('AFTER GETSECRET>>>>>>')
   }
 
   const hideModal = event => {
@@ -42,8 +40,9 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
         {shoppingCart.currentOrder.map(item => {
           return (
             <div key={item.productId} className="cart-item">
-              <img src={item.product.image} />
-
+              <div id="cart-item-img">
+                <img src={item.product.image} />
+              </div>
               <ChangeProductQuantity item={item} updateCart={updateCart} />
 
               <img
