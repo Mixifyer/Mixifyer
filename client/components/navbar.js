@@ -65,7 +65,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
               SPIRITS
             </Link>
             <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
-              NON-ALCOGOLIC
+              NON-ALCOHOLIC
             </Link>
             <Link to="/bitter/products" onClick={() => onClickLinks()}>
               BITTERS

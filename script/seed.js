@@ -1,6 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
+const data = require('./data')
 const {User, Product, Cocktail} = require('../server/db/models')
 
 async function seed() {
@@ -25,69 +26,98 @@ async function seed() {
     })
   ])
 
-  const product = await Promise.all([
-    Product.create({
-      name: 'Mixifyer Bitter',
-      category: 'bitter',
-      type: 'dark',
-      flavor: 'rhubarb',
-      price: 299,
-      volume: 4,
-      inStock: 50
-    }),
-    Product.create({
-      name: 'Mixifyer Vodka',
-      category: 'spirit',
-      type: 'Vodka',
-      flavor: 'plain',
-      price: 2199,
-      volume: 16,
-      inStock: 100,
-      image: 'https://cdn.mos.cms.futurecdn.net/iHHBqNXQN5B66Qf2oKDKjh.jpg'
-    }),
-    Product.create({
-      name: 'Mixifyer Soda',
-      category: 'soda',
-      type: 'sparkling',
-      flavor: 'lemon',
-      price: 199,
-      volume: 8,
-      inStock: 100
-    }),
-    Product.create({
-      name: 'Carona',
-      category: 'spirit',
-      type: 'beer',
-      flavor: null,
-      price: 199,
-      volume: 16,
-      inStock: 100,
-      image:
-        'https://imbibemagazine.com/wp-content/uploads/2015/03/cranberry-bitters-crdt-stu-mullenberg.jpg'
-    }),
-    Product.create({
-      name: 'Modelo',
-      category: 'spirit',
-      type: 'beer',
-      flavor: 'lemon',
-      price: 199,
-      volume: 2,
-      inStock: 0,
-      image:
-        'https://dydza6t6xitx6.cloudfront.net/ci-corona-extra-2501fe5ca490cb1d.jpeg'
-    }),
-    Product.create({
-      name: 'Cranberry Juice Cons',
-      category: 'non-alcoholic',
-      type: 'Juice',
-      flavor: null,
-      price: 299,
-      volume: 16,
-      inStock: 100,
-      image:
-        'https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/hb9/h7a/10987886280734.png'
-    })
-  ])
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i]
+    await Promise.all([
+      Product.create({
+        name: item.name,
+        image: item.image,
+        category: item.category,
+        type: item.type,
+        flavor: item.flavor,
+        price: item.price,
+        volume: item.volume,
+        inStock: item.inStock
+      })
+    ])
+  }
+
+  //   const product = await Promise.all([
+  //     Product.create({
+  //       name: 'Mixifyer Bitter',
+
+  //       category: 'bitter',
+  //       type: 'dark',
+  //       flavor: 'rhubarb',
+  //       price: 299,
+  //       volume: 4,
+  //       inStock: 50
+  //     }),])
+  // }
+
+  // const product = await Promise.all([
+  //   Product.create({
+  //     name: 'Mixifyer Bitter',
+  //     category: 'bitter',
+  //     type: 'dark',
+  //     flavor: 'rhubarb',
+  //     price: 299,
+  //     volume: 4,
+  //     inStock: 50
+  //   }),
+  //   Product.create({
+  //     name: 'Mixifyer Vodka',
+  //     category: 'spirit',
+  //     type: 'Vodka',
+  //     flavor: 'plain',
+  //     price: 2199,
+  //     volume: 16,
+  //     inStock: 100,
+  //     image: 'https://cdn.mos.cms.futurecdn.net/iHHBqNXQN5B66Qf2oKDKjh.jpg'
+  //   }),
+  //   Product.create({
+  //     name: 'Mixifyer Soda',
+  //     category: 'soda',
+  //     type: 'sparkling',
+  //     flavor: 'lemon',
+  //     price: 199,
+  //     volume: 8,
+  //     inStock: 100
+  //   }),
+  //   Product.create({
+  //     name: 'Corona',
+  //     category: 'spirit',
+  //     type: 'beer',
+  //     flavor: null,
+  //     price: 199,
+  //     volume: 16,
+  //     inStock: 100,
+  //     image:
+  //       'https://imbibemagazine.com/wp-content/uploads/2015/03/cranberry-bitters-crdt-stu-mullenberg.jpg'
+  //   }),
+  //   Product.create({
+  //     name: 'Modelo',
+  //     category: 'spirit',
+  //     type: 'beer',
+  //     flavor: 'lemon',
+  //     price: 199,
+  //     volume: 2,
+  //     inStock: 0,
+  //     image:
+  //       'https://dydza6t6xitx6.cloudfront.net/ci-corona-extra-2501fe5ca490cb1d.jpeg'
+  //   }),
+  //   Product.create({
+  //     name: 'Cranberry Juice Cons',
+  //     category: 'non-alcoholic',
+  //     type: 'juice',
+  //     flavor: null,
+  //     price: 299,
+  //     volume: 16,
+  //     inStock: 100,
+  //     image:
+  //       'https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/hb9/h7a/10987886280734.png'
+  //   })
+  // ])
 
   const cocktail = await Promise.all([
     Cocktail.create({

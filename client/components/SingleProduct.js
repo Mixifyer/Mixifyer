@@ -23,21 +23,15 @@ const SingleProduct = props => {
 
   return (
     <div className="modal-details">
-      <img className="product-image" src={product.image} />
+      <div className="product-image-single-page">
+        <img className="product-image" src={product.image} />
+      </div>
+
       <div className="product-details-container">
         <h3>{product.name}</h3>
-        <div className="tags">
-          <Link to={`${product.category}/products`}>
-            <h5>{product.category} </h5>
-          </Link>
-          <Link to={`/${product.type}/products`}>
-            <h5>{product.type} </h5>
-          </Link>
-          <Link to={`/${product.flavor}/products`}>
-            <h5>{product.flavor}</h5>
-          </Link>
-        </div>
-
+        <h5>{product.category}</h5>
+        <h5>{product.type}</h5>
+        <h5>{product.flavor}</h5>
         <h5>{product.price / 100} $</h5>
         <h5>{product.volume} oz</h5>
         <h5>In Stock: {product.inStock}</h5>

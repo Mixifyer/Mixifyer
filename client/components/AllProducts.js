@@ -119,16 +119,17 @@ const AllProducts = ({
         ) : (
           products.map(product => (
             <div key={product.id} id={singleProductContainer}>
-              <img
-                className="product-img"
-                src={product.image}
-                onClick={() => showModal(product.id)}
-              />
+              <div className="product-img">
+                <img
+                  src={product.image}
+                  onClick={() => showModal(product.id)}
+                />
+              </div>
               <div id={productInfoStyle}>
                 <div>
-                  <h3 onClick={() => showModal(product.id)} id="product-name">
+                  <h5 onClick={() => showModal(product.id)} id="product-name">
                     {product.name}
-                  </h3>
+                  </h5>
                   {user.isAdmin && (
                     <div>
                       <h5>Category: {product.category}</h5>
@@ -136,7 +137,14 @@ const AllProducts = ({
                       <h5>Flavor: {product.flavor}</h5>
                     </div>
                   )}
-
+                  <div className="tags">
+                    <Link to={`/${product.type}/products`}>
+                      <h5>{product.type} </h5>
+                    </Link>
+                    <Link to={`/${product.flavor}/products`}>
+                      <h5>{product.flavor}</h5>
+                    </Link>
+                  </div>
                   <h5>Price: {product.price / 100} $</h5>
                   {/* <h5>Volume: {product.volume} oz</h5> */}
                   <h5>Available: {product.inStock}</h5>
