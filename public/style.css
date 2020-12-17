@@ -121,7 +121,7 @@ nav a:hover {
   display: flex;
   flex-direction: row;
   padding-top: 10px;
-  margin-right: 50px;
+  margin-right: 35px;
 }
 
 .shoppCart-container {
@@ -666,8 +666,8 @@ label {
   width: 15px;
   z-index: 2;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
 }
 
 .shopping-cart-container {
@@ -807,9 +807,9 @@ label {
 }
 
 #checkout-bttn-disabled {
-  color: black;
-  background-color: grey;
-  opacity: 0.75;
+  color: rgb(32, 32, 32);
+  background-color: rgb(182, 179, 179);
+  /* opacity: 0.75; */
 }
 
 .checkout-modal-details {
@@ -885,9 +885,39 @@ label {
 }
 
 @media (max-width: 1024px) {
+  #main-container {
+    margin-top: 15%;
+  }
+  #label {
+    font-size: 18px;
+    margin: 4% 3%;
+    width: 90px;
+  }
+  #nav-bar {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+  }
   #auth-container,
   #home-container {
-    margin: 20% 15%;
+    margin: 6% 15%;
+  }
+  .nav-links-x {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    padding: 0px 0px;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 2% 3% 0% 4%;
+  }
+  .nav-links-x a {
+    font-size: 0.75em;
+    margin: 4% 0%;
+  }
+  .shopCart-container {
+    margin-top: 2%;
   }
 }
 
@@ -1007,7 +1037,11 @@ label {
   .modal-details,
   .checkout-modal-details {
     max-width: 95%;
-    margin: 3%;
+    margin: 10% 3%;
+  }
+  .close-modal-bttn {
+    margin-top: 8.5%;
+    margin-right: 2px;
   }
 }
 /* .FormGroup {
