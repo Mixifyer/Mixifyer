@@ -66,7 +66,8 @@ export default function(state = initialCart, action) {
         currentOrder: state.currentOrder.filter(
           product => product.productId !== action.product.id
         ),
-        totalQuantity: state.totalQuantity - action.product.quantity
+        totalQuantity: state.totalQuantity - action.product.quantity,
+        totalPrice: state.totalPrice - action.product.price
       }
 
     default:

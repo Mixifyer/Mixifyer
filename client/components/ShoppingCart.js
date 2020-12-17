@@ -15,8 +15,8 @@ const stripePromise = loadStripe(
 const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
   const [modalState, setModal] = useState({show: false})
 
-  const onChange = (productId, qty) => {
-    updateCart({id: productId, quantity: qty}, 'remove')
+  const onChange = (productId, qty, price) => {
+    updateCart({id: productId, quantity: qty, price: qty * price}, 'remove')
   }
 
   const checkoutButtonId = shoppingCart.currentOrder.length
@@ -48,7 +48,13 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
               <img
                 src="remove-img.png"
                 id="delete-item"
-                onClick={() => onChange(item.productId, item.productQuantity)}
+                onClick={() =>
+                  onChange(
+                    item.productId,
+                    item.productQuantity,
+                    item.savedPrice
+                  )
+                }
               />
             </div>
           )

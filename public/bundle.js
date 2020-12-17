@@ -1071,10 +1071,11 @@ var ShoppingCart = function ShoppingCart(_ref) {
       modalState = _useState2[0],
       setModal = _useState2[1];
 
-  var onChange = function onChange(productId, qty) {
+  var onChange = function onChange(productId, qty, price) {
     updateCart({
       id: productId,
-      quantity: qty
+      quantity: qty,
+      price: qty * price
     }, 'remove');
   };
 
@@ -1113,7 +1114,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
       src: "remove-img.png",
       id: "delete-item",
       onClick: function onClick() {
-        return onChange(item.productId, item.productQuantity);
+        return onChange(item.productId, item.productQuantity, item.savedPrice);
       }
     }));
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2585,7 +2586,8 @@ var initialCart = {
         currentOrder: state.currentOrder.filter(function (product) {
           return product.productId !== action.product.id;
         }),
-        totalQuantity: state.totalQuantity - action.product.quantity
+        totalQuantity: state.totalQuantity - action.product.quantity,
+        totalPrice: state.totalPrice - action.product.price
       });
 
     default:
