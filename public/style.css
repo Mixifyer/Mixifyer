@@ -893,7 +893,7 @@ label {
   }
   #label {
     font-size: 18px;
-    margin: 4% 3%;
+    margin: 4% 3% 0%;
     width: 90px;
   }
   #nav-bar {
