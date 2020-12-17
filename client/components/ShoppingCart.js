@@ -10,7 +10,6 @@ import {loadStripe} from '@stripe/stripe-js'
 const stripePromise = loadStripe(
   'pk_test_51HxxQPA18Upi8vjogiVpqqbF60fd6wylq3kezwrqlM4oDnbZak6sAdlP0gSViQo2YhaqNfTo77NnFWE00YQ8Yqlr00AhZEP2uG'
 )
-// import {Link} from 'react-router-dom'
 
 const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
   const [modalState, setModal] = useState({show: false})

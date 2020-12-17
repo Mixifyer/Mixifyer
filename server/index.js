@@ -10,6 +10,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const {OrderedProduct, Product, Order} = require('./db/models')
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -63,6 +64,41 @@ const createApp = () => {
   )
   app.use(passport.initialize())
   app.use(passport.session())
+
+  app.use(async (req, res, next) => {
+    try {
+      if (!req.user && !req.session.activeOrder) {
+        const activeOrder = await Order.create(
+          {},
+          {
+            include: [Product]
+          }
+        )
+        await activeOrder.save()
+        req.session.activeOrder = activeOrder
+      } else if (!req.user && req.session.activeOrder.isActive) {
+        console.log('inside 79', req.session.activeOrder)
+        req.session.activeOrder = await Order.findOne({
+          where: {id: req.session.activeOrder.id},
+          include: [Product]
+        })
+      } else if (!req.session.activeOrder.isActive) {
+        console.log('inside 86', req.session.activeOrder)
+        const activeOrder = await Order.create(
+          {},
+          {
+            include: [Product]
+          }
+        )
+        await activeOrder.save()
+        req.session.activeOrder = activeOrder
+      }
+
+      next()
+    } catch (err) {
+      next(err)
+    }
+  })
 
   // auth and api routes
 

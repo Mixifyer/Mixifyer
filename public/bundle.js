@@ -238,7 +238,7 @@ var AllProducts = function AllProducts(_ref) {
       quantity: 1
     };
     addToCart(productInfo);
-    if (user.id) addToast("".concat(product.name, " was successfully added to the cart"), {
+    addToast("".concat(product.name, " was successfully added to the cart"), {
       appearance: 'success',
       autoDismiss: true,
       autoDismissTimeout: 1500
@@ -680,7 +680,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ConfirmationPage() {
+function ConfirmationPage(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "pay-confirm-page"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -691,7 +691,7 @@ function ConfirmationPage() {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentOrder: state.shoppingCart.currentOrder
+    order: state.shoppingCart
   };
 };
 
@@ -1134,7 +1134,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var stripePromise = Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_7__["loadStripe"])('pk_test_51HxxQPA18Upi8vjogiVpqqbF60fd6wylq3kezwrqlM4oDnbZak6sAdlP0gSViQo2YhaqNfTo77NnFWE00YQ8Yqlr00AhZEP2uG'); // import {Link} from 'react-router-dom'
+var stripePromise = Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_7__["loadStripe"])('pk_test_51HxxQPA18Upi8vjogiVpqqbF60fd6wylq3kezwrqlM4oDnbZak6sAdlP0gSViQo2YhaqNfTo77NnFWE00YQ8Yqlr00AhZEP2uG');
 
 var ShoppingCart = function ShoppingCart(_ref) {
   var shoppingCart = _ref.shoppingCart,
@@ -2549,46 +2549,44 @@ var getShoppingCartOrCheckoutThunk = function getShoppingCartOrCheckoutThunk(ord
               _context.prev = 0;
 
               if (!(method === 'checkout')) {
-                _context.next = 11;
+                _context.next = 9;
                 break;
               }
 
-              console.log('starting new order: ', order);
-              _context.next = 5;
+              _context.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put('api/cart/checkout', order);
 
-            case 5:
+            case 4:
               _yield$axios$put = _context.sent;
               data = _yield$axios$put.data;
-              console.log('new order: ', data);
               dispatch(getOrUpdateShoppingCart(data));
-              _context.next = 16;
+              _context.next = 14;
               break;
 
-            case 11:
-              _context.next = 13;
+            case 9:
+              _context.next = 11;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/cart');
 
-            case 13:
+            case 11:
               _yield$axios$get = _context.sent;
               _data = _yield$axios$get.data;
               dispatch(getOrUpdateShoppingCart(_data));
 
-            case 16:
-              _context.next = 21;
+            case 14:
+              _context.next = 19;
               break;
 
-            case 18:
-              _context.prev = 18;
+            case 16:
+              _context.prev = 16;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0);
 
-            case 21:
+            case 19:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 18]]);
+      }, _callee, null, [[0, 16]]);
     }));
 
     return function (_x) {

@@ -77,12 +77,11 @@ const AllProducts = ({
       quantity: 1
     }
     addToCart(productInfo)
-    if (user.id)
-      addToast(`${product.name} was successfully added to the cart`, {
-        appearance: 'success',
-        autoDismiss: true,
-        autoDismissTimeout: 1500
-      })
+    addToast(`${product.name} was successfully added to the cart`, {
+      appearance: 'success',
+      autoDismiss: true,
+      autoDismissTimeout: 1500
+    })
   }
 
   const showModal = prodId => {

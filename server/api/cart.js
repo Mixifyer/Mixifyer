@@ -7,12 +7,22 @@ const {OrderedProduct, Product, Order} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const order = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        isActive: true
-      }
-    })
+    let order
+    if (req.user) {
+      order = await Order.findOne({
+        where: {
+          userId: req.user.id,
+          isActive: true
+        }
+      })
+    } else {
+      order = await Order.findOne({
+        where: {
+          id: req.session.activeOrder.id,
+          isActive: true
+        }
+      })
+    }
 
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
@@ -36,13 +46,22 @@ router.get('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
-    console.log('quatity', req.body.quantity)
-    const order = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        isActive: true
-      }
-    })
+    let order
+    if (req.user) {
+      order = await Order.findOne({
+        where: {
+          userId: req.user.id,
+          isActive: true
+        }
+      })
+    } else {
+      order = await Order.findOne({
+        where: {
+          id: req.session.activeOrder.id,
+          isActive: true
+        }
+      })
+    }
 
     const product = await Product.findOne({
       where: {
@@ -62,14 +81,8 @@ router.put('/', async (req, res, next) => {
           productId: product.id
         }
       })
-      console.log(
-        'orderChange.productQuantity',
-        orderChange.productQuantity,
-        productOrder.productQuantity
-      )
       orderChange.productQuantity =
         productOrder.productQuantity + req.body.quantity
-      console.log('orderChange.productQuantity', orderChange.productQuantity)
       await productOrder.update(orderChange)
     } else {
       await order.addProduct(product, {through: orderChange})
@@ -99,12 +112,22 @@ router.put('/', async (req, res, next) => {
 
 router.put('/checkout', async (req, res, next) => {
   try {
-    const order = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        isActive: true
-      }
-    })
+    let order
+    if (req.user) {
+      order = await Order.findOne({
+        where: {
+          userId: req.user.id,
+          isActive: true
+        }
+      })
+    } else {
+      order = await Order.findOne({
+        where: {
+          id: req.session.activeOrder.id,
+          isActive: true
+        }
+      })
+    }
     const currentOrder = await OrderedProduct.findAll({
       where: {orderId: order.id},
       include: Product
@@ -117,9 +140,11 @@ router.put('/checkout', async (req, res, next) => {
       })
     })
     await order.update({isActive: false})
-    const newOrder = await Order.create({})
 
-    await req.user.addOrder(newOrder)
+    if (req.user) {
+      const newOrder = await Order.create({})
+      await req.user.addOrder(newOrder)
+    }
     res.json({currentOrder: [], totalQuantity: 0, totalPrice: 0})
   } catch (error) {
     next(error)
@@ -127,12 +152,22 @@ router.put('/checkout', async (req, res, next) => {
 })
 router.delete('/:id', async (req, res, next) => {
   try {
-    const order = await Order.findOne({
-      where: {
-        userId: req.user.id,
-        isActive: true
-      }
-    })
+    let order
+    if (req.user) {
+      order = await Order.findOne({
+        where: {
+          userId: req.user.id,
+          isActive: true
+        }
+      })
+    } else {
+      order = await Order.findOne({
+        where: {
+          id: req.session.activeOrder.id,
+          isActive: true
+        }
+      })
+    }
 
     const deletedProduct = await OrderedProduct.findOne({
       where: {

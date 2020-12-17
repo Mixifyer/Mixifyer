@@ -21,9 +21,7 @@ export const getShoppingCartOrCheckoutThunk = (
 ) => async dispatch => {
   try {
     if (method === 'checkout') {
-      console.log('starting new order: ', order)
       const {data} = await axios.put('api/cart/checkout', order)
-      console.log('new order: ', data)
       dispatch(getOrUpdateShoppingCart(data))
     } else {
       const {data} = await axios.get('api/cart')
