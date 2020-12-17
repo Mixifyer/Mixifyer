@@ -23,7 +23,7 @@ body {
 #main-container {
   display: flex;
   justify-content: center;
-  margin-top: 8%;
+  margin-top: 6%;
   width: 100%;
 }
 
@@ -490,7 +490,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0px 15px 15px 30px;
+  margin: 0px 15px 15px 25px;
   border-bottom: solid 0.5px rgb(115, 121, 121);
   /* border-radius: 10px; */
   background: linear-gradient(
@@ -674,6 +674,7 @@ label {
 }
 
 .shopping-cart-container {
+  margin-top: 2%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -963,6 +964,7 @@ label {
   }
 
   #label {
+    height: 35px;
     font-size: 18px;
     margin: 25px 0px;
     width: 90px;
@@ -999,7 +1001,7 @@ label {
 
   #auth-container {
     width: 80%;
-    margin: 0% 10%;
+    margin: 3% 10%;
   }
 
   #auth-container form input {
@@ -1011,7 +1013,7 @@ label {
 
   #home-container {
     max-width: 70%;
-    margin: 0% 15%;
+    margin: 3% 15%;
   }
   .home-user-info {
     max-width: 80%;
@@ -1043,7 +1045,10 @@ label {
   }
   #checkout-bttn,
   #checkout-bttn-disabled {
-    width: 33%;
+    /* padding-left: 0px; */
+    text-align: center;
+    width: 35%;
+    font-size: 0.7em;
   }
   .modal-container,
   .modal-details,
