@@ -315,7 +315,7 @@ const data = [
     volume: 26,
     inStock: 50,
     image:
-      'https://www.jimbeam.com/sites/default/files/2019-01/Jim-Beam-Rye_240x600.jpg',
+      'https://www.warehousewinesandspirits.com/images/sites/warehousewinesandspirits/labels/jim-beam-rye-whiskey-kentucky_1.png',
     createdAt: '2020-12-16T06:20:11.000Z',
     updatedAt: '2020-12-16T06:20:11.000Z'
   },
