@@ -51,7 +51,7 @@ img {
   top: 0px;
   margin: 0px;
   padding: 0px;
-  height: 12%;
+  height: 90px;
   width: 100%;
 }
 .burger {
@@ -111,7 +111,7 @@ nav a:hover {
   width: 140px;
   padding-top: 3px;
   padding-bottom: 5px;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-left: 35px;
 }
 
@@ -892,11 +892,14 @@ label {
   #main-container {
     margin-top: 160px;
   }
+
   #label {
+    height: 33px;
     font-size: 18px;
-    margin: 4% 3% 0%;
+    margin: 25px 0px;
     width: 90px;
   }
+
   #nav-bar {
     display: flex;
     flex-direction: column;
@@ -964,7 +967,7 @@ label {
   }
 
   #label {
-    height: 35px;
+    height: 33px;
     font-size: 18px;
     margin: 25px 0px;
     width: 90px;
