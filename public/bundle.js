@@ -326,7 +326,7 @@ var AllProducts = function AllProducts(_ref) {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_7__["SingleProduct"], {
       product: product
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "closebutton.png",
+      src: "images/closebutton.png",
       className: "close-modal-bttn",
       onClick: function onClick(e) {
         return hideModal(e);
@@ -1774,7 +1774,6 @@ var Navbar = function Navbar(_ref) {
 
   var onClickLinks = function onClickLinks() {
     setStatus(false);
-    console.log(statusBurger);
   };
 
   var linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x';
@@ -1826,7 +1825,7 @@ var Navbar = function Navbar(_ref) {
     },
     to: "/home",
     id: "label"
-  }, "Mixifyer"), window.innerWidth <= 755 && cart('shopping-cart-mobile'), isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Mixifyer"), window.innerWidth <= 800 && cart('shopping-cart-mobile'), isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
@@ -1848,7 +1847,12 @@ var Navbar = function Navbar(_ref) {
     onClick: function onClick() {
       return onClickLinks();
     }
-  }, "BITTERS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "BITTERS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/account",
+    onClick: function onClick() {
+      return onClickLinks();
+    }
+  }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: handleClick
   }, "LOGOUT"), cart('shopping-cart')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2027,14 +2031,16 @@ var Routes = function Routes(props) {
     exact: true,
     path: "/confirmationPage",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["ConfirmationPage"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
     path: "/",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/home",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
     path: "/account",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["User"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {

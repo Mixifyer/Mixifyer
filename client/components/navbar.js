@@ -13,7 +13,6 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
   }
   const onClickLinks = () => {
     setStatus(false)
-    console.log(statusBurger)
   }
 
   const linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x'
@@ -29,7 +28,6 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
           <div id="cart-left" />
           <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
           <div id="cart-right" />
-
           <div id="cart-handle" />
         </div>
         <div id="wheels">
@@ -49,17 +47,13 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
         <Link onClick={() => onClickLinks()} to="/home" id="label">
           Mixifyer
         </Link>
-        {window.innerWidth <= 755 && cart('shopping-cart-mobile')}
+        {window.innerWidth <= 800 && cart('shopping-cart-mobile')}
         {isLoggedIn ? (
           <div className={linksClass}>
             <SearchBar />
-            {/* The navbar will show these links after you log in */}
             <Link to="/home" onClick={() => onClickLinks()}>
               HOME
             </Link>
-            {/* <Link to="/products" onClick={() => onClickLinks()}>
-              ALL PRODUCTS
-            </Link> */}
             <Link to="/spirit/products" onClick={() => onClickLinks()}>
               SPIRITS
             </Link>
@@ -69,6 +63,9 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <Link to="/bitter/products" onClick={() => onClickLinks()}>
               BITTERS
             </Link>
+            <Link to="/account" onClick={() => onClickLinks()}>
+              ACCOUNT
+            </Link>
             <a href="#" onClick={handleClick}>
               LOGOUT
             </a>
@@ -77,10 +74,6 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
         ) : (
           <div className={linksClass}>
             <SearchBar />
-            {/* The navbar will show these links before you log in */}
-            {/* <Link to="/products" onClick={() => onClickLinks()}>
-              ALL PRODUCTS
-            </Link> */}
             <Link to="/home" onClick={() => onClickLinks()}>
               HOME
             </Link>

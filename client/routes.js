@@ -41,12 +41,10 @@ const Routes = props => {
           <Route exact path="/shopping-cart" component={ShoppingCart} />
           <Route exact path="/products/:name" component={SingleProduct} />
           <Route exact path="/confirmationPage" component={ConfirmationPage} />
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
-          </Switch>
-          <Route path="/account" component={User} />
+          {/* Routes placed here are only available after logging in */}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/account" component={User} />
           <Route component={Login} />
         </Switch>
       </div>

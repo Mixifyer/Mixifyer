@@ -186,7 +186,7 @@ const AllProducts = ({
                       <div className="modal-container">
                         <SingleProduct product={product} />
                         <img
-                          src="closebutton.png"
+                          src="images/closebutton.png"
                           className="close-modal-bttn"
                           onClick={e => hideModal(e)}
                         />
