@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 /**
  * COMPONENT
  */
-export const UserHome = props => {
+export const User = props => {
   const {user} = props
 
   const currentUser = {...user}
@@ -51,11 +51,8 @@ export const UserHome = props => {
   }
 
   return (
-    <div id="home-container">
-      {/* <h3>
-          Welcome, {user.firstName} {user.lastName}!
-        </h3> */}
-      <div className="home-user-info">
+    <div id="user-container">
+      <div className="user-info">
         <div className={userName.firstName}>
           First name<span>*</span>
         </div>
@@ -119,11 +116,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+export default connect(mapState)(User)
 
 /**
  * PROP TYPES
  */
-UserHome.propTypes = {
+User.propTypes = {
   email: PropTypes.string
 }

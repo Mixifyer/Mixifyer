@@ -3,14 +3,14 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {
+  Home,
   Login,
   Signup,
-  UserHome,
+  User,
   Products,
   SingleProduct,
   ShoppingCart,
-  ConfirmationPage,
-  Checkout
+  ConfirmationPage
 } from './components'
 import {me} from './store'
 import {ToastProvider} from 'react-toast-notifications'
@@ -41,15 +41,12 @@ const Routes = props => {
           <Route exact path="/shopping-cart" component={ShoppingCart} />
           <Route exact path="/products/:name" component={SingleProduct} />
           <Route exact path="/confirmationPage" component={ConfirmationPage} />
-
-          {/* Displays our Login component as a fallback */}
-          {isLoggedIn && (
-            <Switch>
-              {/* Routes placed here are only available after logging in */}
-              <Route path="/" component={UserHome} />
-              <Route exact path="/home" component={UserHome} />
-            </Switch>
-          )}
+          <Switch>
+            {/* Routes placed here are only available after logging in */}
+            <Route path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+          </Switch>
+          <Route path="/account" component={User} />
           <Route component={Login} />
         </Switch>
       </div>

@@ -57,9 +57,9 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
             <Link to="/home" onClick={() => onClickLinks()}>
               HOME
             </Link>
-            <Link to="/products" onClick={() => onClickLinks()}>
+            {/* <Link to="/products" onClick={() => onClickLinks()}>
               ALL PRODUCTS
-            </Link>
+            </Link> */}
             <Link to="/spirit/products" onClick={() => onClickLinks()}>
               SPIRITS
             </Link>
@@ -78,8 +78,11 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
           <div className={linksClass}>
             <SearchBar />
             {/* The navbar will show these links before you log in */}
-            <Link to="/products" onClick={() => onClickLinks()}>
+            {/* <Link to="/products" onClick={() => onClickLinks()}>
               ALL PRODUCTS
+            </Link> */}
+            <Link to="/home" onClick={() => onClickLinks()}>
+              HOME
             </Link>
             <Link to="/spirit/products" onClick={() => onClickLinks()}>
               SPIRITS

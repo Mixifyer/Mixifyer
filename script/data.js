@@ -371,7 +371,7 @@ const data = [
     volume: 12,
     inStock: 50,
     image:
-      'https://lh3.googleusercontent.com/proxy/G23UIh9XyZMLzRCvg9YJWF_pko0R0xq440EAzLSbxmO5QNEAMzSIEOq_Dsy30PfmznYOq_i59_HbRE7tW1xr50TvRR3IeY_hGMERlb75th0Df01omd0AP-dTTcizs6yp_f0',
+      'https://imbibe.com/media/37802/michelob-ultra-bottle-final.png?anchor=center&mode=crop&width=340&rnd=132308150780000000',
     createdAt: '2020-12-16T06:20:11.010Z',
     updatedAt: '2020-12-16T06:20:11.010Z'
   },

@@ -44,18 +44,18 @@ const AllProducts = ({
       })
     }
   }
+  if (props.match !== undefined) {
+    const {categoryOrTypeOrFlavor} = props.match.params
 
-  const {categoryOrTypeOrFlavor} = props.match.params
-
-  if (categoryOrTypeOrFlavor) {
-    products = products.filter(
-      product =>
-        product.type === categoryOrTypeOrFlavor ||
-        product.flavor === categoryOrTypeOrFlavor ||
-        product.category === categoryOrTypeOrFlavor
-    )
+    if (categoryOrTypeOrFlavor) {
+      products = products.filter(
+        product =>
+          product.type === categoryOrTypeOrFlavor ||
+          product.flavor === categoryOrTypeOrFlavor ||
+          product.category === categoryOrTypeOrFlavor
+      )
+    }
   }
-
   if (searchBar.length) {
     products = products.filter(singleProd => {
       return singleProd.name.toLowerCase().includes(searchBar.toLowerCase())
@@ -77,12 +77,12 @@ const AllProducts = ({
       quantity: 1
     }
     addToCart(productInfo)
-
-    addToast(`${product.name} was successfully added to the cart`, {
-      appearance: 'success',
-      autoDismiss: true,
-      autoDismissTimeout: 1500
-    })
+    if (user.id)
+      addToast(`${product.name} was successfully added to the cart`, {
+        appearance: 'success',
+        autoDismiss: true,
+        autoDismissTimeout: 1500
+      })
   }
 
   const showModal = prodId => {
