@@ -1516,14 +1516,11 @@ var Navbar = function Navbar(_ref) {
       statusBurger = _useState2[0],
       setStatus = _useState2[1];
 
-  console.log('.......', window.innerWidth);
-
   var onClickBurger = function onClickBurger() {
     setStatus(!statusBurger);
   };
 
   var onClickLinks = function onClickLinks() {
-    console.log('helo');
     setStatus(false);
     console.log(statusBurger);
   };

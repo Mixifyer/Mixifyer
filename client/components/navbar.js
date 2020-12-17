@@ -7,16 +7,15 @@ import SearchBar from './SearchBar'
 
 const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
   const [statusBurger, setStatus] = useState(false)
-  console.log('.......', window.innerWidth)
 
   const onClickBurger = () => {
     setStatus(!statusBurger)
   }
   const onClickLinks = () => {
-    console.log('helo')
     setStatus(false)
     console.log(statusBurger)
   }
+
   const linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x'
   const burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x'
   const burgerSecondLine = !statusBurger
