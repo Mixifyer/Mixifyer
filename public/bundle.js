@@ -683,7 +683,7 @@ function ConfirmationPage() {
     className: "pay-confirm-page"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     id: "comfirm-img",
-    src: "confirm-img.png"
+    src: "images/confirm-img.png"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your order is complete!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Thank you for your purchase!"));
 }
 
@@ -1099,7 +1099,12 @@ var ShoppingCart = function ShoppingCart(_ref) {
     className: "shopping-cart-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cart-items-list"
-  }, shoppingCart.currentOrder.map(function (item) {
+  }, shoppingCart.currentOrder.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "empty-cart-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    id: "empty-cart-icon",
+    src: "images/empty-cart-icon.png"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cart is empty!")), shoppingCart.currentOrder.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: item.productId,
       className: "cart-item"
@@ -1111,7 +1116,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
       item: item,
       updateCart: updateCart
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "remove-img.png",
+      src: "images/remove-img.png",
       id: "delete-item",
       onClick: function onClick() {
         return onChange(item.productId, item.productQuantity, item.savedPrice);
@@ -1139,7 +1144,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
     className: "checkout-container",
     stripe: stripePromise
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_5__["Checkout"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "closebutton.png",
+    src: "images/closebutton.png",
     className: "close-modal-bttn",
     onClick: function onClick(e) {
       return hideModal(e);

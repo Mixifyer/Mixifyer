@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 function ConfirmationPage() {
   return (
     <div className="pay-confirm-page">
-      <img id="comfirm-img" src="confirm-img.png" />
+      <img id="comfirm-img" src="images/confirm-img.png" />
       <h2>Your order is complete!</h2>
       {/* <h2>The order number is 1111</h2> */}
       <h2>Thank you for your purchase!</h2>

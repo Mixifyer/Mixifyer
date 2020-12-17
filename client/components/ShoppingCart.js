@@ -37,6 +37,12 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
   return (
     <div className="shopping-cart-container">
       <div className="cart-items-list">
+        {shoppingCart.currentOrder.length < 1 && (
+          <div className="empty-cart-container">
+            <img id="empty-cart-icon" src="images/empty-cart-icon.png" />
+            <h2>Cart is empty!</h2>
+          </div>
+        )}
         {shoppingCart.currentOrder.map(item => {
           return (
             <div key={item.productId} className="cart-item">
@@ -46,7 +52,7 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
               <ChangeProductQuantity item={item} updateCart={updateCart} />
 
               <img
-                src="remove-img.png"
+                src="images/remove-img.png"
                 id="delete-item"
                 onClick={() =>
                   onChange(
@@ -82,7 +88,7 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
                   <Checkout />
                 </Elements>
                 <img
-                  src="closebutton.png"
+                  src="images/closebutton.png"
                   className="close-modal-bttn"
                   onClick={e => hideModal(e)}
                 />
