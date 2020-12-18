@@ -1759,7 +1759,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Navbar = function Navbar(_ref) {
-  var handleClick = _ref.handleClick,
+  var user = _ref.user,
+      handleLogout = _ref.handleLogout,
       isLoggedIn = _ref.isLoggedIn,
       shoppingCart = _ref.shoppingCart;
 
@@ -1776,6 +1777,42 @@ var Navbar = function Navbar(_ref) {
     setStatus(false);
   };
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mouseOver = _useState4[0],
+      setMouseOver = _useState4[1];
+
+  console.log("isLoggedin", isLoggedIn);
+  var accountNav = !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "accountNav",
+    onMouseOver: function onMouseOver() {
+      return setMouseOver(true);
+    },
+    onMouseLeave: function onMouseLeave() {
+      return setMouseOver(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Hello,"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, mouseOver && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "arrow-down"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "arrow-up"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "account-nav-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/login",
+    className: "account-nav-div-link"
+  }, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/signup",
+    className: "account-nav-div-link"
+  }, "SIGN UP"))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "accountNav"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Hello, ", user.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "account-nav-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/account"
+  }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    onClick: handleLogout
+  }, "LOGOUT")));
   var linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x';
   var burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x';
   var burgerSecondLine = !statusBurger ? 'second-line-burger' : 'second-line-x';
@@ -1825,7 +1862,7 @@ var Navbar = function Navbar(_ref) {
     },
     to: "/home",
     id: "label"
-  }, "Mixifyer"), window.innerWidth <= 800 && cart('shopping-cart-mobile'), isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Mixifyer"), window.innerWidth <= 800 && cart('shopping-cart-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
@@ -1847,42 +1884,7 @@ var Navbar = function Navbar(_ref) {
     onClick: function onClick() {
       return onClickLinks();
     }
-  }, "BITTERS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/account",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    onClick: handleClick
-  }, "LOGOUT"), cart('shopping-cart')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: linksClass
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/home",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "HOME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/spirit/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "SPIRITS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/non-alcoholic/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "NON-ALCOGOLIC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/bitter/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "BITTERS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/login",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "LOGIN"), cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+  }, "BITTERS"), accountNav, cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -1891,6 +1893,7 @@ var Navbar = function Navbar(_ref) {
 
 var mapState = function mapState(state) {
   return {
+    user: state.user,
     isLoggedIn: !!state.user.id,
     shoppingCart: state.shoppingCart
   };
@@ -1898,7 +1901,7 @@ var mapState = function mapState(state) {
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
-    handleClick: function handleClick() {
+    handleLogout: function handleLogout() {
       dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_4__["logout"])());
     }
   };
@@ -1910,7 +1913,7 @@ var mapDispatch = function mapDispatch(dispatch) {
  */
 
 Navbar.propTypes = {
-  handleClick: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
+  handleLogout: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired,
   isLoggedIn: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired
 };
 

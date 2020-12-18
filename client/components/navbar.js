@@ -5,15 +5,53 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import SearchBar from './SearchBar'
 
-const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
+const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const [statusBurger, setStatus] = useState(false)
-
   const onClickBurger = () => {
     setStatus(!statusBurger)
   }
   const onClickLinks = () => {
     setStatus(false)
   }
+  const [mouseOver, setMouseOver] = useState(false)
+
+  console.log('isLoggedin', isLoggedIn)
+  const accountNav = !isLoggedIn ? (
+    <div
+      className="accountNav"
+      onMouseOver={() => setMouseOver(true)}
+      onMouseLeave={() => setMouseOver(false)}
+    >
+      <h6>Hello,</h6>
+      <h6>Login</h6>
+      <div>
+        {mouseOver && (
+          <div>
+            <div className="arrow-down" />
+            <div className="arrow-up" />
+            <div id="account-nav-div">
+              <Link to="/login" className="account-nav-div-link">
+                LOGIN
+              </Link>
+              <Link to="/signup" className="account-nav-div-link">
+                SIGN UP
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  ) : (
+    <div className="accountNav">
+      <h6>Hello, {user.name} </h6>
+      <div id="account-nav-div">
+        <Link to="/account">ACCOUNT</Link>
+        <a href="#" onClick={handleLogout}>
+          LOGOUT
+        </a>
+      </div>
+    </div>
+  )
 
   const linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x'
   const burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x'
@@ -48,50 +86,44 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
           Mixifyer
         </Link>
         {window.innerWidth <= 800 && cart('shopping-cart-mobile')}
-        {isLoggedIn ? (
-          <div className={linksClass}>
-            <SearchBar />
-            <Link to="/home" onClick={() => onClickLinks()}>
-              HOME
-            </Link>
-            <Link to="/spirit/products" onClick={() => onClickLinks()}>
-              SPIRITS
-            </Link>
-            <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
-              NON-ALCOHOLIC
-            </Link>
-            <Link to="/bitter/products" onClick={() => onClickLinks()}>
-              BITTERS
-            </Link>
-            <Link to="/account" onClick={() => onClickLinks()}>
-              ACCOUNT
-            </Link>
-            <a href="#" onClick={handleClick}>
-              LOGOUT
-            </a>
-            {cart('shopping-cart')}
-          </div>
-        ) : (
-          <div className={linksClass}>
-            <SearchBar />
-            <Link to="/home" onClick={() => onClickLinks()}>
-              HOME
-            </Link>
-            <Link to="/spirit/products" onClick={() => onClickLinks()}>
-              SPIRITS
-            </Link>
-            <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
-              NON-ALCOGOLIC
-            </Link>
-            <Link to="/bitter/products" onClick={() => onClickLinks()}>
-              BITTERS
-            </Link>
-            <Link to="/login" onClick={() => onClickLinks()}>
-              LOGIN
-            </Link>
-            {cart('shopping-cart')}
-          </div>
-        )}
+        <div className={linksClass}>
+          <SearchBar />
+          <Link to="/home" onClick={() => onClickLinks()}>
+            HOME
+          </Link>
+          <Link to="/spirit/products" onClick={() => onClickLinks()}>
+            SPIRITS
+          </Link>
+          <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
+            NON-ALCOHOLIC
+          </Link>
+          <Link to="/bitter/products" onClick={() => onClickLinks()}>
+            BITTERS
+          </Link>
+          {accountNav}
+          {cart('shopping-cart')}
+        </div>
+        {/* // : (
+        //   <div className={linksClass}>
+        //     <SearchBar />
+        //     <Link to="/home" onClick={() => onClickLinks()}>
+        //       HOME
+        //     </Link>
+        //     <Link to="/spirit/products" onClick={() => onClickLinks()}>
+        //       SPIRITS
+        //     </Link>
+        //     <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
+        //       NON-ALCOGOLIC
+        //     </Link>
+        //     <Link to="/bitter/products" onClick={() => onClickLinks()}>
+        //       BITTERS
+        //     </Link>
+        //     <Link to="/login" onClick={() => onClickLinks()}>
+        //       LOGIN
+        //     </Link>
+        //     {cart('shopping-cart')}
+        //   </div>
+        // )} */}
       </nav>
       <hr />
     </div>
@@ -103,6 +135,7 @@ const Navbar = ({handleClick, isLoggedIn, shoppingCart}) => {
  */
 const mapState = state => {
   return {
+    user: state.user,
     isLoggedIn: !!state.user.id,
     shoppingCart: state.shoppingCart
   }
@@ -110,7 +143,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleClick() {
+    handleLogout() {
       dispatch(logout())
     }
   }
@@ -122,6 +155,6 @@ export default connect(mapState, mapDispatch)(Navbar)
  * PROP TYPES
  */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleLogout: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }
