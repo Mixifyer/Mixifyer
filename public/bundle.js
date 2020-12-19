@@ -1784,7 +1784,7 @@ var Navbar = function Navbar(_ref) {
       setMouseOver = _useState4[1];
 
   var accountNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "accountNav",
+    className: "user-account-nav",
     onMouseOver: function onMouseOver() {
       return setMouseOver(true);
     },

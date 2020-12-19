@@ -124,7 +124,7 @@ nav a:hover {
   margin-right: 20px;
 }
 
-.accountNav {
+.user-account-nav {
   display: flex;
   flex-direction: row;
   align-items: center;

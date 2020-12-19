@@ -18,7 +18,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
 
   const accountNav = (
     <div
-      className="accountNav"
+      className="user-account-nav"
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
