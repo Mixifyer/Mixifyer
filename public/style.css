@@ -195,11 +195,6 @@ nav a:hover {
   border-bottom: 7px solid rgb(105, 185, 207);
 }
 
-.account-nav-div-link {
-  color: black;
-  font-size: 0.8em;
-}
-
 .shoppCart-container {
   margin: 17px 0px 5px 0px;
 }
@@ -1003,6 +998,11 @@ label {
 @media (max-width: 1024px) {
   #main-container {
     margin-top: 140px;
+  }
+  .user-account-nav {
+    display: none;
+  }
+  #account-links .account-links-container {
   }
 
   #label {

@@ -1765,23 +1765,44 @@ var Navbar = function Navbar(_ref) {
       isLoggedIn = _ref.isLoggedIn,
       shoppingCart = _ref.shoppingCart;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
-      statusBurger = _useState2[0],
-      setStatus = _useState2[1];
+      menue = _useState2[0],
+      setMenue = _useState2[1];
 
-  var onClickBurger = function onClickBurger() {
-    setStatus(!statusBurger);
-  };
+  function onClickBurger() {
+    setMenue(!menue);
+  }
 
-  var onClickLinks = function onClickLinks() {
-    setStatus(false);
-  };
+  var onClickLinks = window.innerWidth < 800 ? function () {
+    console.log('>>>>> mobile');
+    return setMenue(true);
+  } : null;
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
       mouseOver = _useState4[0],
       setMouseOver = _useState4[1];
+
+  var userAccountLinks = function userAccountLinks(idName) {
+    return !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: idName
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      to: "/login",
+      onClick: onClickLinks
+    }, "LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      to: "/signup",
+      onClick: onClickLinks
+    }, "SIGN UP")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: idName
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      to: "/account",
+      onClick: onClickLinks
+    }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      onClick: handleLogout
+    }, "LOGOUT"));
+  };
 
   var accountNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-account-nav",
@@ -1797,20 +1818,7 @@ var Navbar = function Navbar(_ref) {
     className: "account-links-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "arrow-up"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "account-links"
-  }, !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/login",
-    className: "account-nav-div-link"
-  }, "LOGIN") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/account"
-  }, "ACCOUNT"), !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    to: "/signup",
-    className: "account-nav-div-link"
-  }, "SIGN UP") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
-    onClick: handleLogout
-  }, "LOGOUT")))); // ) : (
+  }), userAccountLinks("account-links"))); // ) : (
   //   <div className="accountNav">
   //     <h6>Hello, {user.name} </h6>
   //     <div id="account-nav-div">
@@ -1822,18 +1830,16 @@ var Navbar = function Navbar(_ref) {
   //   </div>
   // )
 
-  var linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x';
-  var burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x';
-  var burgerSecondLine = !statusBurger ? 'second-line-burger' : 'second-line-x';
+  var linksClass = !menue ? 'nav-links-burger' : 'nav-links-x';
+  var burgerFirstLine = menue ? 'first-line-burger' : 'first-line-x';
+  var burgerSecondLine = menue ? 'second-line-burger' : 'second-line-x';
 
   var cart = function cart(idName) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "shopCart-container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
       to: "/shopping-cart",
-      onClick: function onClick() {
-        return onClickLinks();
-      },
+      onClick: onClickLinks,
       id: idName
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "cart-body"
@@ -1858,42 +1864,30 @@ var Navbar = function Navbar(_ref) {
     id: "nav-bar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "burger",
-    onClick: function onClick() {
-      return onClickBurger();
-    }
+    onClick: onClickBurger
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     id: burgerFirstLine
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     id: burgerSecondLine
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-    onClick: function onClick() {
-      return onClickLinks();
-    },
+    onClick: onClickLinks,
     to: "/home",
     id: "label"
   }, "Mixifyer"), window.innerWidth <= 800 && cart('shopping-cart-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
+    onClick: onClickLinks
   }, "HOME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/spirit/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
+    onClick: onClickLinks
   }, "SPIRITS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/non-alcoholic/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
+    onClick: onClickLinks
   }, "NON-ALCOHOLIC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/bitter/products",
-    onClick: function onClick() {
-      return onClickLinks();
-    }
-  }, "BITTERS"), accountNav, cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+    onClick: onClickLinks
+  }, "BITTERS"), accountNav, window.innerWidth <= 1025 && userAccountLinks("account-links-mobile"), cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
 };
 /**
  * CONTAINER

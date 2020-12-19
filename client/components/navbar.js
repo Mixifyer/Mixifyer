@@ -7,14 +7,39 @@ import {logout} from '../store'
 import SearchBar from './SearchBar'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
-  const [statusBurger, setStatus] = useState(false)
-  const onClickBurger = () => {
-    setStatus(!statusBurger)
+  const [menue, setMenue] = useState(true)
+  function onClickBurger() {
+    setMenue(!menue)
   }
-  const onClickLinks = () => {
-    setStatus(false)
-  }
+  var onClickLinks =
+    window.innerWidth < 800
+      ? () => {
+          console.log('>>>>> mobile')
+          return setMenue(true)
+        }
+      : null
+
   const [mouseOver, setMouseOver] = useState(false)
+  const userAccountLinks = idName =>
+    !isLoggedIn ? (
+      <div id={idName}>
+        <Link to="/login" onClick={onClickLinks}>
+          LOGIN
+        </Link>
+        <Link to="/signup" onClick={onClickLinks}>
+          SIGN UP
+        </Link>
+      </div>
+    ) : (
+      <div id={idName}>
+        <Link to="/account" onClick={onClickLinks}>
+          ACCOUNT
+        </Link>
+        <a href="#" onClick={handleLogout}>
+          LOGOUT
+        </a>
+      </div>
+    )
 
   const accountNav = (
     <div
@@ -28,28 +53,12 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       {mouseOver && (
         <div className="account-links-container">
           <div className="arrow-up" />
-          <div id="account-links">
-            {!isLoggedIn ? (
-              <Link to="/login" className="account-nav-div-link">
-                LOGIN
-              </Link>
-            ) : (
-              <Link to="/account">ACCOUNT</Link>
-            )}
-            {!isLoggedIn ? (
-              <Link to="/signup" className="account-nav-div-link">
-                SIGN UP
-              </Link>
-            ) : (
-              <a href="#" onClick={handleLogout}>
-                LOGOUT
-              </a>
-            )}
-          </div>
+          {userAccountLinks('account-links')}
         </div>
       )}
     </div>
   )
+
   // ) : (
   //   <div className="accountNav">
   //     <h6>Hello, {user.name} </h6>
@@ -62,15 +71,13 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   //   </div>
   // )
 
-  const linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x'
-  const burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x'
-  const burgerSecondLine = !statusBurger
-    ? 'second-line-burger'
-    : 'second-line-x'
+  const linksClass = !menue ? 'nav-links-burger' : 'nav-links-x'
+  const burgerFirstLine = menue ? 'first-line-burger' : 'first-line-x'
+  const burgerSecondLine = menue ? 'second-line-burger' : 'second-line-x'
 
   const cart = idName => (
     <div className="shopCart-container">
-      <Link to="/shopping-cart" onClick={() => onClickLinks()} id={idName}>
+      <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
         <div id="cart-body">
           <div id="cart-left" />
           <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
@@ -87,29 +94,31 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   return (
     <div id="nav-bar">
       <nav>
-        <div className="burger" onClick={() => onClickBurger()}>
+        <div className="burger" onClick={onClickBurger}>
           <p id={burgerFirstLine} />
           <p id={burgerSecondLine} />
         </div>
-        <Link onClick={() => onClickLinks()} to="/home" id="label">
+        <Link onClick={onClickLinks} to="/home" id="label">
           Mixifyer
         </Link>
         {window.innerWidth <= 800 && cart('shopping-cart-mobile')}
         <div className={linksClass}>
           <SearchBar />
-          <Link to="/home" onClick={() => onClickLinks()}>
+          <Link to="/home" onClick={onClickLinks}>
             HOME
           </Link>
-          <Link to="/spirit/products" onClick={() => onClickLinks()}>
+          <Link to="/spirit/products" onClick={onClickLinks}>
             SPIRITS
           </Link>
-          <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
+          <Link to="/non-alcoholic/products" onClick={onClickLinks}>
             NON-ALCOHOLIC
           </Link>
-          <Link to="/bitter/products" onClick={() => onClickLinks()}>
+          <Link to="/bitter/products" onClick={onClickLinks}>
             BITTERS
           </Link>
           {accountNav}
+          {window.innerWidth <= 1025 &&
+            userAccountLinks('account-links-mobile')}
           {cart('shopping-cart')}
         </div>
         {/* // : (
