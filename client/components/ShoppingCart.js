@@ -18,9 +18,10 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
     updateCart({id: productId, quantity: qty, price: qty * price}, 'remove')
   }
 
-  const checkoutButtonId = shoppingCart.currentOrder.length
-    ? 'checkout-bttn'
-    : 'checkout-bttn-disabled'
+  const checkoutButtonId =
+    shoppingCart.currentOrder.length !== undefined
+      ? 'checkout-bttn'
+      : 'checkout-bttn-disabled'
 
   const showModal = () => {
     setModal({show: true})

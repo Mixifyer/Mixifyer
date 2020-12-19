@@ -66,7 +66,7 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
-    dispatch(getOrUpdateShoppingCart({totalQuantity: 0}))
+    dispatch(getOrUpdateShoppingCart({currentOrder: [], totalQuantity: 0}))
     history.push('/login')
   } catch (err) {
     console.error(err)
