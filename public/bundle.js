@@ -1778,6 +1778,11 @@ var Navbar = function Navbar(_ref) {
     return setMenue(true);
   } : null;
 
+  var onHandle = function onHandle() {
+    if (window.innerWidth < 800) onClickLinks();
+    return handleLogout();
+  };
+
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
       mouseOver = _useState4[0],
@@ -1799,7 +1804,9 @@ var Navbar = function Navbar(_ref) {
       onClick: onClickLinks
     }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
-      onClick: handleLogout
+      onClick: function onClick() {
+        return onHandle();
+      }
     }, "LOGOUT"));
   };
 
@@ -2044,7 +2051,7 @@ var Routes = function Routes(props) {
     exact: true,
     path: "/home",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/account",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["User"]

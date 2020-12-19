@@ -11,14 +11,17 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   function onClickBurger() {
     setMenue(!menue)
   }
-  var onClickLinks =
+  const onClickLinks =
     window.innerWidth < 800
       ? () => {
           console.log('>>>>> mobile')
           return setMenue(true)
         }
       : null
-
+  const onHandle = () => {
+    if (window.innerWidth < 800) onClickLinks()
+    return handleLogout()
+  }
   const [mouseOver, setMouseOver] = useState(false)
   const userAccountLinks = idName =>
     !isLoggedIn ? (
@@ -35,7 +38,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
         <Link to="/account" onClick={onClickLinks}>
           ACCOUNT
         </Link>
-        <a href="#" onClick={handleLogout}>
+        <a href="#" onClick={() => onHandle()}>
           LOGOUT
         </a>
       </div>
