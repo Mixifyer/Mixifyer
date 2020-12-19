@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -15,43 +16,51 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   }
   const [mouseOver, setMouseOver] = useState(false)
 
-  console.log('isLoggedin', isLoggedIn)
-  const accountNav = !isLoggedIn ? (
+  const accountNav = (
     <div
       className="accountNav"
       onMouseOver={() => setMouseOver(true)}
       onMouseLeave={() => setMouseOver(false)}
     >
-      <h6>Hello,</h6>
-      <h6>Login</h6>
-      <div>
-        {mouseOver && (
-          <div>
-            <div className="arrow-down" />
-            <div className="arrow-up" />
-            <div id="account-nav-div">
+      <h6>Hello, {isLoggedIn ? `${user.firstName}` : 'Login'}</h6>
+      <span className="arrow-down" />
+
+      {mouseOver && (
+        <div className="account-links-container">
+          <div className="arrow-up" />
+          <div id="account-links">
+            {!isLoggedIn ? (
               <Link to="/login" className="account-nav-div-link">
                 LOGIN
               </Link>
+            ) : (
+              <Link to="/account">ACCOUNT</Link>
+            )}
+            {!isLoggedIn ? (
               <Link to="/signup" className="account-nav-div-link">
                 SIGN UP
               </Link>
-            </div>
+            ) : (
+              <a href="#" onClick={handleLogout}>
+                LOGOUT
+              </a>
+            )}
           </div>
-        )}
-      </div>
-    </div>
-  ) : (
-    <div className="accountNav">
-      <h6>Hello, {user.name} </h6>
-      <div id="account-nav-div">
-        <Link to="/account">ACCOUNT</Link>
-        <a href="#" onClick={handleLogout}>
-          LOGOUT
-        </a>
-      </div>
+        </div>
+      )}
     </div>
   )
+  // ) : (
+  //   <div className="accountNav">
+  //     <h6>Hello, {user.name} </h6>
+  //     <div id="account-nav-div">
+  //       <Link to="/account">ACCOUNT</Link>
+  //       <a href="#" onClick={handleLogout}>
+  //         LOGOUT
+  //       </a>
+  //     </div>
+  //   </div>
+  // )
 
   const linksClass = statusBurger ? 'nav-links-burger' : 'nav-links-x'
   const burgerFirstLine = !statusBurger ? 'first-line-burger' : 'first-line-x'

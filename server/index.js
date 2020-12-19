@@ -77,13 +77,11 @@ const createApp = () => {
         await activeOrder.save()
         req.session.activeOrder = activeOrder
       } else if (!req.user && req.session.activeOrder.isActive) {
-        console.log('inside 79', req.session.activeOrder)
         req.session.activeOrder = await Order.findOne({
           where: {id: req.session.activeOrder.id},
           include: [Product]
         })
       } else if (!req.session.activeOrder.isActive) {
-        console.log('inside 86', req.session.activeOrder)
         const activeOrder = await Order.create(
           {},
           {
