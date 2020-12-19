@@ -9,8 +9,6 @@ import {updateShoppingCartThunk} from '../store/shoppingCart'
  * COMPONENT
  */
 const Home = props => {
-  console.log('home', props)
-
   return (
     <div className="home-container">
       <div id="home-message">

@@ -985,7 +985,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var Home = function Home(props) {
-  console.log('home', props);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1818,7 +1817,7 @@ var Navbar = function Navbar(_ref) {
     className: "account-links-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "arrow-up"
-  }), userAccountLinks("account-links"))); // ) : (
+  }), userAccountLinks('account-links'))); // ) : (
   //   <div className="accountNav">
   //     <h6>Hello, {user.name} </h6>
   //     <div id="account-nav-div">
@@ -1887,7 +1886,7 @@ var Navbar = function Navbar(_ref) {
   }, "NON-ALCOHOLIC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/bitter/products",
     onClick: onClickLinks
-  }, "BITTERS"), accountNav, window.innerWidth <= 1025 && userAccountLinks("account-links-mobile"), cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
+  }, "BITTERS"), accountNav, window.innerWidth <= 1025 && userAccountLinks('account-links-mobile'), cart('shopping-cart'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
 };
 /**
  * CONTAINER
@@ -2946,21 +2945,24 @@ var logout = function logout() {
 
             case 3:
               dispatch(removeUser());
+              dispatch(Object(_shoppingCart__WEBPACK_IMPORTED_MODULE_2__["getOrUpdateShoppingCart"])({
+                totalQuantity: 0
+              }));
               _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
-              _context3.next = 10;
+              _context3.next = 11;
               break;
 
-            case 7:
-              _context3.prev = 7;
+            case 8:
+              _context3.prev = 8;
               _context3.t0 = _context3["catch"](0);
               console.error(_context3.t0);
 
-            case 10:
+            case 11:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 7]]);
+      }, _callee3, null, [[0, 8]]);
     }));
 
     return function (_x3) {
