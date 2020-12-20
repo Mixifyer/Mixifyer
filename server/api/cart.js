@@ -38,7 +38,7 @@ router.get('/', async (req, res, next) => {
       return eachProduct
     })
 
-    res.json({currentOrder, totalQuantity, totalPrice})
+    res.json({currentOrder: [], totalQuantity, totalPrice})
   } catch (error) {
     next(error)
   }

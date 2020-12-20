@@ -44,7 +44,11 @@ const Routes = props => {
           {/* Routes placed here are only available after logging in */}
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
-          {isLoggedIn && <Route exact path="/account" component={User} />}
+          {isLoggedIn && (
+            <Switch>
+              <Route exact path="/account" component={User} />
+            </Switch>
+          )}
           <Route component={Login} />
         </Switch>
       </div>

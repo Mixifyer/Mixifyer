@@ -1263,8 +1263,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _store_singleProduct__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/singleProduct */ "./client/store/singleProduct.js");
-/* harmony import */ var _store_shoppingCart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/shoppingCart */ "./client/store/shoppingCart.js");
+/* harmony import */ var _store_shoppingCart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/shoppingCart */ "./client/store/shoppingCart.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -1286,11 +1285,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var SingleProduct = function SingleProduct(props) {
   var product = props.product,
-      match = props.match,
-      getProduct = props.getProduct,
       addToCart = props.addToCart;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
@@ -1331,6 +1327,11 @@ var SingleProduct = function SingleProduct(props) {
     setQuantity(Number(event.target.value));
   }
 
+  var qtyCount = Array(product.inStock).fill('').map(function (el, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: index
+    }, index + 1);
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-details"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1340,14 +1341,20 @@ var SingleProduct = function SingleProduct(props) {
     src: product.image
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product-details-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.flavor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.price / 100, " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.volume, " oz"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "In Stock: ", product.inStock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "QTY:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tags"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/".concat(product.type, "/products")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.type, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/".concat(product.flavor, "/products")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.flavor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.price / 100, " $"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, product.volume, " oz"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "In Stock: ", product.inStock), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "QTY:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "select-qty-single-product-page"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "quantity",
     type: "number",
     onChange: handleChange,
     value: quatity
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "5")), product.inStock !== 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, qtyCount), product.inStock !== 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     id: "add-to-cart",
     onClick: function onClick() {
@@ -1356,27 +1363,23 @@ var SingleProduct = function SingleProduct(props) {
   }, "ADD TO CART") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "out-of-stock"
   }, "OUT OF STOCK"))));
-};
+}; // const mapState = state => {
+//   return {
+//     // product: state.singleProduct,
+//     shoppingCart: state.shoppingCart
+//   }
+// }
 
-var mapState = function mapState(state) {
-  return {
-    // product: state.singleProduct,
-    shoppingCart: state.shoppingCart
-  };
-};
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     addToCart: function addToCart(product, method) {
-      return dispatch(Object(_store_shoppingCart__WEBPACK_IMPORTED_MODULE_4__["updateShoppingCartThunk"])(product, method));
-    },
-    getProduct: function getProduct(productId) {
-      return dispatch(Object(_store_singleProduct__WEBPACK_IMPORTED_MODULE_3__["thunkFetchSingleProduct"])(productId));
+      return dispatch(Object(_store_shoppingCart__WEBPACK_IMPORTED_MODULE_3__["updateShoppingCartThunk"])(product, method));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState, mapDispatch)(SingleProduct));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mapDispatch)(SingleProduct));
 
 /***/ }),
 
@@ -1774,7 +1777,6 @@ var Navbar = function Navbar(_ref) {
   }
 
   var onClickLinks = window.innerWidth < 800 ? function () {
-    console.log('>>>>> mobile');
     return setMenue(true);
   } : null;
 
@@ -2051,11 +2053,11 @@ var Routes = function Routes(props) {
     exact: true,
     path: "/home",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["Home"]
-  }), isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  }), isLoggedIn && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/account",
     component: _components__WEBPACK_IMPORTED_MODULE_4__["User"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     component: _components__WEBPACK_IMPORTED_MODULE_4__["Login"]
   }))));
 };

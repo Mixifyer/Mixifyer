@@ -14,7 +14,6 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const onClickLinks =
     window.innerWidth < 800
       ? () => {
-          console.log('>>>>> mobile')
           return setMenue(true)
         }
       : null
@@ -22,6 +21,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
     if (window.innerWidth < 800) onClickLinks()
     return handleLogout()
   }
+
   const [mouseOver, setMouseOver] = useState(false)
   const userAccountLinks = idName =>
     !isLoggedIn ? (

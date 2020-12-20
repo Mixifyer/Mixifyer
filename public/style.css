@@ -743,13 +743,30 @@ label {
 .product-details-container {
   width: 45%;
 }
+.select-qty-single-product-page {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.select-qty-single-product-page #add-to-cart {
+  margin: 0px 0px 0px 5px;
+}
+.select-qty-single-product-page select {
+  height: 30px;
+  width: 40px;
+  border-radius: 5px;
+}
+.select-qty-single-product-page option {
+  background-color: red;
+}
+
 .tags {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 .tags a {
-  margin-right: 5px;
+  margin-left: 5px;
   color: rgb(65, 79, 207);
 }
 .product-image {
