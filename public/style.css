@@ -739,6 +739,7 @@ label {
 .product-details-container h3 {
   border-bottom: solid 0.5px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .product-details-container {
   width: 45%;
@@ -766,7 +767,7 @@ label {
   flex-direction: row;
 }
 .tags a {
-  margin-left: 5px;
+  margin-right: 5px;
   color: rgb(65, 79, 207);
 }
 .product-image {
