@@ -7,14 +7,14 @@ import {logout} from '../store'
 import SearchBar from './SearchBar'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
-  const [menue, setMenue] = useState(true)
+  const [menu, setMenu] = useState(true)
   function onClickBurger() {
-    setMenue(!menue)
+    setMenu(!menu)
   }
   const onClickLinks =
     window.innerWidth < 800
       ? () => {
-          return setMenue(true)
+          return setMenu(true)
         }
       : null
   const onHandle = () => {
@@ -62,21 +62,9 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
     </div>
   )
 
-  // ) : (
-  //   <div className="accountNav">
-  //     <h6>Hello, {user.name} </h6>
-  //     <div id="account-nav-div">
-  //       <Link to="/account">ACCOUNT</Link>
-  //       <a href="#" onClick={handleLogout}>
-  //         LOGOUT
-  //       </a>
-  //     </div>
-  //   </div>
-  // )
-
-  const linksClass = !menue ? 'nav-links-burger' : 'nav-links-x'
-  const burgerFirstLine = menue ? 'first-line-burger' : 'first-line-x'
-  const burgerSecondLine = menue ? 'second-line-burger' : 'second-line-x'
+  const linksClass = !menu ? 'nav-links-burger' : 'nav-links-x'
+  const burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x'
+  const burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'
 
   const cart = idName => (
     <div className="shopCart-container">
@@ -124,27 +112,6 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
             userAccountLinks('account-links-mobile')}
           {cart('shopping-cart')}
         </div>
-        {/* // : (
-        //   <div className={linksClass}>
-        //     <SearchBar />
-        //     <Link to="/home" onClick={() => onClickLinks()}>
-        //       HOME
-        //     </Link>
-        //     <Link to="/spirit/products" onClick={() => onClickLinks()}>
-        //       SPIRITS
-        //     </Link>
-        //     <Link to="/non-alcoholic/products" onClick={() => onClickLinks()}>
-        //       NON-ALCOGOLIC
-        //     </Link>
-        //     <Link to="/bitter/products" onClick={() => onClickLinks()}>
-        //       BITTERS
-        //     </Link>
-        //     <Link to="/login" onClick={() => onClickLinks()}>
-        //       LOGIN
-        //     </Link>
-        //     {cart('shopping-cart')}
-        //   </div>
-        // )} */}
       </nav>
       <hr />
     </div>

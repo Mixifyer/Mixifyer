@@ -686,7 +686,7 @@ function ConfirmationPage(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     id: "comfirm-img",
     src: "images/confirm-img.png"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your order is complete!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Thank you for your purchase!"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "The order is complete!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Thank you for your purchase!"));
 }
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -1769,15 +1769,15 @@ var Navbar = function Navbar(_ref) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
-      menue = _useState2[0],
-      setMenue = _useState2[1];
+      menu = _useState2[0],
+      setMenu = _useState2[1];
 
   function onClickBurger() {
-    setMenue(!menue);
+    setMenu(!menu);
   }
 
   var onClickLinks = window.innerWidth < 800 ? function () {
-    return setMenue(true);
+    return setMenu(true);
   } : null;
 
   var onHandle = function onHandle() {
@@ -1826,21 +1826,10 @@ var Navbar = function Navbar(_ref) {
     className: "account-links-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "arrow-up"
-  }), userAccountLinks('account-links'))); // ) : (
-  //   <div className="accountNav">
-  //     <h6>Hello, {user.name} </h6>
-  //     <div id="account-nav-div">
-  //       <Link to="/account">ACCOUNT</Link>
-  //       <a href="#" onClick={handleLogout}>
-  //         LOGOUT
-  //       </a>
-  //     </div>
-  //   </div>
-  // )
-
-  var linksClass = !menue ? 'nav-links-burger' : 'nav-links-x';
-  var burgerFirstLine = menue ? 'first-line-burger' : 'first-line-x';
-  var burgerSecondLine = menue ? 'second-line-burger' : 'second-line-x';
+  }), userAccountLinks('account-links')));
+  var linksClass = !menu ? 'nav-links-burger' : 'nav-links-x';
+  var burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x';
+  var burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x';
 
   var cart = function cart(idName) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
