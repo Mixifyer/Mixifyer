@@ -2945,7 +2945,8 @@ var logout = function logout() {
               dispatch(removeUser());
               dispatch(Object(_shoppingCart__WEBPACK_IMPORTED_MODULE_2__["getOrUpdateShoppingCart"])({
                 currentOrder: [],
-                totalQuantity: 0
+                totalQuantity: 0,
+                totalPrice: 0
               }));
               _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
               _context3.next = 11;
