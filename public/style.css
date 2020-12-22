@@ -1136,13 +1136,14 @@ label {
     width: 90px;
     margin: 0px;
   }
-  .nav-links-container {
+  /* .nav-links-container {
     position: fixed;
     top: 10%;
     width: 100%;
     height: 100%;
     left: -100%;
-  }
+  } */
+  .nav-links-x,
   .nav-links-burger {
     position: fixed;
     flex-direction: column;
@@ -1151,16 +1152,17 @@ label {
     width: 100%;
     height: 100%;
     background: #28434d;
-    top: 10%;
+    top: 12%;
     text-align: left;
     left: 0%;
-    transition: all 2s ease-in-out;
+    transition: 0.5s ease-in-out;
     margin: 0px;
     padding-top: 5%;
   }
   .nav-links-x {
-    display: none;
+    left: -100%;
   }
+  .nav-links-x a,
   .nav-links-burger a {
     display: inline-block;
     width: 80%;
