@@ -44,20 +44,12 @@ img {
   max-height: 400px;
 }
 /* navbar styling */
-/* #nav-bar {
-  position: fixed;
-  background-color: rgba(19, 81, 100, 0.975);
-  box-shadow: 0px 1px 3px rgb(6, 6, 12);
-  top: 0px;
-  margin: 0px;
-  padding: 0px;
-  height: 90px;
-  width: 100%;
-} */
+
 nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   height: 100%;
   position: fixed;
   background-color: rgba(19, 81, 100, 0.975);
@@ -86,14 +78,12 @@ nav {
 }
 
 #first-line-x {
-  display: none;
   height: 0.8px;
   width: 25px;
   background-color: rgb(204, 203, 203);
   transform: rotate(-45deg) translate(-1px, 5.5px);
 }
 #second-line-x {
-  display: none;
   height: 0.8px;
   width: 25px;
   background-color: rgb(204, 203, 203);
@@ -102,13 +92,14 @@ nav {
 
 nav a {
   color: rgb(250, 244, 250);
-  font-size: 1em;
-  font-weight: 600;
-  margin: 30px 15px;
+  font-size: 0.85em;
+  font-weight: 500;
 }
+
 nav a:hover {
   color: rgb(160, 177, 204);
 }
+
 #label {
   border: solid 0.1px rgb(138, 115, 115);
   box-shadow: 1px 0.5px 10px rgb(183, 183, 233);
@@ -121,27 +112,25 @@ nav a:hover {
     rgba(240, 243, 216, 0.75)
   );
   color: rgb(30, 177, 42);
-  font-size: 30px;
+  font-size: 1.7em;
   font-weight: 600;
   text-align: center;
   width: 140px;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  margin-top: 20px;
+  padding-bottom: 2px;
   margin-left: 35px;
-}
-.nav-links-container {
-  display: flex;
-  /* flex-direction: row; */
 }
 
 .nav-links-burger,
 .nav-links-x {
-  /* float: right; */
+  float: right;
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
-  margin-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 55%;
+  height: 75%;
+  margin-top: 35px;
+  margin-right: 35px;
 }
 
 .user-account-nav {
@@ -151,7 +140,7 @@ nav a:hover {
   justify-content: center;
   font-family: sans-serif;
   font-weight: 100;
-  margin: 3% 15px;
+  margin: 3% 0px;
   font-size: 1em;
   height: 35px;
   padding: 5px;
@@ -218,52 +207,56 @@ nav a:hover {
   display: none;
 }
 
-#shopping-cart:hover,
-#shopping-cart-mobile:hover {
+#shopping-cart-icon:hover,
+#shopping-cart-icon-mobile:hover {
   color: white;
 }
 .shoppCart-container a {
   margin: 0px;
 }
 
-#shopping-cart,
-#shopping-cart-mobile {
+#shopping-cart-icon,
+#shopping-cart-icon-mobile {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 50px;
-  height: 23px;
+  width: 40px;
+  height: 30px;
+  /* margin-bottom: 10px; */
   font-weight: bold;
 }
 
 #cart-body {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  align-items: center;
+  width: 40px;
+  height: 21px;
 }
 #cart-left {
   height: 3px;
-  width: 13px;
+  width: 14px;
   border: solid 1px;
   background-color: white;
-  transform: rotate(60deg) translate(9px, -11px);
+  transform: rotate(63deg) translate(10.5px, 7px);
 }
 #cart-bottom {
   height: 22px;
   font-size: 14px;
   color: rgb(250, 107, 107);
-  width: 17px;
-  padding-top: 3px;
+  width: 16px;
+  padding-top: 1.5px;
+  /* padding-bottom: 1px; */
   text-align: center;
   border-bottom: solid 3px white;
-  transform: translate(10px, -1.8px);
+  transform: translate(-6px, -1px);
 }
 #cart-right {
   height: 3px;
-  width: 15px;
+  width: 16px;
   border: solid 1px;
   background-color: white;
-  transform: rotate(-60deg) translate(2px, 5px);
+  transform: rotate(-63deg) translate(18.5px, 11.2px);
 }
 
 #cart-handle {
@@ -271,11 +264,11 @@ nav a:hover {
   width: 10px;
   background-color: white;
   border: solid 1px white;
-  transform: translate(0px, -5px);
+  transform: translate(13px, -18px);
 }
 
 #wheels {
-  margin-left: 21px;
+  margin-left: 9px;
   display: flex;
   width: 25px;
   flex-direction: row;
@@ -285,82 +278,12 @@ nav a:hover {
 .wheels {
   height: 4px;
   width: 4px;
-  margin: 1px 3px;
+  margin: 1px 5px 4px 0px;
   background-color: white;
   border-radius: 50%;
 }
 
-/*
-#shopping-cart:hover,
-#shopping-cart-mobile:hover {
-  color: white;
-}
-.shoppCart-container a {
-  margin: 0px;
-}
-#shopping-cart,
-#shopping-cart-mobile {
-  display: flex;
-
-  flex-direction: column;
-  width: 50px;
-  height: 23px;
-  font-weight: bold;
-}
-
-#cart-body {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#cart-left {
-  height: 3px;
-  width: 40px;
-  border: solid 1px;
-  background-color: white;
-  transform: rotate(60deg) translate(9px, -11px);
-}
-#cart-bottom {
-  height: 22px;
-  font-size: 13px;
-  color: rgb(250, 107, 107);
-  width: 55px;
-  text-align: center;
-  border-bottom: solid 3px white;
-  transform: translate(10px, -1.8px);
-}
-#cart-right {
-  height: 3px;
-  width: 50px;
-  border: solid 1px;
-  background-color: white;
-  transform: rotate(-60deg) translate(2px, 5px);
-}
-
-#cart-handle {
-  height: 3px;
-  width: 30px;
-  background-color: white;
-  border: solid 1px white;
-  transform: translate(0px, -5px);
-}
-
-#wheels {
-  margin-left: 20px;
-  display: flex;
-  width: 25px;
-  flex-direction: row;
-  align-items: center;
-  align-content: space-around;
-}
-.wheels {
-  height: 4px;
-  width: 4px;
-  margin: 1px 2.5px;
-  background-color: white;
-  border-radius: 50%;
-}  */
-#shopping-cart-mobile {
+#shopping-cart-icon-mobile {
   display: none;
 }
 
@@ -368,7 +291,6 @@ nav a:hover {
   display: flex;
   float: left;
   height: 20px;
-  margin: 30px 30px 0px 0px;
 }
 
 #magnifyingGlass {
@@ -1110,9 +1032,9 @@ label {
   width: 5em;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1050px) {
   #main-container {
-    margin-top: 140px;
+    margin-top: 75px;
   }
   .user-account-nav {
     display: none;
@@ -1120,56 +1042,48 @@ label {
   #account-links-mobile {
     display: block;
   }
-  #nav-bar {
-    display: flex;
-    flex-direction: column;
-    height: 10%;
-  }
-
   nav {
     display: flex;
-    /* margin: 15px 15px; */
     flex-direction: row;
     justify-content: space-between;
     align-content: space-between;
   }
   #label {
-    height: 33px;
-    font-size: 18px;
-    margin: 25px 15px 0px 0px;
-    width: 90px;
+    height: 35px;
+    font-size: 1.4em;
+    width: 100px;
+    margin-top: 10px;
   }
 
   #auth-container,
   #user-container {
-    margin: 3% 15%;
+    margin: 6% 15%;
   }
   .nav-links-x,
   .nav-burger {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
+    width: 70%;
     padding: 0px 0px;
-    font-size: 1em;
     font-weight: normal;
-    /* margin: 2% 3% 0% 3%; */
   }
   .nav-links-x a,
   .nav-burger a {
-    font-size: 0.7em;
-    /* margin: 4% 0%; */
+    font-size: 0.75em;
   }
-
-  #shopping-cart-mobile {
-    margin: 0px;
+  #account-links-mobile {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    padding: 0px;
   }
-  #shopping-cart-mobile a {
-    font-size: 12px;
+  #account-links-mobile a {
+    margin-left: 0px;
   }
 
   .shopping-cart-container {
-    margin-top: 2%;
+    margin-top: 3%;
     display: flex;
   }
   #checkout-bttn,
@@ -1183,7 +1097,7 @@ label {
 @media screen and (max-width: 850px) {
   #main-container {
     display: flex;
-    margin-top: 70px;
+    margin-top: 75px;
     justify-content: center;
   }
   nav {
@@ -1217,8 +1131,8 @@ label {
   }
 
   #label {
-    height: 33px;
-    font-size: 18px;
+    height: 30px;
+    font-size: 1.2em;
     width: 90px;
     margin: 0px;
   }
@@ -1232,6 +1146,7 @@ label {
   .nav-links-burger {
     position: fixed;
     flex-direction: column;
+    justify-content: start;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -1249,40 +1164,29 @@ label {
   .nav-links-burger a {
     display: inline-block;
     width: 80%;
-    padding: 5px 0px;
+    padding: 0px 0px;
     border-bottom: solid 1px rgb(192, 188, 188);
     font-size: 0.8em;
+    margin: 15px 0px;
     font-weight: normal;
   }
+
   #account-links-mobile {
+    justify-content: center;
+    width: 80%;
     display: block;
+    margin-top: 0px;
   }
-  #shopping-cart-mobile {
+  #account-links-mobile a {
+    width: 100%;
+    margin-left: 0px;
+  }
+  #shopping-cart-icon-mobile {
     display: flex;
     margin-right: 3%;
   }
-
-  #cart-bottom {
-    height: 22px;
-    font-size: 13px;
-    color: rgb(250, 107, 107);
-    width: 17px;
-    padding-top: 3px;
-    text-align: center;
-    border-bottom: solid 3px white;
-    transform: translate(10px, -3px);
-  }
-
-  #cart-handle {
-    height: 3px;
-    width: 10px;
-    background-color: white;
-    border: solid 1px white;
-    transform: translate(0.6px, -5.4px);
-  }
-
-  .wheels {
-    margin: 0px 3px;
+  #shopping-cart-icon {
+    display: none;
   }
 
   #home-message {
@@ -1328,7 +1232,7 @@ label {
   }
 
   .shopping-cart-container {
-    margin-top: 5%;
+    margin-top: 8%;
     display: flex;
     flex-direction: column;
   }

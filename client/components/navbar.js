@@ -89,27 +89,24 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       <Link onClick={onClickLinks} to="/home" id="label">
         Mixifyer
       </Link>
-      {cart('shopping-cart-mobile')}
-      <div className="nav-links-container">
-        <div className={linksClass}>
-          <SearchBar />
-          <Link to="/home" onClick={onClickLinks}>
-            HOME
-          </Link>
-          <Link to="/spirit/products" onClick={onClickLinks}>
-            SPIRITS
-          </Link>
-          <Link to="/non-alcoholic/products" onClick={onClickLinks}>
-            NON-ALCOHOLIC
-          </Link>
-          <Link to="/bitter/products" onClick={onClickLinks}>
-            BITTERS
-          </Link>
-          {accountNav}
-          {window.innerWidth <= 1025 &&
-            userAccountLinks('account-links-mobile')}
-          {cart('shopping-cart')}
-        </div>
+      {cart('shopping-cart-icon-mobile')}
+      <div className={linksClass}>
+        <SearchBar />
+        <Link to="/home" onClick={onClickLinks}>
+          HOME
+        </Link>
+        <Link to="/spirit/products" onClick={onClickLinks}>
+          SPIRITS
+        </Link>
+        <Link to="/non-alcoholic/products" onClick={onClickLinks}>
+          NON-ALCOHOLIC
+        </Link>
+        <Link to="/bitter/products" onClick={onClickLinks}>
+          BITTERS
+        </Link>
+        {accountNav}
+        {userAccountLinks('account-links-mobile')}
+        {cart('shopping-cart-icon')}
       </div>
     </nav>
   )

@@ -1147,8 +1147,6 @@ var ShoppingCart = function ShoppingCart(_ref) {
       modalState = _useState2[0],
       setModal = _useState2[1];
 
-  console.log('......>>>>>>>', shoppingCart);
-
   var onChange = function onChange(productId, qty, price) {
     updateCart({
       id: productId,
@@ -1868,9 +1866,7 @@ var Navbar = function Navbar(_ref) {
     onClick: onClickLinks,
     to: "/home",
     id: "label"
-  }, "Mixifyer"), cart('shopping-cart-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "nav-links-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Mixifyer"), cart('shopping-cart-icon-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
@@ -1884,7 +1880,7 @@ var Navbar = function Navbar(_ref) {
   }, "NON-ALCOHOLIC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/bitter/products",
     onClick: onClickLinks
-  }, "BITTERS"), accountNav, window.innerWidth <= 1025 && userAccountLinks('account-links-mobile'), cart('shopping-cart'))));
+  }, "BITTERS"), accountNav, userAccountLinks('account-links-mobile'), cart('shopping-cart-icon')));
 };
 /**
  * CONTAINER

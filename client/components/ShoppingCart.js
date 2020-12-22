@@ -13,7 +13,6 @@ const stripePromise = loadStripe(
 
 const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
   const [modalState, setModal] = useState({show: false})
-  console.log('......>>>>>>>', shoppingCart)
 
   const onChange = (productId, qty, price) => {
     updateCart({id: productId, quantity: qty, price: qty * price}, 'remove')
