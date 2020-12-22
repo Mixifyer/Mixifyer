@@ -945,9 +945,9 @@ label {
 #checkout-bttn-disabled {
   width: 25%;
   height: 30%;
-  font-size: 17px;
+  font-size: 1em;
   text-align: center;
-  padding: 12px;
+  padding: 12px 0px;
   background-color: rgb(252, 59, 59);
   color: rgb(254, 254, 254);
   border: transparent;
