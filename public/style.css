@@ -1090,7 +1090,7 @@ label {
   #checkout-bttn-disabled {
     text-align: center;
     width: 35%;
-    font-size: 0.95em;
+    font-size: 1em;
   }
 }
 
@@ -1252,9 +1252,7 @@ label {
   }
   #checkout-bttn,
   #checkout-bttn-disabled {
-    text-align: center;
-    width: 35%;
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
   .modal-container,
   .modal-details,
