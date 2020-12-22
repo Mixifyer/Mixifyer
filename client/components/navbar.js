@@ -67,32 +67,30 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'
 
   const cart = idName => (
-    <div className="shopCart-container">
-      <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
-        <div id="cart-body">
-          <div id="cart-left" />
-          <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
-          <div id="cart-right" />
-          <div id="cart-handle" />
-        </div>
-        <div id="wheels">
-          <div className="wheels" />
-          <div className="wheels" />
-        </div>
-      </Link>
-    </div>
+    <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
+      <div id="cart-body">
+        <div id="cart-left" />
+        <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
+        <div id="cart-right" />
+        <div id="cart-handle" />
+      </div>
+      <div id="wheels">
+        <div className="wheels" />
+        <div className="wheels" />
+      </div>
+    </Link>
   )
   return (
-    <div id="nav-bar">
-      <nav>
-        <div className="burger" onClick={onClickBurger}>
-          <p id={burgerFirstLine} />
-          <p id={burgerSecondLine} />
-        </div>
-        <Link onClick={onClickLinks} to="/home" id="label">
-          Mixifyer
-        </Link>
-        {window.innerWidth <= 800 && cart('shopping-cart-mobile')}
+    <nav>
+      <div className="burger" onClick={onClickBurger}>
+        <p id={burgerFirstLine} />
+        <p id={burgerSecondLine} />
+      </div>
+      <Link onClick={onClickLinks} to="/home" id="label">
+        Mixifyer
+      </Link>
+      {cart('shopping-cart-mobile')}
+      <div className="nav-links-container">
         <div className={linksClass}>
           <SearchBar />
           <Link to="/home" onClick={onClickLinks}>
@@ -112,9 +110,8 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
             userAccountLinks('account-links-mobile')}
           {cart('shopping-cart')}
         </div>
-      </nav>
-      <hr />
-    </div>
+      </div>
+    </nav>
   )
 }
 
