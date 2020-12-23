@@ -1042,15 +1042,12 @@ label {
   width: 5em;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1055px) {
   #main-container {
     margin-top: 75px;
   }
   .user-account-nav {
     display: none;
-  }
-  #account-links-mobile {
-    display: block;
   }
   nav {
     display: flex;
@@ -1074,7 +1071,7 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
+    width: 75%;
     padding: 0px 0px;
     font-weight: normal;
   }
@@ -1085,11 +1082,15 @@ label {
   #account-links-mobile {
     display: flex;
     justify-content: space-between;
-    width: 15%;
+    width: 16%;
     padding: 0px;
   }
+
   #account-links-mobile a {
     margin-left: 0px;
+  }
+  #account-links-mobile #logout-nav {
+    margin-left: 14px;
   }
 
   .shopping-cart-container {
@@ -1104,7 +1105,7 @@ label {
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 910px) {
   #main-container {
     display: flex;
     margin-top: 75px;

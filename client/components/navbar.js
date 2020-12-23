@@ -38,7 +38,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
         <Link to="/account" onClick={onClickLinks}>
           ACCOUNT
         </Link>
-        <a href="#" onClick={() => onHandle()}>
+        <a href="#" id="logout-nav" onClick={() => onHandle()}>
           LOGOUT
         </a>
       </div>

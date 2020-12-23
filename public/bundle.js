@@ -1806,6 +1806,7 @@ var Navbar = function Navbar(_ref) {
       onClick: onClickLinks
     }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
+      id: "logout-nav",
       onClick: function onClick() {
         return onHandle();
       }
