@@ -1195,10 +1195,12 @@ label {
     display: block;
     margin-top: 0px;
   }
-  #account-links-mobile a {
+  #account-links-mobile a,
+  #account-links-mobile #logout-nav {
     width: 100%;
     margin-left: 0px;
   }
+
   #shopping-cart-icon-mobile {
     display: flex;
     margin-right: 3%;
