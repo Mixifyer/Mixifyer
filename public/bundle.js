@@ -1399,6 +1399,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1420,33 +1421,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /**
  * COMPONENT
  */
 
 var User = function User(props) {
-  var user = props.user;
+  var user = props.user,
+      handleSubmit = props.handleSubmit;
 
   var currentUser = _objectSpread({}, user);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(currentUser),
       _useState2 = _slicedToArray(_useState, 2),
       userInfoState = _useState2[0],
-      setUserInfo = _useState2[1];
+      setUserInfo = _useState2[1]; // const emptyNames =
+  //   !userInfoState.address
 
-  var emptyNames = userInfoState.firstName === '' || userInfoState.lastName === '' || userInfoState.address === '';
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(!emptyNames ? {
-    firstName: 'firstName-down',
-    lastName: 'lastName-down',
-    address: 'address-down',
-    email: 'email-down'
-  } : {
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     firstName: 'firstName-up',
     lastName: 'lastName-up',
     address: 'address-up',
     email: 'email-up'
-  }),
+  } // : {
+  //     firstName: 'firstName-up',
+  //     lastName: 'lastName-up',
+  //     address: 'address-up',
+  //     email: 'email-up'
+  //   }
+  ),
       _useState4 = _slicedToArray(_useState3, 2),
       userName = _useState4[0],
       setUserName = _useState4[1];
@@ -1468,11 +1472,12 @@ var User = function User(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "user-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
     className: "user-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: userName.firstName
-  }, "First name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "inputs-user-page"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "firstName",
     type: "text",
     value: userInfoState.firstName,
@@ -1484,9 +1489,10 @@ var User = function User(props) {
       return _onBlur(userInfoState.firstName, 'firstName');
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: userName.lastName
-  }, "Last name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "firstName",
+    className: "user-page-label"
+  }, "First name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "lastName",
     type: "text",
     value: userInfoState.lastName,
@@ -1498,9 +1504,10 @@ var User = function User(props) {
       return _onBlur(userInfoState.lastName, 'lastName');
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: userName.address
-  }, "Address", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "lastName",
+    className: userName.lastName
+  }, "Last name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "address",
     type: "text",
     value: userInfoState.address,
@@ -1512,9 +1519,10 @@ var User = function User(props) {
       return _onBlur(userInfoState.address, 'address');
     },
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: userName.email
-  }, "email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "address",
+    className: userName.lastName
+  }, "Shipping address", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     name: "email",
     type: "text",
     value: userInfoState.email,
@@ -1526,7 +1534,12 @@ var User = function User(props) {
       return _onBlur(userInfoState.email, 'email');
     },
     required: true
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "email",
+    className: userName.lastName
+  }, "email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "SUBMIT CHANGES")));
 };
 /**
  * CONTAINER
@@ -1538,7 +1551,22 @@ var mapState = function mapState(state) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapState)(User));
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    handleSubmit: function handleSubmit(evt) {
+      evt.preventDefault();
+      var formName = evt.target.name;
+      var email = evt.target.email.value;
+      var password = evt.target.password.value;
+      var firstName = evt.target.firstName.value;
+      var lastName = evt.target.lastName.value;
+      var address = evt.target.address.value;
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(firstName, lastName, email, password, formName, address));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapState, mapDispatch)(User));
 /**
  * PROP TYPES
  */

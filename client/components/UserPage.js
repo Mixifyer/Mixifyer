@@ -1,34 +1,32 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {auth} from '../store'
 
 /**
  * COMPONENT
  */
 export const User = props => {
-  const {user} = props
+  const {user, handleSubmit} = props
 
   const currentUser = {...user}
   const [userInfoState, setUserInfo] = useState(currentUser)
 
-  const emptyNames =
-    userInfoState.firstName === '' ||
-    userInfoState.lastName === '' ||
-    userInfoState.address === ''
+  // const emptyNames =
+  //   !userInfoState.address
   const [userName, setUserName] = useState(
-    !emptyNames
-      ? {
-          firstName: 'firstName-down',
-          lastName: 'lastName-down',
-          address: 'address-down',
-          email: 'email-down'
-        }
-      : {
-          firstName: 'firstName-up',
-          lastName: 'lastName-up',
-          address: 'address-up',
-          email: 'email-up'
-        }
+    {
+      firstName: 'firstName-up',
+      lastName: 'lastName-up',
+      address: 'address-up',
+      email: 'email-up'
+    }
+    // : {
+    //     firstName: 'firstName-up',
+    //     lastName: 'lastName-up',
+    //     address: 'address-up',
+    //     email: 'email-up'
+    //   }
   )
 
   function handleChange(event) {
@@ -52,22 +50,20 @@ export const User = props => {
 
   return (
     <div id="user-container">
-      <div className="user-info">
-        <div className={userName.firstName}>
-          First name<span>*</span>
-        </div>
-        <input
-          name="firstName"
-          type="text"
-          value={userInfoState.firstName}
-          onChange={handleChange}
-          onFocus={() => onFocus(userInfoState.firstName, 'firstName')}
-          onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
-          required
-        />
-
-        <div className={userName.lastName}>
-          Last name<span>*</span>
+      <form onSubmit={handleSubmit} className="user-info">
+        <div className="inputs-user-page">
+          <input
+            name="firstName"
+            type="text"
+            value={userInfoState.firstName}
+            onChange={handleChange}
+            onFocus={() => onFocus(userInfoState.firstName, 'firstName')}
+            onBlur={() => onBlur(userInfoState.firstName, 'firstName')}
+            required
+          />
+          <label htmlFor="firstName" className="user-page-label">
+            First name<span>*</span>
+          </label>
         </div>
         <input
           name="lastName"
@@ -78,9 +74,10 @@ export const User = props => {
           onBlur={() => onBlur(userInfoState.lastName, 'lastName')}
           required
         />
-        <div className={userName.address}>
-          Address<span>*</span>
-        </div>
+        <label htmlFor="lastName" className={userName.lastName}>
+          Last name<span>*</span>
+        </label>
+
         <input
           name="address"
           type="text"
@@ -90,9 +87,10 @@ export const User = props => {
           onBlur={() => onBlur(userInfoState.address, 'address')}
           required
         />
-        <div className={userName.email}>
-          email<span>*</span>
-        </div>
+        <label htmlFor="address" className={userName.lastName}>
+          Shipping address<span>*</span>
+        </label>
+
         <input
           name="email"
           type="text"
@@ -102,7 +100,12 @@ export const User = props => {
           onBlur={() => onBlur(userInfoState.email, 'email')}
           required
         />
-      </div>
+        <label htmlFor="email" className={userName.lastName}>
+          email<span>*</span>
+        </label>
+
+        <button type="submit">SUBMIT CHANGES</button>
+      </form>
     </div>
   )
 }
@@ -115,8 +118,24 @@ const mapState = state => {
     user: state.user
   }
 }
+const mapDispatch = dispatch => {
+  return {
+    handleSubmit(evt) {
+      evt.preventDefault()
 
-export default connect(mapState)(User)
+      const formName = evt.target.name
+      const email = evt.target.email.value
+      const password = evt.target.password.value
+      const firstName = evt.target.firstName.value
+      const lastName = evt.target.lastName.value
+      const address = evt.target.address.value
+
+      dispatch(auth(firstName, lastName, email, password, formName, address))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(User)
 
 /**
  * PROP TYPES

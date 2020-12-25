@@ -491,22 +491,23 @@ nav a:hover {
   padding-top: 5px;
 }
 
-.firstName-up + input,
+/* .firstName-up + input,
 .lastName-up + input,
 .address-up + input,
 .email-up + input,
 .user-info input {
   color: rgb(10, 10, 102);
-  border: 0px;
+  border: solid 1px;
   font-size: 20px;
   padding-bottom: 10px;
   background-color: #f8f8ff;
   border-bottom: solid 0.5px black;
   width: 400px;
-  height: 35px;
+  height: 50px;
+  vertical-align: bottom;
   margin-bottom: 20px;
-}
-
+} */
+/*
 .user-info input:focus {
   outline: none;
   font-size: 20px;
@@ -519,8 +520,43 @@ nav a:hover {
 .email-down + input {
   height: 25px;
   padding-bottom: 0px;
+} */
+.inputs-user-page {
+  position: relative;
 }
-
+.inputs-user-page input {
+  color: rgb(10, 10, 102);
+  border: solid 1px;
+  font-size: 20px;
+  padding: 20px 10px 6px;
+  background-color: #f8f8ff;
+  border-bottom: solid 0.5px black;
+  z-index: 1;
+  width: 400px;
+  height: 52px;
+  margin-bottom: 20px;
+}
+.inputs-user-page > label {
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 18px 0 0 12px;
+  margin: 0;
+  -webkit-transition: 0.4s all;
+  transition: 0.4s all;
+}
+.inputs-user-page input:valid + label {
+  top: -10px;
+  font-size: 0.8rem;
+  padding: 12px;
+  line-height: 1.42857;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+}
 /* create and edit forms styling */
 form div {
   display: inline-block;
