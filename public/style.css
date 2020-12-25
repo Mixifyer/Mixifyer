@@ -1068,7 +1068,8 @@ label {
   }
   #label {
     height: 35px;
-    font-size: 1.4em;
+    font-size: 1.3em;
+    padding-top: 2px;
     width: 100px;
     margin-top: 10px;
   }
