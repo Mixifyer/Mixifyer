@@ -717,7 +717,6 @@ label {
 #add-to-cart,
 #out-of-stock {
   text-align: center;
-  padding-left: 2px;
   cursor: copy;
   color: rgb(250, 245, 245);
   font-size: 11px;
@@ -732,10 +731,8 @@ label {
 }
 #out-of-stock {
   cursor: not-allowed;
-  text-align: center;
   color: rgb(122, 0, 0);
   background-color: rgb(189, 197, 192);
-  border-radius: 5px;
 }
 /* */
 .modal {
@@ -782,8 +779,10 @@ label {
   display: flex;
   flex-direction: row;
 }
-.select-qty-single-product-page #add-to-cart {
+.select-qty-single-product-page #add-to-cart,
+.select-qty-single-product-page #out-of-stock {
   margin: 0px 0px 0px 20px;
+  padding: 7px 0px;
   box-shadow: 2px 2px 3px rgb(167, 167, 167);
 }
 .select-qty-single-product-page select {
@@ -1159,13 +1158,7 @@ label {
     width: 90px;
     margin: 0px;
   }
-  /* .nav-links-container {
-    position: fixed;
-    top: 10%;
-    width: 100%;
-    height: 100%;
-    left: -100%;
-  } */
+
   .nav-links-x,
   .nav-links-burger {
     position: fixed;

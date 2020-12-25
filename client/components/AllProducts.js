@@ -116,6 +116,7 @@ const AllProducts = ({
         {!products.length && !searchBar.length ? (
           <div>Loading...</div>
         ) : (
+          // eslint-disable-next-line complexity
           products.map(product => (
             <div key={product.id} id={singleProductContainer}>
               <div className="product-img">
@@ -137,9 +138,11 @@ const AllProducts = ({
                     </div>
                   )}
                   <div className="tags">
-                    <Link to={`/${product.type}/products`}>
-                      <h5>{product.type} </h5>
-                    </Link>
+                    {product.type ? (
+                      <Link to={`/${product.type}/products`}>
+                        <h5>{product.type} </h5>
+                      </Link>
+                    ) : null}
                     <Link to={`/${product.flavor}/products`}>
                       <h5>{product.flavor}</h5>
                     </Link>
