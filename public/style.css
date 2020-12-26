@@ -448,11 +448,13 @@ nav a:hover {
 /* user-home page */
 #user-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 0px;
+  align-items: center;
+  padding: 20px 0px;
 }
 
-.user-info {
+.user-info-form {
   width: 400px;
   margin: 8%;
 }
@@ -463,64 +465,6 @@ nav a:hover {
   margin: 2px;
 }
 
-.firstName-down,
-.lastName-down,
-.address-down,
-.email-down,
-.firstName-up,
-.lastName-up,
-.address-up,
-.email-up {
-  font-family: Times, Times New Roman, serif;
-  padding-top: 14px;
-  font-size: 20px;
-  height: 35px;
-  padding-bottom: 0px;
-  margin-left: 5px;
-  color: rgb(122, 119, 119);
-  /* margin-top: 0px; */
-}
-
-.firstName-up,
-.lastName-up,
-.address-up,
-.email-up {
-  color: rgb(122, 119, 119);
-  font-size: 14px;
-  height: 25px;
-  padding-top: 5px;
-}
-
-/* .firstName-up + input,
-.lastName-up + input,
-.address-up + input,
-.email-up + input,
-.user-info input {
-  color: rgb(10, 10, 102);
-  border: solid 1px;
-  font-size: 20px;
-  padding-bottom: 10px;
-  background-color: #f8f8ff;
-  border-bottom: solid 0.5px black;
-  width: 400px;
-  height: 50px;
-  vertical-align: bottom;
-  margin-bottom: 20px;
-} */
-/*
-.user-info input:focus {
-  outline: none;
-  font-size: 20px;
-  padding-bottom: 10px;
-  height: 35px;
-}
-.firstName-down + input,
-.lastName-down + input,
-.address-down + input,
-.email-down + input {
-  height: 25px;
-  padding-bottom: 0px;
-} */
 .inputs-user-page {
   position: relative;
 }
@@ -557,6 +501,7 @@ nav a:hover {
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
 }
+
 /* create and edit forms styling */
 form div {
   display: inline-block;

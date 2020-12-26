@@ -1429,61 +1429,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var User = function User(props) {
   var user = props.user,
       handleSubmit = props.handleSubmit;
-  console.log('.......>>>>', user);
 
   var currentUser = _objectSpread({}, user);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(currentUser),
       _useState2 = _slicedToArray(_useState, 2),
       userInfoState = _useState2[0],
-      setUserInfo = _useState2[1]; // const emptyNames =
-  //   !userInfoState.address
-
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    firstName: 'firstName-up',
-    lastName: 'lastName-up',
-    address: 'address-up',
-    email: 'email-up'
-  } // : {
-  //     firstName: 'firstName-up',
-  //     lastName: 'lastName-up',
-  //     address: 'address-up',
-  //     email: 'email-up'
-  //   }
-  ),
-      _useState4 = _slicedToArray(_useState3, 2),
-      userName = _useState4[0],
-      setUserName = _useState4[1];
+      setUserInfo = _useState2[1];
 
   function handleChange(event) {
     event.preventDefault();
     setUserInfo(_objectSpread(_objectSpread({}, userInfoState), {}, _defineProperty({}, event.target.name, event.target.value)));
-  } // function onFocus(curInfo, classType) {
-  //   if (
-  //     userInfoState[classType] === '' &&
-  //     userName[classType] === `${classType}-down`
-  //   )
-  //     setUserName({...userName, [classType]: `${classType}-up`})
-  // }
-  // function onBlur(curInfo, classType) {
-  //   if (userInfoState[classType] === '') {
-  //     setUserName({...userName, [classType]: `${classType}-down`})
-  //   }
-  // }
+  }
 
-
-  var userInputes = [['First Name', 'firstName'], ['Last Name', 'lastName'], ['Address', 'address'], ['Email', 'email']].map(function (el, ind) {
+  var userInputes = [['First Name', 'firstName'], ['Last Name', 'lastName'], ['Address', 'address'], ['Email', 'email']].map(function (el) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "inputs-user-page",
-      key: ind
+      key: el[1]
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
       name: el[1],
       type: "text",
       value: userInfoState[el[1]],
-      onChange: handleChange // onFocus={() => onFocus(userInfoState[el[1]], el[1])}
-      // onBlur={() => onBlur(userInfoState[el[1]], el[1])}
-      ,
+      onChange: handleChange,
       required: true
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
       htmlFor: el[1],
@@ -1492,9 +1459,11 @@ var User = function User(props) {
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "user-container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: handleSubmit,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.firstName, " ", user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, user.address)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
+    className: "user-info-form"
   }, userInputes, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit"
   }, "SUBMIT CHANGES")));
