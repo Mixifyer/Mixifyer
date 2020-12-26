@@ -1459,17 +1459,19 @@ var User = function User(props) {
   function handleChange(event) {
     event.preventDefault();
     setUserInfo(_objectSpread(_objectSpread({}, userInfoState), {}, _defineProperty({}, event.target.name, event.target.value)));
-  }
+  } // function onFocus(curInfo, classType) {
+  //   if (
+  //     userInfoState[classType] === '' &&
+  //     userName[classType] === `${classType}-down`
+  //   )
+  //     setUserName({...userName, [classType]: `${classType}-up`})
+  // }
+  // function onBlur(curInfo, classType) {
+  //   if (userInfoState[classType] === '') {
+  //     setUserName({...userName, [classType]: `${classType}-down`})
+  //   }
+  // }
 
-  function _onFocus(curInfo, classType) {
-    if (userInfoState[classType] === '' && userName[classType] === "".concat(classType, "-down")) setUserName(_objectSpread(_objectSpread({}, userName), {}, _defineProperty({}, classType, "".concat(classType, "-up"))));
-  }
-
-  function _onBlur(curInfo, classType) {
-    if (userInfoState[classType] === '') {
-      setUserName(_objectSpread(_objectSpread({}, userName), {}, _defineProperty({}, classType, "".concat(classType, "-down"))));
-    }
-  }
 
   var userInputes = [['First Name', 'firstName'], ['Last Name', 'lastName'], ['Address', 'address'], ['Email', 'email']].map(function (el, ind) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1479,13 +1481,9 @@ var User = function User(props) {
       name: el[1],
       type: "text",
       value: userInfoState[el[1]],
-      onChange: handleChange,
-      onFocus: function onFocus() {
-        return _onFocus(userInfoState[el[1]], el[1]);
-      },
-      onBlur: function onBlur() {
-        return _onBlur(userInfoState[el[1]], el[1]);
-      },
+      onChange: handleChange // onFocus={() => onFocus(userInfoState[el[1]], el[1])}
+      // onBlur={() => onBlur(userInfoState[el[1]], el[1])}
+      ,
       required: true
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
       htmlFor: el[1],
@@ -1515,13 +1513,11 @@ var mapDispatch = function mapDispatch(dispatch) {
   return {
     handleSubmit: function handleSubmit(evt) {
       evt.preventDefault();
-      var formName = evt.target.name;
       var email = evt.target.email.value;
-      var password = evt.target.password.value;
       var firstName = evt.target.firstName.value;
       var lastName = evt.target.lastName.value;
       var address = evt.target.address.value;
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["auth"])(firstName, lastName, email, password, formName, address));
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["me"])(firstName, lastName, email, address, 'update'));
     }
   };
 };
@@ -2814,41 +2810,65 @@ var removeUser = function removeUser() {
  */
 
 
-var me = function me() {
+var me = function me(firstName, lastName, email, address, method) {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-      var res, currentOrder;
+      var res, _res, currentOrder;
+
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/me');
 
-            case 3:
+              if (!(method === 'update')) {
+                _context.next = 8;
+                break;
+              }
+
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.put('/auth/me', {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                address: address
+              });
+
+            case 4:
               res = _context.sent;
-              _context.next = 6;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/cart');
-
-            case 6:
-              currentOrder = _context.sent;
               dispatch(getUser(res.data || defaultUser));
-              dispatch(Object(_shoppingCart__WEBPACK_IMPORTED_MODULE_2__["getOrUpdateShoppingCart"])(currentOrder.data));
-              _context.next = 14;
+              _context.next = 16;
               break;
 
-            case 11:
-              _context.prev = 11;
+            case 8:
+              _context.next = 10;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/auth/me');
+
+            case 10:
+              _res = _context.sent;
+              _context.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('api/cart');
+
+            case 13:
+              currentOrder = _context.sent;
+              dispatch(getUser(_res.data || defaultUser));
+              dispatch(Object(_shoppingCart__WEBPACK_IMPORTED_MODULE_2__["getOrUpdateShoppingCart"])(currentOrder.data));
+
+            case 16:
+              _context.next = 21;
+              break;
+
+            case 18:
+              _context.prev = 18;
               _context.t0 = _context["catch"](0);
               console.error(_context.t0);
 
-            case 14:
+            case 21:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 11]]);
+      }, _callee, null, [[0, 18]]);
     }));
 
     return function (_x) {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {auth} from '../store'
+import {me} from '../store'
 
 /**
  * COMPONENT
@@ -34,19 +34,19 @@ export const User = props => {
     setUserInfo({...userInfoState, [event.target.name]: event.target.value})
   }
 
-  function onFocus(curInfo, classType) {
-    if (
-      userInfoState[classType] === '' &&
-      userName[classType] === `${classType}-down`
-    )
-      setUserName({...userName, [classType]: `${classType}-up`})
-  }
+  // function onFocus(curInfo, classType) {
+  //   if (
+  //     userInfoState[classType] === '' &&
+  //     userName[classType] === `${classType}-down`
+  //   )
+  //     setUserName({...userName, [classType]: `${classType}-up`})
+  // }
 
-  function onBlur(curInfo, classType) {
-    if (userInfoState[classType] === '') {
-      setUserName({...userName, [classType]: `${classType}-down`})
-    }
-  }
+  // function onBlur(curInfo, classType) {
+  //   if (userInfoState[classType] === '') {
+  //     setUserName({...userName, [classType]: `${classType}-down`})
+  //   }
+  // }
   const userInputes = [
     ['First Name', 'firstName'],
     ['Last Name', 'lastName'],
@@ -59,8 +59,8 @@ export const User = props => {
         type="text"
         value={userInfoState[el[1]]}
         onChange={handleChange}
-        onFocus={() => onFocus(userInfoState[el[1]], el[1])}
-        onBlur={() => onBlur(userInfoState[el[1]], el[1])}
+        // onFocus={() => onFocus(userInfoState[el[1]], el[1])}
+        // onBlur={() => onBlur(userInfoState[el[1]], el[1])}
         required
       />
       <label htmlFor={el[1]} className="user-page-label">
@@ -146,14 +146,12 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
 
-      const formName = evt.target.name
       const email = evt.target.email.value
-      const password = evt.target.password.value
       const firstName = evt.target.firstName.value
       const lastName = evt.target.lastName.value
       const address = evt.target.address.value
 
-      dispatch(auth(firstName, lastName, email, password, formName, address))
+      dispatch(me(firstName, lastName, email, address, 'update'))
     }
   }
 }

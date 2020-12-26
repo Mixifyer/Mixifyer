@@ -22,12 +22,28 @@ const removeUser = () => ({type: REMOVE_USER})
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
+export const me = (
+  firstName,
+  lastName,
+  email,
+  address,
+  method
+) => async dispatch => {
   try {
-    const res = await axios.get('/auth/me')
-    const currentOrder = await axios.get('api/cart')
-    dispatch(getUser(res.data || defaultUser))
-    dispatch(getOrUpdateShoppingCart(currentOrder.data))
+    if (method === 'update') {
+      const res = await axios.put('/auth/me', {
+        firstName,
+        lastName,
+        email,
+        address
+      })
+      dispatch(getUser(res.data || defaultUser))
+    } else {
+      const res = await axios.get('/auth/me')
+      const currentOrder = await axios.get('api/cart')
+      dispatch(getUser(res.data || defaultUser))
+      dispatch(getOrUpdateShoppingCart(currentOrder.data))
+    }
   } catch (err) {
     console.error(err)
   }

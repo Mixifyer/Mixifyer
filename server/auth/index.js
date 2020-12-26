@@ -42,5 +42,19 @@ router.post('/logout', (req, res) => {
 router.get('/me', (req, res) => {
   res.json(req.user)
 })
+router.put('/me', async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const currentUser = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    await currentUser.update(req.body)
+    res.json(currentUser)
+  } catch (err) {
+    next(err)
+  }
+})
 
 router.use('/google', require('./google'))
