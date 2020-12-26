@@ -1429,6 +1429,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var User = function User(props) {
   var user = props.user,
       handleSubmit = props.handleSubmit;
+  console.log('.......>>>>', user);
 
   var currentUser = _objectSpread({}, user);
 
@@ -1470,74 +1471,33 @@ var User = function User(props) {
     }
   }
 
+  var userInputes = [['First Name', 'firstName'], ['Last Name', 'lastName'], ['Address', 'address'], ['Email', 'email']].map(function (el, ind) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "inputs-user-page",
+      key: ind
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      name: el[1],
+      type: "text",
+      value: userInfoState[el[1]],
+      onChange: handleChange,
+      onFocus: function onFocus() {
+        return _onFocus(userInfoState[el[1]], el[1]);
+      },
+      onBlur: function onBlur() {
+        return _onBlur(userInfoState[el[1]], el[1]);
+      },
+      required: true
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      htmlFor: el[1],
+      className: "user-page-label"
+    }, el[0], /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")));
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "user-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     className: "user-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "inputs-user-page"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "firstName",
-    type: "text",
-    value: userInfoState.firstName,
-    onChange: handleChange,
-    onFocus: function onFocus() {
-      return _onFocus(userInfoState.firstName, 'firstName');
-    },
-    onBlur: function onBlur() {
-      return _onBlur(userInfoState.firstName, 'firstName');
-    },
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "firstName",
-    className: "user-page-label"
-  }, "First name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "lastName",
-    type: "text",
-    value: userInfoState.lastName,
-    onChange: handleChange,
-    onFocus: function onFocus() {
-      return _onFocus(userInfoState.lastName, 'lastName');
-    },
-    onBlur: function onBlur() {
-      return _onBlur(userInfoState.lastName, 'lastName');
-    },
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "lastName",
-    className: userName.lastName
-  }, "Last name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "address",
-    type: "text",
-    value: userInfoState.address,
-    onChange: handleChange,
-    onFocus: function onFocus() {
-      return _onFocus(userInfoState.address, 'address');
-    },
-    onBlur: function onBlur() {
-      return _onBlur(userInfoState.address, 'address');
-    },
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "address",
-    className: userName.lastName
-  }, "Shipping address", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    name: "email",
-    type: "text",
-    value: userInfoState.email,
-    onChange: handleChange,
-    onFocus: function onFocus() {
-      return _onFocus(userInfoState.email, 'email');
-    },
-    onBlur: function onBlur() {
-      return _onBlur(userInfoState.email, 'email');
-    },
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "email",
-    className: userName.lastName
-  }, "email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, userInputes, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit"
   }, "SUBMIT CHANGES")));
 };

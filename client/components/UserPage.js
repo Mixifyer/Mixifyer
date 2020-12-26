@@ -8,7 +8,7 @@ import {auth} from '../store'
  */
 export const User = props => {
   const {user, handleSubmit} = props
-
+  console.log('.......>>>>', user)
   const currentUser = {...user}
   const [userInfoState, setUserInfo] = useState(currentUser)
 
@@ -47,11 +47,34 @@ export const User = props => {
       setUserName({...userName, [classType]: `${classType}-down`})
     }
   }
+  const userInputes = [
+    ['First Name', 'firstName'],
+    ['Last Name', 'lastName'],
+    ['Address', 'address'],
+    ['Email', 'email']
+  ].map((el, ind) => (
+    <div className="inputs-user-page" key={ind}>
+      <input
+        name={el[1]}
+        type="text"
+        value={userInfoState[el[1]]}
+        onChange={handleChange}
+        onFocus={() => onFocus(userInfoState[el[1]], el[1])}
+        onBlur={() => onBlur(userInfoState[el[1]], el[1])}
+        required
+      />
+      <label htmlFor={el[1]} className="user-page-label">
+        {el[0]}
+        <span>*</span>
+      </label>
+    </div>
+  ))
 
   return (
     <div id="user-container">
       <form onSubmit={handleSubmit} className="user-info">
-        <div className="inputs-user-page">
+        {userInputes}
+        {/* <div className="inputs-user-page">
           <input
             name="firstName"
             type="text"
@@ -102,7 +125,7 @@ export const User = props => {
         />
         <label htmlFor="email" className={userName.lastName}>
           email<span>*</span>
-        </label>
+        </label> */}
 
         <button type="submit">SUBMIT CHANGES</button>
       </form>
