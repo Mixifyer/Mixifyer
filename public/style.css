@@ -362,8 +362,6 @@ nav a:hover {
   border-radius: 7px;
   width: 500px;
   padding: 2% 0%;
-  /* background-size: cover;
-  background-repeat: no-repeat; */
 }
 
 #auth-method {
@@ -475,7 +473,7 @@ nav a:hover {
   padding: 20px 10px 6px;
   background-color: #f8f8ff;
   border-bottom: solid 0.5px black;
-  z-index: 1;
+  z-index: -2;
   width: 400px;
   height: 52px;
   margin-bottom: 20px;
@@ -1209,13 +1207,15 @@ label {
     margin-right: 60%;
   }
 
-  .user-info {
+  .user-info-form {
     max-width: 80%;
     margin: 10%;
   }
-
-  .user-info input {
-    max-width: 100%;
+  .inputs-user-page {
+    /* position: static; */
+  }
+  .user-info-form input {
+    max-width: 80%;
     margin: 0px;
     margin-bottom: 20px;
   }

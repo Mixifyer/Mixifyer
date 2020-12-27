@@ -1695,6 +1695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
+/* harmony import */ var _UserPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./UserPage */ "./client/components/UserPage.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1715,6 +1716,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Navbar = function Navbar(_ref) {
   var user = _ref.user,
       handleLogout = _ref.handleLogout,
@@ -1725,6 +1727,26 @@ var Navbar = function Navbar(_ref) {
       _useState2 = _slicedToArray(_useState, 2),
       menu = _useState2[0],
       setMenu = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    show: false
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      modalState = _useState4[0],
+      setModal = _useState4[1];
+
+  var showModal = function showModal() {
+    setModal({
+      show: true
+    });
+  };
+
+  var hideModal = function hideModal(event) {
+    var className = ['modal', 'close-modal-bttn'];
+    if (className.includes(event.target.className)) setModal({
+      show: false
+    });
+  };
 
   function onClickBurger() {
     setMenu(!menu);
@@ -1739,10 +1761,10 @@ var Navbar = function Navbar(_ref) {
     return handleLogout();
   };
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      mouseOver = _useState4[0],
-      setMouseOver = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      mouseOver = _useState6[0],
+      setMouseOver = _useState6[1];
 
   var userAccountLinks = function userAccountLinks(idName) {
     return !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1755,10 +1777,26 @@ var Navbar = function Navbar(_ref) {
       onClick: onClickLinks
     }, "SIGN UP")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: idName
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-      to: "/account",
-      onClick: onClickLinks
-    }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      onClick: function onClick() {
+        return showModal();
+      }
+    }, "ACCOUNT"), modalState.show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal",
+      onClick: function onClick(e) {
+        return hideModal(e);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "modal-container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPage__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      user: user
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "images/closebutton.png",
+      className: "close-modal-bttn",
+      onClick: function onClick(e) {
+        return hideModal(e);
+      }
+    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
       id: "logout-nav",
       onClick: function onClick() {

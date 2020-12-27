@@ -5,9 +5,22 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import SearchBar from './SearchBar'
+import User from './UserPage'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const [menu, setMenu] = useState(true)
+  const [modalState, setModal] = useState({show: false})
+
+  const showModal = () => {
+    setModal({show: true})
+  }
+
+  const hideModal = event => {
+    let className = ['modal', 'close-modal-bttn']
+
+    if (className.includes(event.target.className)) setModal({show: false})
+  }
+
   function onClickBurger() {
     setMenu(!menu)
   }
@@ -35,9 +48,22 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       </div>
     ) : (
       <div id={idName}>
-        <Link to="/account" onClick={onClickLinks}>
+        {/* <Link to="/account" onClick={onClickLinks}>
           ACCOUNT
-        </Link>
+        </Link> */}
+        <h5 onClick={() => showModal()}>ACCOUNT</h5>
+        {modalState.show && (
+          <div className="modal" onClick={e => hideModal(e)}>
+            <div className="modal-container">
+              <User user={user} />
+              <img
+                src="images/closebutton.png"
+                className="close-modal-bttn"
+                onClick={e => hideModal(e)}
+              />
+            </div>
+          </div>
+        )}
         <a href="#" id="logout-nav" onClick={() => onHandle()}>
           LOGOUT
         </a>
