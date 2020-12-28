@@ -1242,10 +1242,18 @@ label {
   .inputs-user-page {
     /* position: static; */
   }
+
+  .modal-user-page-container .inputs-user-page {
+    max-width: 100%;
+  }
+  .modal-user-page-container .inputs-user-page input,
   .user-info-form input {
-    max-width: 80%;
+    max-width: 100%;
     margin: 0px;
     margin-bottom: 20px;
+  }
+  .user-info-form input {
+    max-width: 80%;
   }
   .modal-container,
   .modal-details {
