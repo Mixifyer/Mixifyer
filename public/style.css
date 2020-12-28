@@ -461,10 +461,10 @@ nav a:hover,
   margin: 8%;
 }
 
-.user-info span {
+.user-info-form span {
   vertical-align: text-top;
-  font-size: 13px;
-  margin: 2px;
+  font-size: 0.7em;
+  margin: 0.1em;
 }
 
 .inputs-user-page {
@@ -473,17 +473,17 @@ nav a:hover,
 .inputs-user-page input {
   color: rgb(10, 10, 102);
   border: solid 1px;
-  font-size: 20px;
+  font-size: 1.2em;
   padding: 20px 10px 6px;
   background-color: #f8f8ff;
   border-bottom: solid 0.5px black;
-  z-index: -2;
+  z-index: 1;
   width: 400px;
   height: 52px;
   margin-bottom: 20px;
 }
 .inputs-user-page > label {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.33333;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
@@ -497,7 +497,7 @@ nav a:hover,
 }
 .inputs-user-page input:valid + label {
   top: -10px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 12px;
   line-height: 1.42857;
   font-weight: 400;
@@ -1077,18 +1077,24 @@ label {
     border-radius: 0px;
     box-shadow: none;
     color: rgb(250, 244, 250);
+    font-weight: 200;
     font-family: Optima, sans-serif;
   }
 
   #account-links-mobile {
     display: flex;
     justify-content: space-between;
+    /* height: 0; */
     width: 16%;
     padding: 0px;
   }
-
+  #account-links-mobile a {
+    margin-top: 15px;
+    font-weight: 100;
+  }
   #account-links-mobile #logout-nav {
-    margin: 5px 0px 0px 14px;
+    margin: 14px;
+    font-weight: 100;
   }
 
   .shopping-cart-container {
