@@ -13,10 +13,11 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
 
   const showModal = () => {
     setModal({show: true})
+    setMenu(!menu)
   }
 
   const hideModal = event => {
-    let className = ['modal', 'close-modal-bttn']
+    let className = ['modal', 'close-modal-bttn-user-page']
 
     if (className.includes(event.target.className)) setModal({show: false})
   }
@@ -48,17 +49,20 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       </div>
     ) : (
       <div id={idName}>
-        {/* <Link to="/account" onClick={onClickLinks}>
-          ACCOUNT
-        </Link> */}
-        <h5 onClick={() => showModal()}>ACCOUNT</h5>
+        {window.innerWidth < 800 ? (
+          <p id="nav-links-account" onClick={() => showModal()}>
+            ACCOUNT
+          </p>
+        ) : (
+          <Link to="/account">ACCOUNT</Link>
+        )}
         {modalState.show && (
           <div className="modal" onClick={e => hideModal(e)}>
-            <div className="modal-container">
+            <div className="modal-user-page-container">
               <User user={user} />
               <img
                 src="images/closebutton.png"
-                className="close-modal-bttn"
+                className="close-modal-bttn-user-page"
                 onClick={e => hideModal(e)}
               />
             </div>

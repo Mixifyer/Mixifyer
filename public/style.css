@@ -99,8 +99,10 @@ nav a {
   font-weight: 500;
 }
 
-nav a:hover {
+nav a:hover,
+#nav-links-account:hover {
   color: rgb(160, 177, 204);
+  cursor: pointer;
 }
 
 #label {
@@ -179,7 +181,8 @@ nav a:hover {
 
   border-radius: 7px;
 }
-#account-links a {
+#account-links a,
+#nav-links-account {
   font-size: 11px;
   text-align: center;
   font-family: sans-serif;
@@ -446,6 +449,7 @@ nav a:hover {
 /* user-home page */
 #user-container {
   display: flex;
+  color: #113542;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -790,7 +794,8 @@ label {
   margin: 3%;
 }
 
-.close-modal-bttn {
+.close-modal-bttn,
+.close-modal-bttn-user-page {
   border: solid 1px;
   border-radius: 2px;
   background-color: rgb(216, 127, 127);
@@ -1062,9 +1067,19 @@ label {
     font-weight: normal;
   }
   .nav-links-x a,
-  .nav-burger a {
+  .nav-burger a,
+  #nav-links-account {
     font-size: 0.75em;
   }
+  #nav-links-account {
+    background: transparent;
+    border: transparent;
+    border-radius: 0px;
+    box-shadow: none;
+    color: rgb(250, 244, 250);
+    font-family: Optima, sans-serif;
+  }
+
   #account-links-mobile {
     display: flex;
     justify-content: space-between;
@@ -1072,11 +1087,8 @@ label {
     padding: 0px;
   }
 
-  #account-links-mobile a {
-    margin-left: 0px;
-  }
   #account-links-mobile #logout-nav {
-    margin-left: 14px;
+    margin: 5px 0px 0px 14px;
   }
 
   .shopping-cart-container {
@@ -1154,7 +1166,8 @@ label {
     left: -100%;
   }
   .nav-links-x a,
-  .nav-links-burger a {
+  .nav-links-burger a,
+  #nav-links-account {
     display: inline-block;
     width: 80%;
     padding: 0px 0px;
@@ -1165,15 +1178,24 @@ label {
   }
 
   #account-links-mobile {
-    justify-content: center;
     width: 80%;
     display: block;
     margin-top: 0px;
   }
-  #account-links-mobile a,
+  #nav-links-account,
   #account-links-mobile #logout-nav {
     width: 100%;
+    text-align: start;
     margin-left: 0px;
+  }
+  .user-container,
+  .user-info-form {
+    margin: 0;
+    width: 100%;
+  }
+  .close-modal-bttn-user-page {
+    margin-top: 16%;
+    margin-right: 9%;
   }
 
   #shopping-cart-icon-mobile {

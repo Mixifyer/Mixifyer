@@ -1739,10 +1739,11 @@ var Navbar = function Navbar(_ref) {
     setModal({
       show: true
     });
+    setMenu(!menu);
   };
 
   var hideModal = function hideModal(event) {
-    var className = ['modal', 'close-modal-bttn'];
+    var className = ['modal', 'close-modal-bttn-user-page'];
     if (className.includes(event.target.className)) setModal({
       show: false
     });
@@ -1777,22 +1778,25 @@ var Navbar = function Navbar(_ref) {
       onClick: onClickLinks
     }, "SIGN UP")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: idName
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    }, window.innerWidth < 800 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      id: "nav-links-account",
       onClick: function onClick() {
         return showModal();
       }
+    }, "ACCOUNT") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+      to: "/account"
     }, "ACCOUNT"), modalState.show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "modal",
       onClick: function onClick(e) {
         return hideModal(e);
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "modal-container"
+      className: "modal-user-page-container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UserPage__WEBPACK_IMPORTED_MODULE_6__["default"], {
       user: user
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "images/closebutton.png",
-      className: "close-modal-bttn",
+      className: "close-modal-bttn-user-page",
       onClick: function onClick(e) {
         return hideModal(e);
       }
