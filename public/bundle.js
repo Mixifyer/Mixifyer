@@ -1290,7 +1290,7 @@ var SingleProduct = function SingleProduct(props) {
   var product = props.product,
       addToCart = props.addToCart;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
       _useState2 = _slicedToArray(_useState, 2),
       quatity = _useState2[0],
       setQuantity = _useState2[1];
@@ -1324,14 +1324,13 @@ var SingleProduct = function SingleProduct(props) {
   }
 
   function handleChange(event) {
-    console.log('event.target.value', event.target.value);
     setQuantity(Number(event.target.value));
   }
 
-  var qtyCount = Array(product.inStock).fill('').map(function (el, index) {
+  var qtyCount = Array(product.inStock).fill(1).map(function (el, ind) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      key: index
-    }, index + 1);
+      key: ind
+    }, ind + el);
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-details"

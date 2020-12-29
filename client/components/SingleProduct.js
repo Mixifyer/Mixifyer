@@ -5,7 +5,7 @@ import {updateShoppingCartThunk} from '../store/shoppingCart'
 
 const SingleProduct = props => {
   const {product, addToCart} = props
-  const [quatity, setQuantity] = useState(0)
+  const [quatity, setQuantity] = useState(1)
 
   async function addToShoppingCart(singleProduct) {
     const productInfo = {
@@ -16,12 +16,11 @@ const SingleProduct = props => {
     await addToCart(productInfo)
   }
   function handleChange(event) {
-    console.log('event.target.value', event.target.value)
     setQuantity(Number(event.target.value))
   }
   const qtyCount = Array(product.inStock)
-    .fill('')
-    .map((el, index) => <option key={index}>{index + 1}</option>)
+    .fill(1)
+    .map((el, ind) => <option key={ind}>{ind + el}</option>)
   return (
     <div className="modal-details">
       <div className="product-image-single-page">
