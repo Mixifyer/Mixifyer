@@ -79,9 +79,6 @@ const mapDispatch = dispatch => {
 
 export default connect(mapState, mapDispatch)(User)
 
-/**
- * PROP TYPES
- */
 User.propTypes = {
   email: PropTypes.string
 }

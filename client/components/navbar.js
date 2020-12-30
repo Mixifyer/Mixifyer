@@ -1,11 +1,9 @@
-/* eslint-disable complexity */
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import SearchBar from './SearchBar'
-import User from './UserPage'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const [menu, setMenu] = useState(true)
@@ -115,9 +113,6 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   )
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     user: state.user,
@@ -136,9 +131,6 @@ const mapDispatch = dispatch => {
 
 export default connect(mapState, mapDispatch)(Navbar)
 
-/**
- * PROP TYPES
- */
 Navbar.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
