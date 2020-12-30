@@ -49,14 +49,14 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       </div>
     ) : (
       <div id={idName}>
-        {window.innerWidth < 800 ? (
+        {/* {window.innerWidth < 800 ? (
           <p id="nav-links-account" onClick={() => showModal()}>
             ACCOUNT
           </p>
-        ) : (
-          <Link to="/account">ACCOUNT</Link>
-        )}
-        {modalState.show && (
+        ) : ( */}
+        <Link to="/account">ACCOUNT</Link>
+        {/* )} */}
+        {/* {modalState.show && (
           <div className="modal" onClick={e => hideModal(e)}>
             <div className="modal-user-page-container">
               <User user={user} />
@@ -67,7 +67,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
               />
             </div>
           </div>
-        )}
+        )} */}
         <a href="#" id="logout-nav" onClick={() => onHandle()}>
           LOGOUT
         </a>
