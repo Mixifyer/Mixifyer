@@ -1167,7 +1167,6 @@ label {
     left: 0%;
     transition: 0.5s ease-in-out;
     margin: 0px;
-    /* z-index: 10; */
     padding-top: 5%;
   }
   .nav-links-x {
@@ -1225,35 +1224,26 @@ label {
   }
 
   #auth-container,
-  #user-container {
+  .user-info-form {
     width: 80%;
     margin: 7% 10%;
   }
 
-  #auth-container form input {
+  #auth-container form input,
+  .inputs-user-page {
     max-width: 100%;
   }
   #auth-container button {
     margin-right: 60%;
   }
 
-  .user-info-form {
-    max-width: 80%;
-    margin: 10%;
-  }
-
-  .inputs-user-page {
-    max-width: 100%;
-  }
   .inputs-user-page input,
   .user-info-form input {
     max-width: 100%;
     margin: 0px;
     margin-bottom: 20px;
   }
-  .user-info-form input {
-    max-width: 80%;
-  }
+
   .modal-container,
   .modal-details {
     height: 70%;
