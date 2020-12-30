@@ -1727,27 +1727,6 @@ var Navbar = function Navbar(_ref) {
       menu = _useState2[0],
       setMenu = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    show: false
-  }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      modalState = _useState4[0],
-      setModal = _useState4[1];
-
-  var showModal = function showModal() {
-    setModal({
-      show: true
-    });
-    setMenu(!menu);
-  };
-
-  var hideModal = function hideModal(event) {
-    var className = ['modal', 'close-modal-bttn-user-page'];
-    if (className.includes(event.target.className)) setModal({
-      show: false
-    });
-  };
-
   function onClickBurger() {
     setMenu(!menu);
   }
@@ -1761,10 +1740,10 @@ var Navbar = function Navbar(_ref) {
     return handleLogout();
   };
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      mouseOver = _useState6[0],
-      setMouseOver = _useState6[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mouseOver = _useState4[0],
+      setMouseOver = _useState4[1];
 
   var userAccountLinks = function userAccountLinks(idName) {
     return !isLoggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1778,7 +1757,8 @@ var Navbar = function Navbar(_ref) {
     }, "SIGN UP")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: idName
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-      to: "/account"
+      to: "/account",
+      onClick: onClickLinks
     }, "ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "#",
       id: "logout-nav",

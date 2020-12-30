@@ -9,18 +9,6 @@ import User from './UserPage'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const [menu, setMenu] = useState(true)
-  const [modalState, setModal] = useState({show: false})
-
-  const showModal = () => {
-    setModal({show: true})
-    setMenu(!menu)
-  }
-
-  const hideModal = event => {
-    let className = ['modal', 'close-modal-bttn-user-page']
-
-    if (className.includes(event.target.className)) setModal({show: false})
-  }
 
   function onClickBurger() {
     setMenu(!menu)
@@ -49,25 +37,10 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       </div>
     ) : (
       <div id={idName}>
-        {/* {window.innerWidth < 800 ? (
-          <p id="nav-links-account" onClick={() => showModal()}>
-            ACCOUNT
-          </p>
-        ) : ( */}
-        <Link to="/account">ACCOUNT</Link>
-        {/* )} */}
-        {/* {modalState.show && (
-          <div className="modal" onClick={e => hideModal(e)}>
-            <div className="modal-user-page-container">
-              <User user={user} />
-              <img
-                src="images/closebutton.png"
-                className="close-modal-bttn-user-page"
-                onClick={e => hideModal(e)}
-              />
-            </div>
-          </div>
-        )} */}
+        <Link to="/account" onClick={onClickLinks}>
+          ACCOUNT
+        </Link>
+
         <a href="#" id="logout-nav" onClick={() => onHandle()}>
           LOGOUT
         </a>
