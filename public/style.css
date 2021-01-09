@@ -460,6 +460,10 @@ nav a:hover,
   width: 400px;
   margin: 8%;
 }
+.user-info p {
+  color: #3d3af5;
+  margin-bottom: 5px;
+}
 
 .user-info-form span {
   vertical-align: text-top;
@@ -483,11 +487,14 @@ nav a:hover,
   position: relative;
 }
 .inputs-user-page input {
+  outline: none;
   color: rgb(10, 10, 102);
   border: solid 1px;
   font-size: 1.2em;
   padding: 20px 10px 6px;
+  border: none;
   background-color: #f8f8ff;
+  /* border-radius: 5px; */
   border-bottom: solid 0.5px black;
   z-index: 1;
   width: 400px;
