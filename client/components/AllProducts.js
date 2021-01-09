@@ -148,7 +148,6 @@ const AllProducts = ({
                     </Link>
                   </div>
                   <h5>Price: {product.price / 100} $</h5>
-                  {/* <h5>Volume: {product.volume} oz</h5> */}
                   <h5>Available: {product.inStock}</h5>
                 </div>
                 {product.inStock !== 0 ? (
