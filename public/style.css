@@ -466,6 +466,18 @@ nav a:hover,
   font-size: 0.7em;
   margin: 0.1em;
 }
+.user-info-form button {
+  outline: none;
+  color: white;
+  width: 150px;
+  height: 30px;
+  background-color: rgb(1, 155, 1);
+  border: solid 1px rgb(182, 181, 181);
+  box-shadow: 1px 1px 3px rgb(156, 155, 155);
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
 
 .inputs-user-page {
   position: relative;
