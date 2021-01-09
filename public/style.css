@@ -494,8 +494,8 @@ nav a:hover,
   padding: 20px 10px 6px;
   border: none;
   background-color: #f8f8ff;
-  /* border-radius: 5px; */
-  border-bottom: solid 0.5px black;
+  /* box-shadow: 0px 1px 2px rgb(201, 198, 198, 0.5); */
+  border-bottom: solid 0.5px rgb(77, 77, 77, 0.5);
   z-index: 1;
   width: 400px;
   height: 52px;
