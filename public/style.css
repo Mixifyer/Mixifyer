@@ -926,6 +926,15 @@ label {
   background-image: url('images/plus.png');
   margin-left: 10px;
 }
+.user-account-nav:hover {
+  cursor: default;
+}
+#plus-sign,
+#minus-sign,
+#delete-item,
+#checkout-bttn:hover {
+  cursor: pointer;
+}
 #delete-item {
   width: 25px;
   height: 25px;
