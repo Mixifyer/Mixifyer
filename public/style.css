@@ -667,6 +667,7 @@ label {
 #product-info a:hover,
 #product-name:hover {
   color: rgb(138, 145, 206);
+  cursor: pointer;
 }
 
 #product-info h5 {
