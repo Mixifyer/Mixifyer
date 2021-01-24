@@ -634,6 +634,7 @@ label {
   justify-content: center;
   align-items: center;
   width: 40%;
+  cursor: pointer;
 }
 .product-img img {
   max-width: 150px;
