@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import ChangeProductQuantity from './ChangeProductQuantity'
 import {updateShoppingCartThunk} from '../store/shoppingCart'
@@ -18,10 +18,9 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
     updateCart({id: productId, quantity: qty, price: qty * price}, 'remove')
   }
 
-  const checkoutButtonId =
-    shoppingCart.currentOrder.length !== undefined
-      ? 'checkout-bttn'
-      : 'checkout-bttn-disabled'
+  const checkoutButtonId = shoppingCart.currentOrder.length
+    ? 'checkout-bttn'
+    : 'checkout-bttn-disabled'
 
   const showModal = () => {
     setModal({show: true})
@@ -71,7 +70,7 @@ const ShoppingCart = ({shoppingCart, getSecret, updateCart}) => {
         <div className="cart-total-details">
           <div>
             <h3>Items In Cart: {shoppingCart.totalQuantity}</h3>
-            <h3>Total Price: {shoppingCart.totalPrice / 100}$</h3>
+            <h3>Total Price: ${shoppingCart.totalPrice / 100}</h3>
           </div>
           <button
             type="button"

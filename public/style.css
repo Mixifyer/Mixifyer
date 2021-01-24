@@ -667,6 +667,7 @@ label {
 #product-info a:hover,
 #product-name:hover {
   color: rgb(138, 145, 206);
+  cursor: pointer;
 }
 
 #product-info h5 {
@@ -924,6 +925,15 @@ label {
 #plus-sign {
   background-image: url('images/plus.png');
   margin-left: 10px;
+}
+.user-account-nav:hover {
+  cursor: default;
+}
+#plus-sign,
+#minus-sign,
+#delete-item,
+#checkout-bttn:hover {
+  cursor: pointer;
 }
 #delete-item {
   width: 25px;

@@ -167,7 +167,7 @@ const data = [
   },
   {
     id: 16,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'la-poire',
@@ -181,7 +181,7 @@ const data = [
   },
   {
     id: 13,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'la-vanille',
@@ -195,7 +195,7 @@ const data = [
   },
   {
     id: 14,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'cherry-noir',
@@ -209,7 +209,7 @@ const data = [
   },
   {
     id: 15,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'le-citron',
@@ -223,7 +223,7 @@ const data = [
   },
   {
     id: 17,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'le-melon',
@@ -237,7 +237,7 @@ const data = [
   },
   {
     id: 18,
-    name: 'GRAY GOOSE',
+    name: 'GREY GOOSE',
     category: 'spirit',
     type: 'vodka',
     flavor: 'plain',
@@ -447,7 +447,7 @@ const data = [
   },
   {
     id: 33,
-    name: 'SIANT JAMES',
+    name: 'SAINT JAMES',
     category: 'bitter',
     type: null,
     flavor: 'caribean-aromatic',

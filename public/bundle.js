@@ -1156,7 +1156,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
     }, 'remove');
   };
 
-  var checkoutButtonId = shoppingCart.currentOrder.length !== undefined ? 'checkout-bttn' : 'checkout-bttn-disabled';
+  var checkoutButtonId = shoppingCart.currentOrder.length ? 'checkout-bttn' : 'checkout-bttn-disabled';
 
   var showModal = function showModal() {
     setModal({
@@ -1203,7 +1203,7 @@ var ShoppingCart = function ShoppingCart(_ref) {
     className: "cart-totals"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "COMPLETE ORDER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cart-total-details"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Items In Cart: ", shoppingCart.totalQuantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Total Price: ", shoppingCart.totalPrice / 100, "$")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Items In Cart: ", shoppingCart.totalQuantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Total Price: $", shoppingCart.totalPrice / 100)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     disabled: !shoppingCart.currentOrder.length,
     id: checkoutButtonId,
