@@ -91,6 +91,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
         Mixifyer
       </Link>
       {cart('shopping-cart-icon-mobile')}
+
       <div className={linksClass}>
         <SearchBar />
         <Link to="/home" onClick={onClickLinks}>
