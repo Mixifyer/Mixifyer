@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import SearchBar from './SearchBar'
+import ShoppingCartIcon from './ShoppingCartIcon'
 
 const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const [menu, setMenu] = useState(true)
@@ -67,19 +68,27 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x'
   const burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'
 
-  const cart = idName => (
-    <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
-      <div id="cart-body">
-        <div id="cart-left" />
-        <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
-        <div id="cart-right" />
-        <div id="cart-handle" />
-      </div>
-      <div id="wheels">
-        <div className="wheels" />
-        <div className="wheels" />
-      </div>
-    </Link>
+  // const cart = idName => (
+  //   <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
+  //     <div id="cart-body">
+  //       <div id="cart-left" />
+  //       <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
+  //       <div id="cart-right" />
+  //       <div id="cart-handle" />
+  //     </div>
+  //     <div id="wheels">
+  //       <div className="wheels" />
+  //       <div className="wheels" />
+  //     </div>
+  //   </Link>
+  // )
+
+  const shopCartIcon = idName => (
+    <ShoppingCartIcon
+      onClickLinks={onClickLinks}
+      idName={idName}
+      quantity={shoppingCart.totalQuantity}
+    />
   )
   return (
     <nav>
@@ -90,7 +99,8 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
       <Link onClick={onClickLinks} to="/home" id="label">
         Mixifyer
       </Link>
-      {cart('shopping-cart-icon-mobile')}
+
+      {shopCartIcon('shopping-cart-icon-mobile')}
       <div className={linksClass}>
         <SearchBar />
         <Link to="/home" onClick={onClickLinks}>
@@ -107,7 +117,7 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
         </Link>
         {accountNav}
         {userAccountLinks('account-links-mobile')}
-        {cart('shopping-cart-icon')}
+        {shopCartIcon('shopping-cart-icon')}
       </div>
     </nav>
   )

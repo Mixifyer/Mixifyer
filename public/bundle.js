@@ -1251,6 +1251,52 @@ var mapDispatch = function mapDispatch(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/ShoppingCartIcon.js":
+/*!***********************************************!*\
+  !*** ./client/components/ShoppingCartIcon.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var ShoppingCartIcon = function ShoppingCartIcon(_ref) {
+  var quantity = _ref.quantity,
+      idName = _ref.idName,
+      onClickLinks = _ref.onClickLinks;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/shopping-cart",
+    onClick: onClickLinks,
+    id: idName
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "cart-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "cart-left"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "cart-bottom"
+  }, quantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "cart-right"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "cart-handle"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "wheels"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wheels"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wheels"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ShoppingCartIcon);
+
+/***/ }),
+
 /***/ "./client/components/SingleProduct.js":
 /*!********************************************!*\
   !*** ./client/components/SingleProduct.js ***!
@@ -1690,6 +1736,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchBar */ "./client/components/SearchBar.js");
+/* harmony import */ var _ShoppingCartIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ShoppingCartIcon */ "./client/components/ShoppingCartIcon.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1701,6 +1748,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1778,30 +1826,27 @@ var Navbar = function Navbar(_ref) {
   }), userAccountLinks('account-links')));
   var linksClass = !menu ? 'nav-links-burger' : 'nav-links-x';
   var burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x';
-  var burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x';
+  var burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'; // const cart = idName => (
+  //   <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
+  //     <div id="cart-body">
+  //       <div id="cart-left" />
+  //       <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
+  //       <div id="cart-right" />
+  //       <div id="cart-handle" />
+  //     </div>
+  //     <div id="wheels">
+  //       <div className="wheels" />
+  //       <div className="wheels" />
+  //     </div>
+  //   </Link>
+  // )
 
-  var cart = function cart(idName) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-      to: "/shopping-cart",
-      onClick: onClickLinks,
-      id: idName
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "cart-body"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "cart-left"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "cart-bottom"
-    }, shoppingCart.totalQuantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "cart-right"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "cart-handle"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      id: "wheels"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "wheels"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "wheels"
-    })));
+  var shopCartIcon = function shopCartIcon(idName) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoppingCartIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      onClickLinks: onClickLinks,
+      idName: idName,
+      quantity: shoppingCart.totalQuantity
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1815,7 +1860,7 @@ var Navbar = function Navbar(_ref) {
     onClick: onClickLinks,
     to: "/home",
     id: "label"
-  }, "Mixifyer"), cart('shopping-cart-icon-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Mixifyer"), shopCartIcon('shopping-cart-icon-mobile'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: linksClass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/home",
@@ -1829,7 +1874,7 @@ var Navbar = function Navbar(_ref) {
   }, "NON-ALCOHOLIC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
     to: "/bitter/products",
     onClick: onClickLinks
-  }, "BITTERS"), accountNav, userAccountLinks('account-links-mobile'), cart('shopping-cart-icon')));
+  }, "BITTERS"), accountNav, userAccountLinks('account-links-mobile'), shopCartIcon('shopping-cart-icon')));
 };
 
 var mapState = function mapState(state) {
