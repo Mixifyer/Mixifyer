@@ -68,21 +68,6 @@ const Navbar = ({user, handleLogout, isLoggedIn, shoppingCart}) => {
   const burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x'
   const burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'
 
-  // const cart = idName => (
-  //   <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
-  //     <div id="cart-body">
-  //       <div id="cart-left" />
-  //       <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
-  //       <div id="cart-right" />
-  //       <div id="cart-handle" />
-  //     </div>
-  //     <div id="wheels">
-  //       <div className="wheels" />
-  //       <div className="wheels" />
-  //     </div>
-  //   </Link>
-  // )
-
   const shopCartIcon = idName => (
     <ShoppingCartIcon
       onClickLinks={onClickLinks}

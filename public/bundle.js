@@ -1826,20 +1826,7 @@ var Navbar = function Navbar(_ref) {
   }), userAccountLinks('account-links')));
   var linksClass = !menu ? 'nav-links-burger' : 'nav-links-x';
   var burgerFirstLine = menu ? 'first-line-burger' : 'first-line-x';
-  var burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x'; // const cart = idName => (
-  //   <Link to="/shopping-cart" onClick={onClickLinks} id={idName}>
-  //     <div id="cart-body">
-  //       <div id="cart-left" />
-  //       <div id="cart-bottom">{shoppingCart.totalQuantity}</div>
-  //       <div id="cart-right" />
-  //       <div id="cart-handle" />
-  //     </div>
-  //     <div id="wheels">
-  //       <div className="wheels" />
-  //       <div className="wheels" />
-  //     </div>
-  //   </Link>
-  // )
+  var burgerSecondLine = menu ? 'second-line-burger' : 'second-line-x';
 
   var shopCartIcon = function shopCartIcon(idName) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ShoppingCartIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
