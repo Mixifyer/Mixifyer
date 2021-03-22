@@ -42,7 +42,6 @@ const AuthForm = props => {
             <button type="submit" id={name}>
               {displayName}
             </button>
-            {}
           </div>
         }
         {error && error.response ? Message(name, error) : <div />}
