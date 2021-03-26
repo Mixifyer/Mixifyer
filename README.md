@@ -9,7 +9,7 @@ mixifyer.herokuapp.com
 
 # Mixifyer
 
-E-commerce app where you can buy your favorite drinks.site built using React, Redux, Node.js/Express, Axios, Sequelize, PostgreSQL, Stripe.
+E-commerce app where you can buy your favorite drinks.site built using React, Redux, Node.js, Express, Axios, Sequelize, PostgreSQL, Stripe.
 
 **Mixifyer uses technologies including:**
 
